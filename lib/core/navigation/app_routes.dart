@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element
 
 enum AppRoutes {
-  splashView('/splashView', 'SplashView'),
   signInView('/signInView', 'SignInView'),
   registerView('/registerView', 'RegisterView'),
   discoverView('/discoverView', 'DiscoverView');

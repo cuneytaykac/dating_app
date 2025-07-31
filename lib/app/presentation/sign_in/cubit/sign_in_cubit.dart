@@ -72,10 +72,10 @@ class SignInCubit extends Cubit<SignInState> {
 
     emit(state.copyWith(isLoading: true, generalError: null));
 
-    await _signIn();
+    await _signIn(context);
   }
 
-  Future<void> _signIn() async {
+  Future<void> _signIn(BuildContext context) async {
     final response = await signInService.postLogin(
       email: state.email,
       password: state.password,
@@ -85,6 +85,7 @@ class SignInCubit extends Cubit<SignInState> {
       success: (data) async {
         await _saveLocalSignIn(data?.data);
         emit(state.copyWith(isLoading: false));
+        context.pushNamed(AppRoutes.discoverView.name);
       },
       failure: (error) {
         emit(

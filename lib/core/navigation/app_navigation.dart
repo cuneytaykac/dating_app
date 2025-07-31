@@ -1,32 +1,60 @@
+import 'package:dating_app/app/data/datasource/local/local_signin/i_local_signin_service.dart';
 import 'package:dating_app/app/presentation/discover/view/discover_view.dart';
 import 'package:dating_app/app/presentation/register/view/register_view.dart';
 import 'package:dating_app/app/presentation/sign_in/view/sign_in_view.dart';
-import 'package:dating_app/app/presentation/splash/view/splash_view.dart';
+import 'package:dating_app/core/getIt/injection.dart';
 import 'package:dating_app/core/navigation/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final class AppNavigation {
-  static final String _initRoute = AppRoutes.discoverView.path;
-
   //Navigator Key
   static final GlobalKey<NavigatorState> _navigatorKey =
       GlobalKey<NavigatorState>();
   static GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
 
+  // Token kontrolü için redirect fonksiyonu
+  static Future<String?> _redirect(
+    BuildContext context,
+    GoRouterState state,
+  ) async {
+    try {
+      final localSigninService = getIt<ILocalSigninService>();
+      final token = await localSigninService.getToken();
+
+      final bool hasValidToken = token.isNotEmpty;
+
+      final bool isOnSignInPage =
+          state.matchedLocation == AppRoutes.signInView.path;
+      final bool isOnRegisterPage =
+          state.matchedLocation == AppRoutes.registerView.path;
+
+      if ((isOnSignInPage || isOnRegisterPage) && hasValidToken) {
+        return AppRoutes.discoverView.path;
+      }
+
+      if (state.matchedLocation == AppRoutes.discoverView.path &&
+          !hasValidToken) {
+        return AppRoutes.signInView.path;
+      }
+    } catch (e) {
+      if (state.matchedLocation != AppRoutes.signInView.path) {
+        return AppRoutes.signInView.path;
+      }
+    }
+
+    return null;
+  }
+
   static final GoRouter router = GoRouter(
     navigatorKey: _navigatorKey,
     debugLogDiagnostics: true,
-    initialLocation: _initRoute,
+    initialLocation: AppRoutes.signInView.path,
+    redirect: _redirect,
     errorBuilder: (context, state) {
-      return SplashView();
+      return const SignInView();
     },
     routes: [
-      GoRoute(
-        path: AppRoutes.splashView.path,
-        name: AppRoutes.splashView.name,
-        builder: (context, state) => const SplashView(),
-      ),
       GoRoute(
         path: AppRoutes.signInView.path,
         name: AppRoutes.signInView.name,
