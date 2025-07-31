@@ -40,9 +40,15 @@ class $AssetsIconsGen {
   /// File path: assets/icons/google.png
   AssetGenImage get google => const AssetGenImage('assets/icons/google.png');
 
+  /// File path: assets/icons/home.png
+  AssetGenImage get home => const AssetGenImage('assets/icons/home.png');
+
+  /// File path: assets/icons/profile.png
+  AssetGenImage get profile => const AssetGenImage('assets/icons/profile.png');
+
   /// List of all assets
   List<AssetGenImage> get values =>
-      [apple, discovery, discoveryFavorite, facebook, google];
+      [apple, discovery, discoveryFavorite, facebook, google, home, profile];
 }
 
 class $AssetsImagesGen {
