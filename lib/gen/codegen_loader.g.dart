@@ -2,7 +2,7 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const sign_in_title = 'sign_in.title';
   static const sign_in_welcome = 'sign_in.welcome';
   static const sign_in_email = 'sign_in.email';
@@ -36,12 +36,10 @@ abstract class LocaleKeys {
   static const register_email_invalid = 'register.email_invalid';
   static const register_password_required = 'register.password_required';
   static const register_password_min_length = 'register.password_min_length';
-  static const register_confirm_password_required =
-      'register.confirm_password_required';
+  static const register_confirm_password_required = 'register.confirm_password_required';
   static const register_passwords_not_match = 'register.passwords_not_match';
   static const register_terms_required = 'register.terms_required';
-  static const register_form_validation_error =
-      'register.form_validation_error';
+  static const register_form_validation_error = 'register.form_validation_error';
   static const register = 'register';
   static const discover_user_name = 'discover.user_name';
   static const discover_user_description = 'discover.user_description';
@@ -49,4 +47,5 @@ abstract class LocaleKeys {
   static const discover_home = 'discover.home';
   static const discover_profile = 'discover.profile';
   static const discover = 'discover';
+
 }

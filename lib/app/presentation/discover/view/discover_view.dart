@@ -1,5 +1,7 @@
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/gen/colors.gen.dart';
+import 'package:dating_app/gen/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class DiscoverView extends StatelessWidget {
@@ -40,7 +42,7 @@ class DiscoverView extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withValues(alpha: 0.3),
               blurRadius: 8,
               offset: const Offset(0, 4),
             ),
@@ -60,15 +62,18 @@ class DiscoverView extends StatelessWidget {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Colors.black.withOpacity(0.1),
-            Colors.black.withOpacity(0.8),
+            Colors.black.withValues(alpha: 0.1),
+            Colors.black.withValues(alpha: 0.8),
           ],
         ),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Assets.icons.discovery.image(),
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Assets.icons.discovery.image(),
+          ),
 
           const SizedBox(width: 15),
 
@@ -78,16 +83,14 @@ class DiscoverView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Başlık
-                const Text(
-                  'Günahkar Adam',
-                  style: TextStyle(
+                Text(
+                  LocaleKeys.discover_user_name.tr(),
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-
-                const SizedBox(height: 8),
 
                 // Açıklama
                 RichText(
@@ -95,17 +98,14 @@ class DiscoverView extends StatelessWidget {
                     style: const TextStyle(color: Colors.white, fontSize: 14),
                     children: [
                       TextSpan(
-                        text:
-                            'Community every territories dogpile so. Last they investigation model ',
+                        text: '${LocaleKeys.discover_user_description.tr()} ',
                       ),
                       WidgetSpan(
                         child: GestureDetector(
-                          onTap: () {
-                            // TODO: Daha fazlası tıklama işlemi
-                          },
-                          child: const Text(
-                            'Daha Fazlası',
-                            style: TextStyle(
+                          onTap: () {},
+                          child: Text(
+                            LocaleKeys.discover_read_more.tr(),
+                            style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.underline,
@@ -135,11 +135,14 @@ class DiscoverView extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _buildNavButton(icon: Assets.icons.home.image(), label: 'Anasayfa'),
+            _buildNavButton(
+              icon: Assets.icons.home.image(),
+              label: LocaleKeys.discover_home.tr(),
+            ),
 
             _buildNavButton(
               icon: Assets.icons.profile.image(),
-              label: 'Profil',
+              label: LocaleKeys.discover_profile.tr(),
             ),
           ],
         ),

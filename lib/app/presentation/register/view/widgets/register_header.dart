@@ -22,7 +22,7 @@ class RegisterHeader extends StatelessWidget {
           'register.description'.tr(),
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Colors.white.withOpacity(0.7),
+            color: Colors.white.withValues(alpha: 0.7),
             fontSize: 16,
             height: 1.4,
           ),

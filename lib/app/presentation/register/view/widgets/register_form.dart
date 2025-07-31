@@ -101,7 +101,7 @@ class _TermsAndConditions extends StatelessWidget {
                 color:
                     state.isTermsAccepted
                         ? Colors.red
-                        : Colors.white.withOpacity(0.3),
+                        : Colors.white.withValues(alpha: 0.3),
                 width: 2,
               ),
               borderRadius: BorderRadius.circular(4),
@@ -117,7 +117,7 @@ class _TermsAndConditions extends StatelessWidget {
           child: RichText(
             text: TextSpan(
               style: TextStyle(
-                color: Colors.white.withOpacity(0.7),
+                color: Colors.white.withValues(alpha: 0.7),
                 fontSize: 14,
               ),
               children: [

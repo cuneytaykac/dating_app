@@ -127,8 +127,6 @@ class RegisterCubit extends Cubit<RegisterState> {
       emit(state.copyWith(isLoading: true, generalError: null));
       _registerAPI(context);
     }
-
-    // TODO: Başarılı kayıt sonrası navigasyon
   }
 
   Future<void> _registerAPI(BuildContext context) async {
@@ -174,19 +172,11 @@ class RegisterCubit extends Cubit<RegisterState> {
     context.pushNamed(AppRoutes.signInView.name);
   }
 
-  void onGoogleSignIn() {
-    // TODO: Google ile kayıt
-  }
+  void onGoogleSignIn() {}
 
-  void onAppleSignIn() {
-    // TODO: Apple ile kayıt
-  }
+  void onAppleSignIn() {}
 
-  void onFacebookSignIn() {
-    // TODO: Facebook ile kayıt
-  }
+  void onFacebookSignIn() {}
 
-  void onTermsAndConditions() {
-    // TODO: Kullanıcı sözleşmesi sayfasına yönlendirme
-  }
+  void onTermsAndConditions() {}
 }

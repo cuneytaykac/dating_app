@@ -38,5 +38,12 @@
         "passwords_not_match": "Passwords do not match",
         "terms_required": "You must accept the user agreement",
         "form_validation_error": "Please fix form errors"
+    },
+    "discover": {
+        "user_name": "Sinful Man",
+        "user_description": "Community every territories dogpile so. Last they investigation model",
+        "read_more": "Read More",
+        "home": "Home",
+        "profile": "Profile"
     }
 }

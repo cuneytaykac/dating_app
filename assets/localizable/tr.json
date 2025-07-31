@@ -38,5 +38,12 @@
         "passwords_not_match": "Şifreler eşleşmiyor",
         "terms_required": "Kullanıcı sözleşmesini kabul etmelisiniz",
         "form_validation_error": "Lütfen form hatalarını düzeltiniz"
+    },
+    "discover": {
+        "user_name": "Günahkar Adam",
+        "user_description": "Community every territories dogpile so. Last they investigation model",
+        "read_more": "Daha Fazlası",
+        "home": "Anasayfa",
+        "profile": "Profil"
     }
 }

@@ -114,23 +114,15 @@ class SignInCubit extends Cubit<SignInState> {
     SnackbarManager.showError(context: context, message: message);
   }
 
-  void onForgotPassword() {
-    // TODO: Şifremi unuttum sayfasına yönlendirme
-  }
+  void onForgotPassword() {}
 
   void onSignUp(BuildContext context) {
     context.pushNamed(AppRoutes.registerView.name);
   }
 
-  void onGoogleSignIn() {
-    // TODO: Google ile giriş
-  }
+  void onGoogleSignIn() {}
 
-  void onAppleSignIn() {
-    // TODO: Apple ile giriş
-  }
+  void onAppleSignIn() {}
 
-  void onFacebookSignIn() {
-    // TODO: Facebook ile giriş
-  }
+  void onFacebookSignIn() {}
 }

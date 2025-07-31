@@ -58,7 +58,10 @@ class _SignInLink extends StatelessWidget {
       children: [
         Text(
           'register.already_have_account'.tr(),
-          style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 14),
+          style: TextStyle(
+            color: Colors.white.withValues(alpha: 0.7),
+            fontSize: 14,
+          ),
         ),
         GestureDetector(
           onTap: () => context.read<RegisterCubit>().onSignIn(context),
