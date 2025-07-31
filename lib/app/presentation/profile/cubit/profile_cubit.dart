@@ -1,72 +1,29 @@
-import 'package:bloc/bloc.dart';
-import 'package:dating_app/app/data/model/movie/movie.dart';
+import 'package:dating_app/app/data/datasource/remote/movie/i_movie_service.dart';
 import 'package:dating_app/app/presentation/profile/state/profile_state.dart';
+import 'package:dating_app/core/getIt/injection.dart';
+import 'package:dating_app/core/results/view_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  ProfileCubit() : super(const ProfileState());
+  ProfileCubit() : super(ProfileState.initial());
+  final IMovieService movieService = getIt.get<IMovieService>();
 
-  void loadLikedMovies() {
-    emit(state.copyWith(isLoading: true));
+  Future<void> getfavoriteMovies() async {
+    emit(state.copyWith(getFavorites: ViewState.pending()));
 
-    // Simulated API call
-    Future.delayed(const Duration(seconds: 1), () {
-      final movies = [
-        const Movie(
-          id: '1',
-          title: 'Aşk, Ekmek, Hayaller',
-          productionCompany: 'Adam Yapım',
-          imageUrl:
-              'https://images.unsplash.com/photo-1542856391-010fb87dcfed?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbHBhcGVycyUyMGhkfGVufDB8fDB8fHww',
-        ),
-        const Movie(
-          id: '2',
-          title: 'Gece Karanlık',
-          productionCompany: 'Fox Studios',
-          imageUrl:
-              'https://images.unsplash.com/photo-1542856391-010fb87dcfed?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbHBhcGVycyUyMGhkfGVufDB8fDB8fHww',
-        ),
-        const Movie(
-          id: '3',
-          title: 'Aşk, Ekmek, Hayaller',
-          productionCompany: 'Adam Yapım',
-          imageUrl:
-              'https://images.unsplash.com/photo-1542856391-010fb87dcfed?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbHBhcGVycyUyMGhkfGVufDB8fDB8fHww',
-        ),
-        const Movie(
-          id: '4',
-          title: 'Gece Karanlık',
-          productionCompany: 'Fox Studios',
-          imageUrl:
-              'https://images.unsplash.com/photo-1542856391-010fb87dcfed?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbHBhcGVycyUyMGhkfGVufDB8fDB8fHww',
-        ),
-        const Movie(
-          id: '5',
-          title: 'Gece Karanlık',
-          productionCompany: 'Fox Studios',
-          imageUrl:
-              'https://images.unsplash.com/photo-1542856391-010fb87dcfed?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbHBhcGVycyUyMGhkfGVufDB8fDB8fHww',
-        ),
-        const Movie(
-          id: '6',
-          title: 'Gece Karanlık',
-          productionCompany: 'Fox Studios',
-          imageUrl:
-              'https://images.unsplash.com/photo-1542856391-010fb87dcfed?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbHBhcGVycyUyMGhkfGVufDB8fDB8fHww',
-        ),
-      ];
+    final response = await movieService.getFavorites();
 
-      emit(state.copyWith(likedMovies: movies, isLoading: false));
-    });
-  }
-
-  void addLikedMovie(Movie movie) {
-    final updatedMovies = [...state.likedMovies, movie];
-    emit(state.copyWith(likedMovies: updatedMovies));
-  }
-
-  void removeLikedMovie(String movieId) {
-    final updatedMovies =
-        state.likedMovies.where((movie) => movie.id != movieId).toList();
-    emit(state.copyWith(likedMovies: updatedMovies));
+    response.when(
+      success: (data) {
+        emit(state.copyWith(getFavorites: ViewState.completed(data)));
+      },
+      failure: (error) {
+        emit(
+          state.copyWith(
+            getFavorites: ViewState.failed(error.localizedErrorMessage),
+          ),
+        );
+      },
+    );
   }
 }

@@ -1,9 +1,10 @@
 import 'package:dating_app/app/components/app_bar/custom_app_bar.dart';
 import 'package:dating_app/app/components/bottom_navigation/custom_bottom_navigation.dart';
 import 'package:dating_app/app/components/cache_image/cached_network_image.dart';
-import 'package:dating_app/app/data/model/movie/movie.dart';
+import 'package:dating_app/app/data/model/favorite_movie_data/favorite_movie_data.dart';
 import 'package:dating_app/app/presentation/profile/cubit/profile_cubit.dart';
 import 'package:dating_app/app/presentation/profile/state/profile_state.dart';
+import 'package:dating_app/core/result_state_builder/result_state_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,7 +14,7 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProfileCubit()..loadLikedMovies(),
+      create: (context) => ProfileCubit()..getfavoriteMovies(),
       child: Scaffold(
         appBar: CustomAppBar(
           title: 'Profil Detayı',
@@ -113,56 +114,48 @@ class ProfileView extends StatelessWidget {
   Widget _buildLikedMoviesSection() {
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder: (context, state) {
-        if (state.isLoading) {
-          return const Center(
-            child: CircularProgressIndicator(color: Colors.white),
-          );
-        }
-
-        if (state.error != null) {
-          return Center(
-            child: Text(
-              'Hata: ${state.error}',
-              style: const TextStyle(color: Colors.white),
-            ),
-          );
-        }
-
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Beğendiğim Filmler',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+        return ResultStateBuilder(
+          resultState: state.getFavorites,
+          completed:
+              (data) => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Beğendiğim Filmler',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Expanded(
+                    child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10,
+                            childAspectRatio:
+                                0.6, // Yüksekliği artırdığımız için oranı düşürdük
+                          ),
+                      itemCount: data?.data?.length ?? 0,
+                      itemBuilder: (context, index) {
+                        final movie = data?.data?[index];
+                        return _buildMovieCard(
+                          movie: movie ?? FavoriteMovieData(),
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
-            ),
-            const SizedBox(height: 10),
-            Expanded(
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  childAspectRatio:
-                      0.6, // Yüksekliği artırdığımız için oranı düşürdük
-                ),
-                itemCount: state.likedMovies.length,
-                itemBuilder: (context, index) {
-                  final movie = state.likedMovies[index];
-                  return _buildMovieCard(movie: movie);
-                },
-              ),
-            ),
-          ],
         );
       },
     );
   }
 
-  Widget _buildMovieCard({required Movie movie}) {
+  Widget _buildMovieCard({required FavoriteMovieData movie}) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -180,7 +173,7 @@ class ProfileView extends StatelessWidget {
               height: 200,
               width: double.infinity,
               child: cachedNetworkImage(
-                movie.imageUrl,
+                movie.images?.first ?? "",
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
@@ -193,7 +186,7 @@ class ProfileView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    movie.title,
+                    movie.title ?? "",
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 12,
@@ -204,7 +197,7 @@ class ProfileView extends StatelessWidget {
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    movie.productionCompany,
+                    movie.director ?? "",
                     style: TextStyle(
                       color: Colors.white.withValues(alpha: 0.7),
                       fontSize: 10,

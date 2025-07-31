@@ -10,10 +10,7 @@ CachedNetworkImage cachedNetworkImage(
   BoxFit? fit,
 }) {
   return CachedNetworkImage(
-    imageUrl:
-        imagePath == ""
-            ? 'https://images.unsplash.com/photo-1542856391-010fb87dcfed?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbHBhcGVycyUyMGhkfGVufDB8fDB8fHww'
-            : imagePath,
+    imageUrl: imagePath,
     progressIndicatorBuilder:
         (context, url, downloadProgress) => Shimmer.fromColors(
           baseColor: Colors.grey[300]!,

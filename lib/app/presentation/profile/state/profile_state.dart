@@ -1,25 +1,19 @@
-import 'package:dating_app/app/data/model/movie/movie.dart';
+import 'package:dating_app/app/data/model/favorite_movie_response/favorite_movie_response.dart';
+import 'package:dating_app/core/error/view_error.dart';
+import 'package:dating_app/core/results/view_state.dart';
 
 class ProfileState {
-  final List<Movie> likedMovies;
-  final bool isLoading;
-  final String? error;
+  final ViewState<FavoriteMovieResponse?, ViewError> getFavorites;
 
-  const ProfileState({
-    this.likedMovies = const [],
-    this.isLoading = false,
-    this.error,
-  });
+  const ProfileState({required this.getFavorites});
+
+  factory ProfileState.initial() {
+    return ProfileState(getFavorites: ViewState.idle());
+  }
 
   ProfileState copyWith({
-    List<Movie>? likedMovies,
-    bool? isLoading,
-    String? error,
+    ViewState<FavoriteMovieResponse?, ViewError>? getFavorites,
   }) {
-    return ProfileState(
-      likedMovies: likedMovies ?? this.likedMovies,
-      isLoading: isLoading ?? this.isLoading,
-      error: error ?? this.error,
-    );
+    return ProfileState(getFavorites: getFavorites ?? this.getFavorites);
   }
 }
