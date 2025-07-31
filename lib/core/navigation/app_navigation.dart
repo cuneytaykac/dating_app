@@ -1,4 +1,4 @@
-import 'package:dating_app/app/presentation/discover/discover_view.dart';
+import 'package:dating_app/app/presentation/discover/view/discover_view.dart';
 import 'package:dating_app/app/presentation/register/view/register_view.dart';
 import 'package:dating_app/app/presentation/sign_in/view/sign_in_view.dart';
 import 'package:dating_app/app/presentation/splash/view/splash_view.dart';
@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final class AppNavigation {
-  static final String _initRoute = AppRoutes.signInView.path;
+  static final String _initRoute = AppRoutes.discoverView.path;
 
   //Navigator Key
   static final GlobalKey<NavigatorState> _navigatorKey =

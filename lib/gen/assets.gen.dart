@@ -25,6 +25,14 @@ class $AssetsIconsGen {
   /// File path: assets/icons/apple.png
   AssetGenImage get apple => const AssetGenImage('assets/icons/apple.png');
 
+  /// File path: assets/icons/discovery.png
+  AssetGenImage get discovery =>
+      const AssetGenImage('assets/icons/discovery.png');
+
+  /// File path: assets/icons/discovery_favorite.png
+  AssetGenImage get discoveryFavorite =>
+      const AssetGenImage('assets/icons/discovery_favorite.png');
+
   /// File path: assets/icons/facebook.png
   AssetGenImage get facebook =>
       const AssetGenImage('assets/icons/facebook.png');
@@ -33,7 +41,19 @@ class $AssetsIconsGen {
   AssetGenImage get google => const AssetGenImage('assets/icons/google.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [apple, facebook, google];
+  List<AssetGenImage> get values =>
+      [apple, discovery, discoveryFavorite, facebook, google];
+}
+
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/discovery_background.png
+  AssetGenImage get discoveryBackground =>
+      const AssetGenImage('assets/images/discovery_background.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [discoveryBackground];
 }
 
 class $AssetsLocalizableGen {
@@ -54,6 +74,7 @@ class Assets {
 
   static const $AssetsColorGen color = $AssetsColorGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLocalizableGen localizable = $AssetsLocalizableGen();
 }
 
