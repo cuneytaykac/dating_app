@@ -25,6 +25,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/apple.png
   AssetGenImage get apple => const AssetGenImage('assets/icons/apple.png');
 
+  /// File path: assets/icons/diamond.png
+  AssetGenImage get diamond => const AssetGenImage('assets/icons/diamond.png');
+
   /// File path: assets/icons/discovery.png
   AssetGenImage get discovery =>
       const AssetGenImage('assets/icons/discovery.png');
@@ -47,8 +50,16 @@ class $AssetsIconsGen {
   AssetGenImage get profile => const AssetGenImage('assets/icons/profile.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [apple, discovery, discoveryFavorite, facebook, google, home, profile];
+  List<AssetGenImage> get values => [
+        apple,
+        diamond,
+        discovery,
+        discoveryFavorite,
+        facebook,
+        google,
+        home,
+        profile
+      ];
 }
 
 class $AssetsImagesGen {

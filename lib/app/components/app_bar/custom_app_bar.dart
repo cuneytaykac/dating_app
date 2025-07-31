@@ -1,3 +1,4 @@
+import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/gen/colors.gen.dart';
 import 'package:flutter/material.dart';
 
@@ -54,7 +55,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         title,
         style: TextStyle(
-          color: titleColor ?? Colors.white,
+          color: titleColor ?? ColorName.appWhite,
           fontSize: 18,
           fontWeight: FontWeight.w600,
         ),
@@ -67,11 +68,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: ElevatedButton(
               onPressed: onLimitedOfferPressed,
               style: ElevatedButton.styleFrom(
-                backgroundColor: limitedOfferColor ?? const Color(0xFFE53E3E),
-                foregroundColor: Colors.white,
+                backgroundColor: limitedOfferColor ?? ColorName.appKUCrimson,
+                foregroundColor: ColorName.appWhite,
                 elevation: 0,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 12,
@@ -80,9 +81,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
+                spacing: 8,
                 children: [
-                  const Icon(Icons.diamond, size: 16, color: Colors.white),
-                  const SizedBox(width: 4),
+                  Assets.icons.diamond.image(),
+
                   Text(
                     limitedOfferText,
                     style: const TextStyle(
