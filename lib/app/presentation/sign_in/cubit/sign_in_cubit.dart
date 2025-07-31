@@ -64,9 +64,9 @@ class SignInCubit extends Cubit<SignInState> {
     return null;
   }
 
-  Future<void> signIn() async {
+  Future<void> signIn(BuildContext context) async {
     if (!state.isFormValid) {
-      emit(state.copyWith(generalError: 'sign_in.form_validation_error'.tr()));
+      showErrorSnackbar(context, 'sign_in.form_validation_error'.tr());
       return;
     }
 

@@ -36,6 +36,7 @@
         "password_min_length": "Password must be at least 6 characters",
         "confirm_password_required": "Confirm password cannot be empty",
         "passwords_not_match": "Passwords do not match",
+        "terms_required": "You must accept the user agreement",
         "form_validation_error": "Please fix form errors"
     }
 }

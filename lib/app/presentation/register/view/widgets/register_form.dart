@@ -156,7 +156,7 @@ class _RegisterButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomButton(
       text: 'register.register_button'.tr(),
-      onPressed: () => context.read<RegisterCubit>().register(),
+      onPressed: () => context.read<RegisterCubit>().register(context),
       isLoading: state.isLoading,
       backgroundColor: ColorName.appKUCrimson,
       height: 60,

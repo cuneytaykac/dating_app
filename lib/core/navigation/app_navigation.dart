@@ -1,3 +1,4 @@
+import 'package:dating_app/app/presentation/discover/discover_view.dart';
 import 'package:dating_app/app/presentation/register/view/register_view.dart';
 import 'package:dating_app/app/presentation/sign_in/view/sign_in_view.dart';
 import 'package:dating_app/app/presentation/splash/view/splash_view.dart';
@@ -35,6 +36,11 @@ final class AppNavigation {
         path: AppRoutes.registerView.path,
         name: AppRoutes.registerView.name,
         builder: (context, state) => const RegisterView(),
+      ),
+      GoRoute(
+        path: AppRoutes.discoverView.path,
+        name: AppRoutes.discoverView.name,
+        builder: (context, state) => const DiscoverView(),
       ),
     ],
   );

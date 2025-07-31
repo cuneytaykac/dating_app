@@ -1,3 +1,6 @@
+import 'package:dating_app/app/data/datasource/local/local_signin/i_local_signin_service.dart';
+import 'package:dating_app/app/data/datasource/remote/register/i_register_service.dart';
+import 'package:dating_app/core/getIt/injection.dart';
 import 'package:dating_app/core/navigation/app_routes.dart';
 import 'package:dating_app/core/utility/snackbar/snackbar_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -10,29 +13,26 @@ import '../state/register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit() : super(const RegisterState());
-
+  final registerService = getIt.get<IRegisterService>();
+  final ILocalSigninService _localSigninService =
+      getIt.get<ILocalSigninService>();
   void onFullNameChanged(String fullName) {
-    emit(state.copyWith(fullName: fullName, fullNameError: null));
+    emit(state.copyWith(fullName: fullName));
     _validateForm();
   }
 
   void onEmailChanged(String email) {
-    emit(state.copyWith(email: email, emailError: null));
+    emit(state.copyWith(email: email));
     _validateForm();
   }
 
   void onPasswordChanged(String password) {
-    emit(state.copyWith(password: password, passwordError: null));
+    emit(state.copyWith(password: password));
     _validateForm();
   }
 
   void onConfirmPasswordChanged(String confirmPassword) {
-    emit(
-      state.copyWith(
-        confirmPassword: confirmPassword,
-        confirmPasswordError: null,
-      ),
-    );
+    emit(state.copyWith(confirmPassword: confirmPassword));
     _validateForm();
   }
 
@@ -70,8 +70,7 @@ class RegisterCubit extends Cubit<RegisterState> {
             fullNameError == null &&
             emailError == null &&
             passwordError == null &&
-            confirmPasswordError == null &&
-            state.isTermsAccepted,
+            confirmPasswordError == null,
       ),
     );
   }
@@ -116,21 +115,55 @@ class RegisterCubit extends Cubit<RegisterState> {
     return null;
   }
 
-  Future<void> register() async {
+  Future<void> register(BuildContext context) async {
     if (!state.isFormValid) {
-      emit(state.copyWith(generalError: 'register.form_validation_error'.tr()));
+      showErrorSnackbar(context, 'register.form_validation_error'.tr());
       return;
+    } else if (!state.isTermsAccepted) {
+      showErrorSnackbar(context, 'register.terms_required'.tr());
+
+      return;
+    } else {
+      emit(state.copyWith(isLoading: true, generalError: null));
+      _registerAPI(context);
     }
 
-    emit(state.copyWith(isLoading: true, generalError: null));
-
-    // TODO: Register API çağrısı
-    await Future.delayed(
-      const Duration(seconds: 2),
-    ); // Simüle edilmiş API çağrısı
-
-    emit(state.copyWith(isLoading: false));
     // TODO: Başarılı kayıt sonrası navigasyon
+  }
+
+  Future<void> _registerAPI(BuildContext context) async {
+    final result = await registerService.postRegister(
+      email: state.email,
+      name: state.fullName,
+      password: state.password,
+    );
+
+    result.when(
+      success: (data) async {
+        if (data != null) {
+          if (data.data != null) {
+            await _localSigninService.saveSignIn(data.data!);
+            emit(state.copyWith(isLoading: false));
+            context.pushNamed(AppRoutes.discoverView.name);
+          } else {
+            emit(state.copyWith(isLoading: false));
+            showErrorSnackbar(context, 'register.unknown_error'.tr());
+          }
+        }
+      },
+      failure: (error) {
+        emit(
+          state.copyWith(
+            isLoading: false,
+            generalError: error.localizedErrorMessage,
+          ),
+        );
+        showErrorSnackbar(
+          context,
+          error.localizedErrorMessage ?? 'register.unknown_error'.tr(),
+        );
+      },
+    );
   }
 
   void showErrorSnackbar(BuildContext context, String message) {

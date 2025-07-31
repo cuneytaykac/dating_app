@@ -16,8 +16,8 @@ final class RegisterService extends IRegisterService {
     required String? email,
     required String? name,
     required String? password,
-  }) {
-    final response = client
+  }) async {
+    final response = await client
         .setRequestMethod(requestMethodEnum: RequestMethodEnum.POST)
         .setBaseUrl(path: "https://caseapi.servicelabs.tech/")
         .setPath(path: "user/register")

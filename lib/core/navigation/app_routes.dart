@@ -3,7 +3,8 @@
 enum AppRoutes {
   splashView('/splashView', 'SplashView'),
   signInView('/signInView', 'SignInView'),
-  registerView('/registerView', 'RegisterView');
+  registerView('/registerView', 'RegisterView'),
+  discoverView('/discoverView', 'DiscoverView');
 
   final String path;
   final String name;

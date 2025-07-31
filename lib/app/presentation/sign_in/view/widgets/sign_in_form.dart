@@ -59,7 +59,7 @@ class SignInForm extends StatelessWidget {
       obscureText: !state.isPasswordVisible,
       textInputAction: TextInputAction.done,
       onChanged: context.read<SignInCubit>().onPasswordChanged,
-      onSubmitted: () => context.read<SignInCubit>().signIn(),
+      onSubmitted: () => context.read<SignInCubit>().signIn(context),
       errorText: state.passwordError,
     );
   }
@@ -85,7 +85,7 @@ class SignInForm extends StatelessWidget {
   Widget _buildSignInButton(BuildContext context, SignInState state) {
     return CustomButton(
       text: 'sign_in.sign_in_button'.tr(),
-      onPressed: () => context.read<SignInCubit>().signIn(),
+      onPressed: () => context.read<SignInCubit>().signIn(context),
       isLoading: state.isLoading,
       backgroundColor: ColorName.appKUCrimson,
       height: 60,

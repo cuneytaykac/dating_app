@@ -36,6 +36,7 @@
         "password_min_length": "Şifre en az 6 karakter olmalıdır",
         "confirm_password_required": "Şifre tekrarı boş olamaz",
         "passwords_not_match": "Şifreler eşleşmiyor",
+        "terms_required": "Kullanıcı sözleşmesini kabul etmelisiniz",
         "form_validation_error": "Lütfen form hatalarını düzeltiniz"
     }
 }
