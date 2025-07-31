@@ -1,5 +1,7 @@
 import 'package:dating_app/app/data/datasource/local/local_signin/i_local_signin_service.dart';
 import 'package:dating_app/app/presentation/discover/view/discover_view.dart';
+import 'package:dating_app/app/presentation/home/view/home_view.dart';
+import 'package:dating_app/app/presentation/profile/view/profile_view.dart';
 import 'package:dating_app/app/presentation/register/view/register_view.dart';
 import 'package:dating_app/app/presentation/sign_in/view/sign_in_view.dart';
 import 'package:dating_app/core/getIt/injection.dart';
@@ -49,7 +51,7 @@ final class AppNavigation {
   static final GoRouter router = GoRouter(
     navigatorKey: _navigatorKey,
     debugLogDiagnostics: true,
-    initialLocation: AppRoutes.signInView.path,
+    initialLocation: AppRoutes.discoverView.path,
     redirect: _redirect,
     errorBuilder: (context, state) {
       return const SignInView();
@@ -69,6 +71,16 @@ final class AppNavigation {
         path: AppRoutes.discoverView.path,
         name: AppRoutes.discoverView.name,
         builder: (context, state) => const DiscoverView(),
+      ),
+      GoRoute(
+        path: AppRoutes.homeView.path,
+        name: AppRoutes.homeView.name,
+        builder: (context, state) => const HomeView(),
+      ),
+      GoRoute(
+        path: AppRoutes.profileView.path,
+        name: AppRoutes.profileView.name,
+        builder: (context, state) => const ProfileView(),
       ),
     ],
   );
