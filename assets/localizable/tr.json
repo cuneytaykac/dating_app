@@ -13,5 +13,29 @@
         "password_required": "Şifre boş olamaz",
         "password_min_length": "Şifre en az 6 karakter olmalıdır",
         "form_validation_error": "Lütfen form hatalarını düzeltiniz"
+    },
+    "register": {
+        "title": "Kayıt Ol",
+        "welcome": "Hoşgeldiniz",
+        "description": "Tempus varius a vitae interdum id tortor elementum tristique eleifend at.",
+        "full_name": "Ad Soyad",
+        "email": "E-Posta",
+        "password": "Şifre",
+        "confirm_password": "Şifre Tekrar",
+        "register_button": "Şimdi Kaydol",
+        "already_have_account": "Zaten bir hesabın var mı?",
+        "sign_in": "Giriş Yap!",
+        "terms_title": "Kullanıcı sözleşmesini",
+        "terms_accepted": "okudum ve kabul ediyorum.",
+        "terms_description": "Bu sözleşmeyi okuyarak devam ediniz lütfen.",
+        "full_name_required": "Ad soyad boş olamaz",
+        "full_name_min_length": "Ad soyad en az 2 karakter olmalıdır",
+        "email_required": "E-posta boş olamaz",
+        "email_invalid": "Geçerli bir e-posta adresi giriniz",
+        "password_required": "Şifre boş olamaz",
+        "password_min_length": "Şifre en az 6 karakter olmalıdır",
+        "confirm_password_required": "Şifre tekrarı boş olamaz",
+        "passwords_not_match": "Şifreler eşleşmiyor",
+        "form_validation_error": "Lütfen form hatalarını düzeltiniz"
     }
 }

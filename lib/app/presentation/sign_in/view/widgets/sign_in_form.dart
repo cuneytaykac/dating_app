@@ -1,3 +1,4 @@
+import 'package:dating_app/app/components/buttons/custom_button.dart';
 import 'package:dating_app/app/components/form_fields/custom_text_form_field.dart';
 import 'package:dating_app/gen/colors.gen.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -82,40 +83,13 @@ class SignInForm extends StatelessWidget {
   }
 
   Widget _buildSignInButton(BuildContext context, SignInState state) {
-    return SizedBox(
-      width: double.infinity,
+    return CustomButton(
+      text: 'sign_in.sign_in_button'.tr(),
+      onPressed: () => context.read<SignInCubit>().signIn(),
+      isLoading: state.isLoading,
+      backgroundColor: ColorName.appKUCrimson,
       height: 60,
-      child: ElevatedButton(
-        onPressed:
-            () =>
-                context
-                    .read<SignInCubit>()
-                    .signIn(), // Debug için her zaman aktif
-        style: ElevatedButton.styleFrom(
-          backgroundColor: ColorName.appKUCrimson,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-        ),
-        child:
-            state.isLoading
-                ? const SizedBox(
-                  width: 20,
-                  height: 20,
-                  child: CircularProgressIndicator(
-                    color: Colors.white,
-                    strokeWidth: 2,
-                  ),
-                )
-                : Text(
-                  'sign_in.sign_in_button'.tr(),
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-      ),
+      borderRadius: 16,
     );
   }
 }

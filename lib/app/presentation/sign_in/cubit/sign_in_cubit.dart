@@ -2,10 +2,12 @@ import 'package:dating_app/app/data/datasource/local/local_signin/i_local_signin
 import 'package:dating_app/app/data/datasource/remote/sign_in/i_sign_in_service.dart';
 import 'package:dating_app/app/data/model/sign_in/sign_in.dart';
 import 'package:dating_app/core/getIt/injection.dart';
+import 'package:dating_app/core/navigation/app_routes.dart';
 import 'package:dating_app/core/utility/snackbar/snackbar_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:moon_extension/moon_extension.dart';
 
 import '../state/sign_in_state.dart';
@@ -116,8 +118,8 @@ class SignInCubit extends Cubit<SignInState> {
     // TODO: Şifremi unuttum sayfasına yönlendirme
   }
 
-  void onSignUp() {
-    // TODO: Kayıt sayfasına yönlendirme
+  void onSignUp(BuildContext context) {
+    context.pushNamed(AppRoutes.registerView.name);
   }
 
   void onGoogleSignIn() {

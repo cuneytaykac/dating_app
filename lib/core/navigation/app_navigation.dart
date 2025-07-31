@@ -1,3 +1,4 @@
+import 'package:dating_app/app/presentation/register/view/register_view.dart';
 import 'package:dating_app/app/presentation/sign_in/view/sign_in_view.dart';
 import 'package:dating_app/app/presentation/splash/view/splash_view.dart';
 import 'package:dating_app/core/navigation/app_routes.dart';
@@ -27,7 +28,13 @@ final class AppNavigation {
       ),
       GoRoute(
         path: AppRoutes.signInView.path,
+        name: AppRoutes.signInView.name,
         builder: (context, state) => const SignInView(),
+      ),
+      GoRoute(
+        path: AppRoutes.registerView.path,
+        name: AppRoutes.registerView.name,
+        builder: (context, state) => const RegisterView(),
       ),
     ],
   );

@@ -90,7 +90,7 @@ class SignUpSection extends StatelessWidget {
             TextSpan(text: 'sign_in.no_account'.tr()),
             WidgetSpan(
               child: GestureDetector(
-                onTap: () => context.read<SignInCubit>().onSignUp(),
+                onTap: () => context.read<SignInCubit>().onSignUp(context),
                 child: Text(
                   'sign_in.sign_up'.tr(),
                   style: const TextStyle(
