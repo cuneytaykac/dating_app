@@ -1,0 +1,17 @@
+{
+    "sign_in": {
+        "title": "Sign In",
+        "welcome": "Hello",
+        "email": "Email",
+        "password": "Password",
+        "forgot_password": "Forgot Password",
+        "sign_in_button": "Sign In",
+        "no_account": "Don't have an account?",
+        "sign_up": "Sign Up!",
+        "email_required": "Email cannot be empty",
+        "email_invalid": "Please enter a valid email address",
+        "password_required": "Password cannot be empty",
+        "password_min_length": "Password must be at least 6 characters",
+        "form_validation_error": "Please fix form errors"
+    }
+}

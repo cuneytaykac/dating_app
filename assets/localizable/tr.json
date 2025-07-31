@@ -1,0 +1,17 @@
+{
+    "sign_in": {
+        "title": "Giriş Yap",
+        "welcome": "Merhabalar",
+        "email": "E-Posta",
+        "password": "Şifre",
+        "forgot_password": "Şifremi unuttum",
+        "sign_in_button": "Giriş Yap",
+        "no_account": "Bir hesabın yok mu?",
+        "sign_up": "Kayıt Ol!",
+        "email_required": "E-posta boş olamaz",
+        "email_invalid": "Geçerli bir e-posta adresi giriniz",
+        "password_required": "Şifre boş olamaz",
+        "password_min_length": "Şifre en az 6 karakter olmalıdır",
+        "form_validation_error": "Lütfen form hatalarını düzeltiniz"
+    }
+}

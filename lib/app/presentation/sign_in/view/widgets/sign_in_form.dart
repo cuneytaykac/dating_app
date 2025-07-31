@@ -1,0 +1,121 @@
+import 'package:dating_app/app/components/form_fields/custom_text_form_field.dart';
+import 'package:dating_app/gen/colors.gen.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../cubit/sign_in_cubit.dart';
+import '../../state/sign_in_state.dart';
+
+class SignInForm extends StatelessWidget {
+  const SignInForm({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SignInCubit, SignInState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            _buildEmailField(context, state),
+            const SizedBox(height: 16),
+            _buildPasswordField(context, state),
+            const SizedBox(height: 16),
+            _buildForgotPassword(context),
+            const SizedBox(height: 32),
+            _buildSignInButton(context, state),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _buildEmailField(BuildContext context, SignInState state) {
+    return CustomTextFormField(
+      labelText: 'sign_in.email'.tr(),
+      prefixIcon: Icons.email_outlined,
+      keyboardType: TextInputType.emailAddress,
+      textInputAction: TextInputAction.next,
+      onChanged: context.read<SignInCubit>().onEmailChanged,
+      errorText: state.emailError,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: Colors.blue),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: Colors.blue),
+      ),
+    );
+  }
+
+  Widget _buildPasswordField(BuildContext context, SignInState state) {
+    return CustomTextFormField(
+      labelText: 'sign_in.password'.tr(),
+      prefixIcon: Icons.lock_outline,
+      suffixIcon:
+          state.isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+      onSuffixIconPressed: context.read<SignInCubit>().togglePasswordVisibility,
+      obscureText: !state.isPasswordVisible,
+      textInputAction: TextInputAction.done,
+      onChanged: context.read<SignInCubit>().onPasswordChanged,
+      onSubmitted: () => context.read<SignInCubit>().signIn(),
+      errorText: state.passwordError,
+    );
+  }
+
+  Widget _buildForgotPassword(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: GestureDetector(
+        onTap: () => context.read<SignInCubit>().onForgotPassword(),
+        child: Container(
+          decoration: const BoxDecoration(
+            border: Border(bottom: BorderSide(color: Colors.white, width: 1.0)),
+          ),
+          child: Text(
+            'sign_in.forgot_password'.tr(),
+            style: const TextStyle(color: Colors.white, fontSize: 14),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSignInButton(BuildContext context, SignInState state) {
+    return SizedBox(
+      width: double.infinity,
+      height: 60,
+      child: ElevatedButton(
+        onPressed:
+            () =>
+                context
+                    .read<SignInCubit>()
+                    .signIn(), // Debug için her zaman aktif
+        style: ElevatedButton.styleFrom(
+          backgroundColor: ColorName.appKUCrimson,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        child:
+            state.isLoading
+                ? const SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                    strokeWidth: 2,
+                  ),
+                )
+                : Text(
+                  'sign_in.sign_in_button'.tr(),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+      ),
+    );
+  }
+}
