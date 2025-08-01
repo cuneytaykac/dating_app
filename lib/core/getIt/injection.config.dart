@@ -17,6 +17,10 @@ import '../../app/data/datasource/local/local_signin/local_signin_service.dart'
     as _i535;
 import '../../app/data/datasource/remote/movie/i_movie_service.dart' as _i335;
 import '../../app/data/datasource/remote/movie/movie_service.dart' as _i772;
+import '../../app/data/datasource/remote/profile/i_profile_service.dart'
+    as _i80;
+import '../../app/data/datasource/remote/profile/profile_service.dart'
+    as _i1059;
 import '../../app/data/datasource/remote/register/i_register_service.dart'
     as _i797;
 import '../../app/data/datasource/remote/register/register_service.dart'
@@ -38,6 +42,7 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    gh.lazySingleton<_i80.IProfileService>(() => _i1059.ProfileService());
     gh.lazySingleton<_i335.IMovieService>(() => _i772.MovieService());
     gh.lazySingleton<_i818.ILocalSigninService>(
         () => _i535.LocalSigninService());

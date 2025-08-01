@@ -20,7 +20,7 @@ class SignInAdapter extends TypeAdapter<SignIn> {
       id: fields[0] as String?,
       email: fields[1] as String?,
       name: fields[2] as String?,
-      photourl: fields[3] as String?,
+      photoUrl: fields[3] as String?,
       token: fields[4] as String?,
     );
   }
@@ -36,7 +36,7 @@ class SignInAdapter extends TypeAdapter<SignIn> {
       ..writeByte(2)
       ..write(obj.name)
       ..writeByte(3)
-      ..write(obj.photourl)
+      ..write(obj.photoUrl)
       ..writeByte(4)
       ..write(obj.token);
   }
@@ -60,7 +60,7 @@ SignIn _$SignInFromJson(Map<String, dynamic> json) => SignIn(
       id: json['id'] as String?,
       email: json['email'] as String?,
       name: json['name'] as String?,
-      photourl: json['photourl'] as String?,
+      photoUrl: json['photoUrl'] as String?,
       token: json['token'] as String?,
     );
 
@@ -68,6 +68,6 @@ Map<String, dynamic> _$SignInToJson(SignIn instance) => <String, dynamic>{
       'id': instance.id,
       'email': instance.email,
       'name': instance.name,
-      'photourl': instance.photourl,
+      'photoUrl': instance.photoUrl,
       'token': instance.token,
     };

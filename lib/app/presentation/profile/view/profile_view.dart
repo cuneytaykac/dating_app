@@ -2,10 +2,12 @@ import 'package:dating_app/app/components/app_bar/custom_app_bar.dart';
 import 'package:dating_app/app/components/bottom_navigation/custom_bottom_navigation.dart';
 import 'package:dating_app/app/components/cache_image/cached_network_image.dart';
 import 'package:dating_app/app/data/model/favorite_movie_data/favorite_movie_data.dart';
+import 'package:dating_app/app/data/model/sign_in/sign_in.dart';
 import 'package:dating_app/app/presentation/profile/cubit/profile_cubit.dart';
 import 'package:dating_app/app/presentation/profile/state/profile_state.dart';
 import 'package:dating_app/core/navigation/app_routes.dart';
 import 'package:dating_app/core/result_state_builder/result_state_builder.dart';
+import 'package:dating_app/core/utility/cache/cache_manager.dart';
 import 'package:dating_app/gen/colors.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -68,18 +70,27 @@ class ProfileView extends StatelessWidget {
       padding: EdgeInsets.zero,
       child: ListTile(
         contentPadding: EdgeInsets.zero,
-        leading: ClipRRect(
-          borderRadius: BorderRadius.circular(40),
-          child: SizedBox(
-            width: 50,
-            height: 50,
-            child: cachedNetworkImage(
-              "https://images.unsplash.com/photo-1542856391-010fb87dcfed?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbHBhcGVycyUyMGhkfGVufDB8fDB8fHww",
-              height: 50,
-              width: 50,
-              fit: BoxFit.cover,
-            ),
+        leading: ValueListenableBuilder(
+          valueListenable: HiveHelper.shared.listenable<SignIn>(
+            boxName: HiveHelper.signInBoxKey,
           ),
+          builder: (BuildContext context, value, Widget? child) {
+            final photoUrl = value.values.first.photoUrl;
+
+            return SizedBox(
+              width: 100,
+              height: 100,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: cachedNetworkImage(
+                  photoUrl ?? "",
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
+          },
         ),
         title: const Text(
           'Ayça Aydoğan',

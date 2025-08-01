@@ -14,11 +14,11 @@ class SignIn implements BaseNetworkModel<SignIn> {
   @HiveField(2)
   String? name;
   @HiveField(3)
-  String? photourl;
+  String? photoUrl;
   @HiveField(4)
   String? token;
 
-  SignIn({this.id, this.email, this.name, this.photourl, this.token});
+  SignIn({this.id, this.email, this.name, this.photoUrl, this.token});
 
   factory SignIn.fromJson(Map<String, dynamic> json) => _$SignInFromJson(json);
   Map<String, dynamic> toJson() => _$SignInToJson(this);
