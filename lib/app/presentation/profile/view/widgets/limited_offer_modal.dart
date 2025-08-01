@@ -101,7 +101,56 @@ class LimitedOfferModal extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: ColorName.appWhite.withValues(alpha: 0.03),
                         borderRadius: BorderRadius.circular(20),
+
                         border: Border.all(color: Colors.white10, width: 1),
+                      ),
+                      child: Column(
+                        spacing: 10,
+                        children: [
+                          const Text(
+                            'Alacağınız Bonuslar',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Column(
+                                children: [
+                                  Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                      color: ColorName.appRosewood,
+                                      borderRadius: BorderRadius.circular(25),
+                                      border: Border.all(
+                                        color: ColorName.appWhite,
+                                        width: .4,
+                                      ),
+                                    ),
+                                    child: const Icon(
+                                      Icons.star,
+                                      color: Colors.white,
+                                      size: 24,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    "1000 Jeton",
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ),

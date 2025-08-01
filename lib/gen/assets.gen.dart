@@ -46,6 +46,22 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home.png
   AssetGenImage get home => const AssetGenImage('assets/icons/home.png');
 
+  /// File path: assets/icons/limited_diamond.png
+  AssetGenImage get limitedDiamond =>
+      const AssetGenImage('assets/icons/limited_diamond.png');
+
+  /// File path: assets/icons/limited_heart.png
+  AssetGenImage get limitedHeart =>
+      const AssetGenImage('assets/icons/limited_heart.png');
+
+  /// File path: assets/icons/limited_hearts.png
+  AssetGenImage get limitedHearts =>
+      const AssetGenImage('assets/icons/limited_hearts.png');
+
+  /// File path: assets/icons/limited_unknow.png
+  AssetGenImage get limitedUnknow =>
+      const AssetGenImage('assets/icons/limited_unknow.png');
+
   /// File path: assets/icons/profile.png
   AssetGenImage get profile => const AssetGenImage('assets/icons/profile.png');
 
@@ -58,6 +74,10 @@ class $AssetsIconsGen {
         facebook,
         google,
         home,
+        limitedDiamond,
+        limitedHeart,
+        limitedHearts,
+        limitedUnknow,
         profile
       ];
 }
