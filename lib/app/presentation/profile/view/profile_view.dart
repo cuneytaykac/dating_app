@@ -77,7 +77,18 @@ class ProfileView extends StatelessWidget {
           builder: (BuildContext context, value, Widget? child) {
             final photoUrl = value.values.first.photoUrl;
 
-            return SizedBox(
+            return ClipRRect(
+              borderRadius: BorderRadius.circular(30),
+              child: cachedNetworkImage(
+                photoUrl ?? "",
+                fit: BoxFit.fill,
+                width: 50,
+                height: 50,
+              ),
+            );
+
+            /**
+             *  SizedBox(
               width: 100,
               height: 100,
               child: ClipRRect(
@@ -90,6 +101,7 @@ class ProfileView extends StatelessWidget {
                 ),
               ),
             );
+             */
           },
         ),
         title: const Text(
