@@ -83,9 +83,10 @@ class LimitedOfferModal extends StatelessWidget {
                           Center(
                             child: Text(
                               "Jeton paketin’ni seçerek bonus kazanın ve yeni bölümlerin kilidini açın!",
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 16,
+                                fontSize: 14,
                               ),
                             ),
                           ),
@@ -94,9 +95,14 @@ class LimitedOfferModal extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: Text(
-                      "Limited Offer",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    flex: 2,
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 16.0),
+                      decoration: BoxDecoration(
+                        color: ColorName.appWhite.withValues(alpha: 0.03),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Colors.white10, width: 1),
+                      ),
                     ),
                   ),
                 ],
