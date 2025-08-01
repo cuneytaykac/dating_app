@@ -62,6 +62,11 @@
         "title": "Profil Detay",
         "upload_photos": "Fotoğraflarınızı Yükleyin",
         "description": "Resources out incentivize relaxation floor loss cc.",
-        "continue": "Devam Et"
+        "continue": "Devam Et",
+        "uploading": "Yükleniyor...",
+        "uploading_photo": "Fotoğraf yükleniyor...",
+        "upload_success": "Profil fotoğrafı başarıyla yüklendi",
+        "upload_error": "Profil fotoğrafı yüklenirken bir hata oluştu",
+        "upload_error_message": "Fotoğraf yüklenirken bir hata oluştu. Lütfen tekrar deneyin."
     }
 }

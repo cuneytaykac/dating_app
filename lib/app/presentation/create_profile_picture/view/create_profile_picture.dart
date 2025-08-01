@@ -36,28 +36,31 @@ class _CreateProfilePictureViewBody extends StatelessWidget {
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 40),
-            child: Column(
-              spacing: 24,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                _buildHeader(),
-                BlocBuilder<
-                  CreateProfilePictureCubit,
-                  CreateProfilePictureState
-                >(
-                  builder: (context, state) {
-                    return PhotoPickerWidget(
-                      onPhotoSelected: (File? photo) {
-                        context.read<CreateProfilePictureCubit>().selectPhoto(
-                          photo,
-                        );
-                      },
-                      size: 200,
-                    );
-                  },
-                ),
-                const Spacer(),
-              ],
+            child: BlocBuilder<
+              CreateProfilePictureCubit,
+              CreateProfilePictureState
+            >(
+              builder: (context, state) {
+                return Column(
+                  spacing: 24,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    _buildHeader(),
+                    if (state.isLoading)
+                      _buildLoadingAnimation()
+                    else
+                      PhotoPickerWidget(
+                        onPhotoSelected: (File? photo) {
+                          context.read<CreateProfilePictureCubit>().selectPhoto(
+                            photo,
+                          );
+                        },
+                        size: 200,
+                      ),
+                    const Spacer(),
+                  ],
+                );
+              },
             ),
           ),
         ),
@@ -90,27 +93,62 @@ class _CreateProfilePictureViewBody extends StatelessWidget {
     );
   }
 
+  Widget _buildLoadingAnimation() {
+    return Container(
+      height: 200,
+      width: 200,
+      decoration: BoxDecoration(
+        color: ColorName.appKUCrimson.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: ColorName.appKUCrimson.withValues(alpha: 0.3),
+          width: 2,
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(ColorName.appKUCrimson),
+            strokeWidth: 3,
+          ),
+          const SizedBox(height: 16),
+          Text(
+            LocaleKeys.photo_picker_loading.tr(),
+            style: TextStyle(
+              color: Colors.white.withValues(alpha: 0.8),
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildContinueButton(BuildContext context) {
     return BlocBuilder<CreateProfilePictureCubit, CreateProfilePictureState>(
       builder: (context, state) {
         final isPhotoSelected = state.selectedPhoto != null;
+        final isLoading = state.isLoading;
 
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 24),
           child: CustomButton(
-            text: LocaleKeys.profile_picture_continue.tr(),
+            text:
+                isLoading
+                    ? LocaleKeys.photo_picker_loading.tr()
+                    : LocaleKeys.profile_picture_continue.tr(),
             onPressed:
-                isPhotoSelected
+                (isPhotoSelected && !isLoading)
                     ? () {
                       context
                           .read<CreateProfilePictureCubit>()
-                          .uploadProfilePicture();
-                      // TODO: Implement photo upload logic
-                      // log('Selected photo path: ${state.selectedPhoto!.path}');
+                          .uploadProfilePicture(context);
                     }
                     : null,
             backgroundColor:
-                isPhotoSelected
+                (isPhotoSelected && !isLoading)
                     ? ColorName.appKUCrimson
                     : ColorName.appKUCrimson.withValues(alpha: 0.5),
             height: 56,

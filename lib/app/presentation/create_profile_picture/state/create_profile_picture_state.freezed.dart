@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CreateProfilePictureState {
   File? get selectedPhoto => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of CreateProfilePictureState
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +32,7 @@ abstract class $CreateProfilePictureStateCopyWith<$Res> {
           $Res Function(CreateProfilePictureState) then) =
       _$CreateProfilePictureStateCopyWithImpl<$Res, CreateProfilePictureState>;
   @useResult
-  $Res call({File? selectedPhoto});
+  $Res call({File? selectedPhoto, bool isLoading});
 }
 
 /// @nodoc
@@ -51,12 +52,17 @@ class _$CreateProfilePictureStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? selectedPhoto = freezed,
+    Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
       selectedPhoto: freezed == selectedPhoto
           ? _value.selectedPhoto
           : selectedPhoto // ignore: cast_nullable_to_non_nullable
               as File?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -70,7 +76,7 @@ abstract class _$$CreateProfilePictureStateImplCopyWith<$Res>
       __$$CreateProfilePictureStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({File? selectedPhoto});
+  $Res call({File? selectedPhoto, bool isLoading});
 }
 
 /// @nodoc
@@ -89,12 +95,17 @@ class __$$CreateProfilePictureStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? selectedPhoto = freezed,
+    Object? isLoading = null,
   }) {
     return _then(_$CreateProfilePictureStateImpl(
       selectedPhoto: freezed == selectedPhoto
           ? _value.selectedPhoto
           : selectedPhoto // ignore: cast_nullable_to_non_nullable
               as File?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -102,14 +113,18 @@ class __$$CreateProfilePictureStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CreateProfilePictureStateImpl implements _CreateProfilePictureState {
-  const _$CreateProfilePictureStateImpl({this.selectedPhoto});
+  const _$CreateProfilePictureStateImpl(
+      {this.selectedPhoto, this.isLoading = false});
 
   @override
   final File? selectedPhoto;
+  @override
+  @JsonKey()
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'CreateProfilePictureState(selectedPhoto: $selectedPhoto)';
+    return 'CreateProfilePictureState(selectedPhoto: $selectedPhoto, isLoading: $isLoading)';
   }
 
   @override
@@ -118,11 +133,13 @@ class _$CreateProfilePictureStateImpl implements _CreateProfilePictureState {
         (other.runtimeType == runtimeType &&
             other is _$CreateProfilePictureStateImpl &&
             (identical(other.selectedPhoto, selectedPhoto) ||
-                other.selectedPhoto == selectedPhoto));
+                other.selectedPhoto == selectedPhoto) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selectedPhoto);
+  int get hashCode => Object.hash(runtimeType, selectedPhoto, isLoading);
 
   /// Create a copy of CreateProfilePictureState
   /// with the given fields replaced by the non-null parameter values.
@@ -135,11 +152,14 @@ class _$CreateProfilePictureStateImpl implements _CreateProfilePictureState {
 }
 
 abstract class _CreateProfilePictureState implements CreateProfilePictureState {
-  const factory _CreateProfilePictureState({final File? selectedPhoto}) =
-      _$CreateProfilePictureStateImpl;
+  const factory _CreateProfilePictureState(
+      {final File? selectedPhoto,
+      final bool isLoading}) = _$CreateProfilePictureStateImpl;
 
   @override
   File? get selectedPhoto;
+  @override
+  bool get isLoading;
 
   /// Create a copy of CreateProfilePictureState
   /// with the given fields replaced by the non-null parameter values.

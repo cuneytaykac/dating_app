@@ -62,6 +62,11 @@
         "title": "Profile Details",
         "upload_photos": "Upload Your Photos",
         "description": "Resources out incentivize relaxation floor loss cc.",
-        "continue": "Continue"
+        "continue": "Continue",
+        "uploading": "Uploading...",
+        "uploading_photo": "Uploading photo...",
+        "upload_success": "Profile photo uploaded successfully",
+        "upload_error": "An error occurred while uploading profile photo",
+        "upload_error_message": "An error occurred while uploading the photo. Please try again."
     }
 }

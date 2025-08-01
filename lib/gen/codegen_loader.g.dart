@@ -78,7 +78,12 @@ class CodegenLoader extends AssetLoader{
     "title": "Profil Detay",
     "upload_photos": "Fotoğraflarınızı Yükleyin",
     "description": "Resources out incentivize relaxation floor loss cc.",
-    "continue": "Devam Et"
+    "continue": "Devam Et",
+    "uploading": "Yükleniyor...",
+    "uploading_photo": "Fotoğraf yükleniyor...",
+    "upload_success": "Profil fotoğrafı başarıyla yüklendi",
+    "upload_error": "Profil fotoğrafı yüklenirken bir hata oluştu",
+    "upload_error_message": "Fotoğraf yüklenirken bir hata oluştu. Lütfen tekrar deneyin."
   }
 };
 static const Map<String,dynamic> _en = {
@@ -145,7 +150,12 @@ static const Map<String,dynamic> _en = {
     "title": "Profile Details",
     "upload_photos": "Upload Your Photos",
     "description": "Resources out incentivize relaxation floor loss cc.",
-    "continue": "Continue"
+    "continue": "Continue",
+    "uploading": "Uploading...",
+    "uploading_photo": "Uploading photo...",
+    "upload_success": "Profile photo uploaded successfully",
+    "upload_error": "An error occurred while uploading profile photo",
+    "upload_error_message": "An error occurred while uploading the photo. Please try again."
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"tr": _tr, "en": _en};
