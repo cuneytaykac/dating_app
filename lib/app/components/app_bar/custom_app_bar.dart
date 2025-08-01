@@ -41,7 +41,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: backButtonColor ?? ColorName.appBlack,
+                    color:
+                        backButtonColor ??
+                        ColorName.appWhite.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
                       color: Colors.white.withValues(alpha: 0.5),
