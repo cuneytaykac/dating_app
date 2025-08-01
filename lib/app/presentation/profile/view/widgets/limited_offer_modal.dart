@@ -1,3 +1,4 @@
+import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/gen/colors.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:moon_extension/moon_extension.dart';
@@ -65,6 +66,7 @@ class LimitedOfferModal extends StatelessWidget {
                 ),
               ),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Expanded(
                     child: Padding(
@@ -80,32 +82,27 @@ class LimitedOfferModal extends StatelessWidget {
                             "Sınırlı Teklif",
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
-                          Center(
-                            child: Text(
-                              "Jeton paketin’ni seçerek bonus kazanın ve yeni bölümlerin kilidini açın!",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                              ),
-                            ),
+                          Text(
+                            "Jeton paketin’ni seçerek bonus kazanın ve yeni bölümlerin kilidini açın!",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.white, fontSize: 14),
                           ),
                         ],
                       ),
                     ),
                   ),
-                  Expanded(
+                  Flexible(
                     flex: 2,
                     child: Container(
                       margin: const EdgeInsets.only(bottom: 16.0),
+                      padding: const EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
                         color: ColorName.appWhite.withValues(alpha: 0.03),
-                        borderRadius: BorderRadius.circular(20),
-
+                        borderRadius: BorderRadius.circular(24),
                         border: Border.all(color: Colors.white10, width: 1),
                       ),
                       child: Column(
-                        spacing: 10,
+                        spacing: 40,
                         children: [
                           const Text(
                             'Alacağınız Bonuslar',
@@ -116,37 +113,24 @@ class LimitedOfferModal extends StatelessWidget {
                             ),
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Column(
-                                children: [
-                                  Container(
-                                    width: 50,
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      color: ColorName.appRosewood,
-                                      borderRadius: BorderRadius.circular(25),
-                                      border: Border.all(
-                                        color: ColorName.appWhite,
-                                        width: .4,
-                                      ),
-                                    ),
-                                    child: const Icon(
-                                      Icons.star,
-                                      color: Colors.white,
-                                      size: 24,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    "1000 Jeton",
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
+                              __buildBonusItem(
+                                title: "1000 Jeton\n",
+                                icon: Assets.icons.limitedDiamond,
+                              ),
+                              __buildBonusItem(
+                                title: "Daha\nFazla Eşleşme",
+                                icon: Assets.icons.limitedHearts,
+                              ),
+                              __buildBonusItem(
+                                title: "Öne \n Çıkma",
+                                icon: Assets.icons.limitedUnknow,
+                              ),
+                              __buildBonusItem(
+                                title: "Daha\nFazla Begeni",
+                                icon: Assets.icons.limitedHeart,
                               ),
                             ],
                           ),
@@ -158,10 +142,63 @@ class LimitedOfferModal extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(child: Container(color: Colors.red)),
-          Expanded(flex: 5, child: Container(color: Colors.blue)),
+          Flexible(
+            child: const Text(
+              'Kilidi açmak için bir jeton paketi seçin',
+              style: TextStyle(color: Colors.white, fontSize: 15),
+            ),
+          ),
+          Expanded(
+            flex: 5,
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  center: Alignment.bottomCenter,
+
+                  radius: 0.7,
+                  colors: [
+                    ColorName.appKUCrimson.withOpacity(0.4),
+                    ColorName.appVampireBlack.withOpacity(0.1),
+                  ],
+                  stops: [0.0, 1],
+                ),
+              ),
+            ),
+          ),
         ],
       ),
+    );
+  }
+
+  Column __buildBonusItem({
+    required String title,
+    required AssetGenImage icon,
+  }) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(
+            color: ColorName.appRosewood,
+            borderRadius: BorderRadius.circular(25),
+            border: Border.all(color: ColorName.appWhite, width: .4),
+          ),
+          child: icon.image(width: 24, height: 24),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          title,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ],
     );
   }
 }
