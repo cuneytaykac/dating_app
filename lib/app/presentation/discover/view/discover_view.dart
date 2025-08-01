@@ -12,7 +12,11 @@ class DiscoverView extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Assets.images.discoveryBackground.image(fit: BoxFit.cover),
+          Assets.images.discoveryBackground.image(
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+          ),
           SafeArea(
             bottom: false,
             child: Column(
