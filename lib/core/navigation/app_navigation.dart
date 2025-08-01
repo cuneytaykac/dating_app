@@ -1,4 +1,5 @@
 import 'package:dating_app/app/data/datasource/local/local_signin/i_local_signin_service.dart';
+import 'package:dating_app/app/presentation/create_profile_picture/view/create_profile_picture.dart';
 import 'package:dating_app/app/presentation/discover/view/discover_view.dart';
 import 'package:dating_app/app/presentation/home/view/home_view.dart';
 import 'package:dating_app/app/presentation/profile/view/profile_view.dart';
@@ -81,6 +82,13 @@ final class AppNavigation {
         path: AppRoutes.profileView.path,
         name: AppRoutes.profileView.name,
         builder: (context, state) => const ProfileView(),
+        routes: [
+          GoRoute(
+            path: AppRoutes.createProfilePictureView.path,
+            name: AppRoutes.createProfilePictureView.name,
+            builder: (context, state) => const CreateProfilePictureView(),
+          ),
+        ],
       ),
     ],
   );

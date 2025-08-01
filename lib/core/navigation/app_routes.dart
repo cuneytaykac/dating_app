@@ -5,7 +5,11 @@ enum AppRoutes {
   registerView('/registerView', 'RegisterView'),
   discoverView('/discoverView', 'DiscoverView'),
   profileView('/profileView', 'ProfileView'),
-  homeView('/homeView', 'HomeView');
+  homeView('/homeView', 'HomeView'),
+  createProfilePictureView(
+    '/createProfilePictureView',
+    'CreateProfilePictureView',
+  );
 
   final String path;
   final String name;

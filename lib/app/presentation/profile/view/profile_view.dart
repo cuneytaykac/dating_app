@@ -4,9 +4,13 @@ import 'package:dating_app/app/components/cache_image/cached_network_image.dart'
 import 'package:dating_app/app/data/model/favorite_movie_data/favorite_movie_data.dart';
 import 'package:dating_app/app/presentation/profile/cubit/profile_cubit.dart';
 import 'package:dating_app/app/presentation/profile/state/profile_state.dart';
+import 'package:dating_app/core/navigation/app_routes.dart';
 import 'package:dating_app/core/result_state_builder/result_state_builder.dart';
+import 'package:dating_app/gen/colors.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:moon_extension/moon_extension.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -30,12 +34,8 @@ class ProfileView extends StatelessWidget {
               ),
             );
           },
-          backgroundColor: const Color(0xFF1A1A1A),
-          titleColor: Colors.white,
-          backButtonColor: const Color(0xFF2A2A2A),
-          limitedOfferColor: const Color(0xFFE53E3E),
         ),
-        backgroundColor: const Color(0xFF1A1A1A),
+        backgroundColor: ColorName.appBlack,
         body: Stack(
           children: [
             Padding(
@@ -43,7 +43,7 @@ class ProfileView extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 20),
-                  _buildProfileCard(),
+                  _buildProfileCard(context),
                   const SizedBox(height: 30),
                   Expanded(child: _buildLikedMoviesSection()),
                   const SizedBox(height: 30),
@@ -62,7 +62,7 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileCard() {
+  Widget _buildProfileCard(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.zero,
@@ -91,11 +91,12 @@ class ProfileView extends StatelessWidget {
         ),
         trailing: ElevatedButton(
           onPressed: () {
+            context.pushNamed(AppRoutes.createProfilePictureView.name);
             // TODO: Implement photo upload
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFFE53E3E),
-            foregroundColor: Colors.white,
+            backgroundColor: ColorName.appKUCrimson,
+            foregroundColor: ColorName.appWhite,
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
@@ -144,6 +145,7 @@ class ProfileView extends StatelessWidget {
                         final movie = data?.data?[index];
                         return _buildMovieCard(
                           movie: movie ?? FavoriteMovieData(),
+                          context: context,
                         );
                       },
                     ),
@@ -155,11 +157,14 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  Widget _buildMovieCard({required FavoriteMovieData movie}) {
+  Widget _buildMovieCard({
+    required FavoriteMovieData movie,
+    required BuildContext context,
+  }) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: const Color(0xFF1A1A1A),
+        color: ColorName.appBlack,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -169,14 +174,11 @@ class ProfileView extends StatelessWidget {
               topLeft: Radius.circular(10),
               topRight: Radius.circular(10),
             ),
-            child: SizedBox(
-              height: 200,
+            child: cachedNetworkImage(
+              movie.images?.first ?? "",
               width: double.infinity,
-              child: cachedNetworkImage(
-                movie.images?.first ?? "",
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
+              fit: BoxFit.fill,
+              height: context.screenHeight(.26),
             ),
           ),
           Expanded(
