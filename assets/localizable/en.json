@@ -45,5 +45,23 @@
         "read_more": "Read More",
         "home": "Home",
         "profile": "Profile"
+    },
+    "photo_picker": {
+        "camera": "Camera",
+        "gallery": "Gallery",
+        "take_photo": "Take Photo",
+        "select_from_gallery": "Select from Gallery",
+        "add_photo": "Add Photo",
+        "loading": "Loading...",
+        "error_occurred": "An error occurred while selecting a photo",
+        "permission_required": "Camera or gallery permission required",
+        "camera_not_available": "Camera access is currently unavailable. Please try again.",
+        "ok": "OK"
+    },
+    "profile_picture": {
+        "title": "Profile Details",
+        "upload_photos": "Upload Your Photos",
+        "description": "Resources out incentivize relaxation floor loss cc.",
+        "continue": "Continue"
     }
 }

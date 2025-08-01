@@ -2,7 +2,7 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const sign_in_title = 'sign_in.title';
   static const sign_in_welcome = 'sign_in.welcome';
   static const sign_in_email = 'sign_in.email';
@@ -36,10 +36,12 @@ abstract class  LocaleKeys {
   static const register_email_invalid = 'register.email_invalid';
   static const register_password_required = 'register.password_required';
   static const register_password_min_length = 'register.password_min_length';
-  static const register_confirm_password_required = 'register.confirm_password_required';
+  static const register_confirm_password_required =
+      'register.confirm_password_required';
   static const register_passwords_not_match = 'register.passwords_not_match';
   static const register_terms_required = 'register.terms_required';
-  static const register_form_validation_error = 'register.form_validation_error';
+  static const register_form_validation_error =
+      'register.form_validation_error';
   static const register = 'register';
   static const discover_user_name = 'discover.user_name';
   static const discover_user_description = 'discover.user_description';
@@ -47,5 +49,23 @@ abstract class  LocaleKeys {
   static const discover_home = 'discover.home';
   static const discover_profile = 'discover.profile';
   static const discover = 'discover';
-
+  static const photo_picker_camera = 'photo_picker.camera';
+  static const photo_picker_gallery = 'photo_picker.gallery';
+  static const photo_picker_take_photo = 'photo_picker.take_photo';
+  static const photo_picker_select_from_gallery =
+      'photo_picker.select_from_gallery';
+  static const photo_picker_add_photo = 'photo_picker.add_photo';
+  static const photo_picker_loading = 'photo_picker.loading';
+  static const photo_picker_error_occurred = 'photo_picker.error_occurred';
+  static const photo_picker_permission_required =
+      'photo_picker.permission_required';
+  static const photo_picker_camera_not_available =
+      'photo_picker.camera_not_available';
+  static const photo_picker_ok = 'photo_picker.ok';
+  static const photo_picker = 'photo_picker';
+  static const profile_picture_title = 'profile_picture.title';
+  static const profile_picture_upload_photos = 'profile_picture.upload_photos';
+  static const profile_picture_description = 'profile_picture.description';
+  static const profile_picture_continue = 'profile_picture.continue';
+  static const profile_picture = 'profile_picture';
 }

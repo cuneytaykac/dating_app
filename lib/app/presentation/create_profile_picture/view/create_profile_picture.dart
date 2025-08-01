@@ -1,17 +1,30 @@
+import 'dart:io';
+
 import 'package:dating_app/app/components/app_bar/custom_app_bar.dart';
 import 'package:dating_app/app/components/buttons/custom_button.dart';
+import 'package:dating_app/app/components/photo_picker/photo_picker_widget.dart';
 import 'package:dating_app/gen/colors.gen.dart';
+import 'package:dating_app/gen/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-class CreateProfilePictureView extends StatelessWidget {
+class CreateProfilePictureView extends StatefulWidget {
   const CreateProfilePictureView({super.key});
+
+  @override
+  State<CreateProfilePictureView> createState() =>
+      _CreateProfilePictureViewState();
+}
+
+class _CreateProfilePictureViewState extends State<CreateProfilePictureView> {
+  File? _selectedPhoto;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorName.appBlack,
-        appBar: CustomAppBar(title: "Profil Detay"),
+        appBar: CustomAppBar(title: LocaleKeys.profile_picture_title.tr()),
         bottomNavigationBar: _buildContinueButton(),
         body: SafeArea(
           child: Padding(
@@ -22,7 +35,14 @@ class CreateProfilePictureView extends StatelessWidget {
               children: [
                 _buildHeader(),
 
-                _buildPhotoUploadArea(),
+                PhotoPickerWidget(
+                  onPhotoSelected: (File? photo) {
+                    setState(() {
+                      _selectedPhoto = photo;
+                    });
+                  },
+                  size: 200,
+                ),
                 const Spacer(),
               ],
             ),
@@ -37,9 +57,9 @@ class CreateProfilePictureView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       spacing: 8,
       children: [
-        const Text(
-          'Fotoğraflarınızı Yükleyin',
-          style: TextStyle(
+        Text(
+          LocaleKeys.profile_picture_upload_photos.tr(),
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -47,9 +67,9 @@ class CreateProfilePictureView extends StatelessWidget {
         ),
 
         Text(
-          'Resources out incentivize relaxation floor loss cc.',
+          LocaleKeys.profile_picture_description.tr(),
           style: TextStyle(
-            color: Colors.white.withOpacity(0.7),
+            color: Colors.white.withValues(alpha: 0.7),
             fontSize: 16,
             height: 1.4,
           ),
@@ -58,37 +78,23 @@ class CreateProfilePictureView extends StatelessWidget {
     );
   }
 
-  Widget _buildPhotoUploadArea() {
-    return Center(
-      child: Container(
-        width: 200,
-        height: 200,
-        decoration: BoxDecoration(
-          color: const Color(0xFF2A2A2A),
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            color: Colors.white.withValues(alpha: 0.1),
-            width: 1.55,
-          ),
-        ),
-        child: Icon(
-          Icons.add,
-          color: Colors.white.withValues(alpha: 0.5),
-          size: 30,
-        ),
-      ),
-    );
-  }
-
   Widget _buildContinueButton() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 24),
       child: CustomButton(
-        text: 'Devam Et',
-        onPressed: () {
-          // TODO: Implement photo upload logic
-        },
-        backgroundColor: ColorName.appKUCrimson,
+        text: LocaleKeys.profile_picture_continue.tr(),
+        onPressed:
+            _selectedPhoto != null
+                ? () {
+                  // TODO: Implement photo upload logic
+                  // TODO: Implement photo upload logic
+                  // log('Selected photo path: ${_selectedPhoto!.path}');
+                }
+                : null,
+        backgroundColor:
+            _selectedPhoto != null
+                ? ColorName.appKUCrimson
+                : ColorName.appKUCrimson.withValues(alpha: 0.5),
         height: 56,
         borderRadius: 12,
       ),

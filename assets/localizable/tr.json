@@ -45,5 +45,23 @@
         "read_more": "Daha Fazlası",
         "home": "Anasayfa",
         "profile": "Profil"
+    },
+    "photo_picker": {
+        "camera": "Kamera",
+        "gallery": "Galeri",
+        "take_photo": "Fotoğraf çek",
+        "select_from_gallery": "Galeriden seç",
+        "add_photo": "Fotoğraf Ekle",
+        "loading": "Yükleniyor...",
+        "error_occurred": "Fotoğraf seçilirken hata oluştu",
+        "permission_required": "Kamera veya galeri izni gerekli",
+        "camera_not_available": "Kamera erişimi şu anda kullanılamıyor. Lütfen tekrar deneyin.",
+        "ok": "Tamam"
+    },
+    "profile_picture": {
+        "title": "Profil Detay",
+        "upload_photos": "Fotoğraflarınızı Yükleyin",
+        "description": "Resources out incentivize relaxation floor loss cc.",
+        "continue": "Devam Et"
     }
 }
