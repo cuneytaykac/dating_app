@@ -2,6 +2,8 @@
 <resources>
 <color name="appWhite">#FFFFFF</color>
 <color name="appBlack">#000000</color>
+<color name="appVampireBlack">#090909</color>
 <color name="appKUCrimson">#E50914</color>
-
+<color name="appRosewood">#6F060B</color>
+<color name="appMajorelleBlue">#5949E6</color>
 </resources>

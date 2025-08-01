@@ -5,6 +5,7 @@ import 'package:dating_app/app/data/model/favorite_movie_data/favorite_movie_dat
 import 'package:dating_app/app/data/model/sign_in/sign_in.dart';
 import 'package:dating_app/app/presentation/profile/cubit/profile_cubit.dart';
 import 'package:dating_app/app/presentation/profile/state/profile_state.dart';
+import 'package:dating_app/app/presentation/profile/view/widgets/limited_offer_modal.dart';
 import 'package:dating_app/core/navigation/app_routes.dart';
 import 'package:dating_app/core/result_state_builder/result_state_builder.dart';
 import 'package:dating_app/core/utility/cache/cache_manager.dart';
@@ -29,11 +30,11 @@ class ProfileView extends StatelessWidget {
           limitedOfferText: 'Sınırlı Teklif',
           onBackPressed: () => Navigator.of(context).pop(),
           onLimitedOfferPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Sınırlı teklif tıklandı!'),
-                backgroundColor: Color(0xFFE53E3E),
-              ),
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              builder: (context) => const LimitedOfferModal(),
             );
           },
         ),

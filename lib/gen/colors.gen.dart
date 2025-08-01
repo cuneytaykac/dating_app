@@ -19,6 +19,15 @@ class ColorName {
   /// Color: #E50914
   static const Color appKUCrimson = Color(0xFFE50914);
 
+  /// Color: #5949E6
+  static const Color appMajorelleBlue = Color(0xFF5949E6);
+
+  /// Color: #6F060B
+  static const Color appRosewood = Color(0xFF6F060B);
+
+  /// Color: #090909
+  static const Color appVampireBlack = Color(0xFF090909);
+
   /// Color: #FFFFFF
   static const Color appWhite = Color(0xFFFFFFFF);
 }
