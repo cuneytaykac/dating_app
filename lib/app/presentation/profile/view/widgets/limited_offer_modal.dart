@@ -1,3 +1,4 @@
+import 'package:dating_app/app/components/buttons/custom_button.dart';
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/gen/colors.gen.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,8 @@ class LimitedOfferModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.85,
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      height: MediaQuery.of(context).size.height * 0.80,
       width: context.screenWidth(1),
       decoration: const BoxDecoration(
         color: ColorName.appVampireBlack,
@@ -149,7 +151,7 @@ class LimitedOfferModal extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 5,
+            flex: 6,
             child: Container(
               decoration: BoxDecoration(
                 gradient: RadialGradient(
@@ -163,10 +165,152 @@ class LimitedOfferModal extends StatelessWidget {
                   stops: [0.0, 1],
                 ),
               ),
+              child: Column(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Row(
+                      spacing: 10,
+                      children: [
+                        Expanded(child: _buildPackageSelectionSection(context)),
+                        Expanded(child: Container(color: Colors.blue)),
+                        Expanded(child: Container(color: Colors.green)),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 12, top: 12),
+                      child: CustomButton(
+                        backgroundColor: ColorName.appKUCrimson,
+                        borderRadius: 30,
+                        text: "Tüm Jetonları Gör",
+                        onPressed: () {},
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Stack _buildPackageSelectionSection(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          width: context.screenWidth(1),
+          margin: const EdgeInsets.only(top: 32),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: const [ColorName.appRosewood, ColorName.appKUCrimson],
+            ),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: ColorName.appWhite, width: 1),
+            boxShadow: [
+              BoxShadow(
+                color: ColorName.appKUCrimson.withOpacity(0.3),
+                blurRadius: 8,
+                spreadRadius: 0,
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 4,
+            children: [
+              Expanded(
+                flex: 3,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Spacer(flex: 2),
+                    Flexible(
+                      child: Text(
+                        "200",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          decoration: TextDecoration.lineThrough,
+                          decorationColor: Colors.white,
+                          decorationThickness: 2,
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: Text(
+                        "330",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: Text(
+                        "Jeton",
+                        style: TextStyle(color: Colors.white, fontSize: 14),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Divider(color: ColorName.appWhite, thickness: .2),
+              ),
+              Expanded(
+                child: Column(
+                  spacing: 4,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        "₺99,99",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        "Başına haftalık",
+                        style: TextStyle(color: Colors.white, fontSize: 14),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.only(top: 20, left: 16, right: 16),
+          width: context.screenWidth(1),
+          height: 30,
+          decoration: BoxDecoration(
+            color: ColorName.appRosewood,
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(color: ColorName.appWhite, width: .8),
+          ),
+          child: Center(
+            child: Text(
+              "+10 Jeton %",
+              style: TextStyle(color: Colors.white, fontSize: 12),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
