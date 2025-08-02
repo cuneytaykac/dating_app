@@ -1,11 +1,10 @@
-import 'dart:developer';
-
 import 'package:dating_app/app/components/app_bar/custom_app_bar.dart';
 import 'package:dating_app/app/components/bottom_navigation/custom_bottom_navigation.dart';
 import 'package:dating_app/app/components/cache_image/cached_network_image.dart';
 import 'package:dating_app/app/data/model/favorite_movie_data/favorite_movie_data.dart';
 import 'package:dating_app/app/presentation/home/cubit/home_cubit.dart';
 import 'package:dating_app/app/presentation/home/state/home_state.dart';
+import 'package:dating_app/core/navigation/app_routes.dart';
 import 'package:dating_app/core/result_state_builder/result_state_builder.dart';
 import 'package:dating_app/gen/colors.gen.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +61,6 @@ class HomeView extends StatelessWidget {
       },
       child: RefreshIndicator(
         onRefresh: () async {
-          log("2222");
           await context.read<HomeCubit>().refreshMovies();
         },
         color: ColorName.appKUCrimson,
@@ -187,7 +185,10 @@ class HomeView extends StatelessWidget {
                 // Detay butonu
                 GestureDetector(
                   onTap: () {
-                    context.push('/movie-detail/${movie.id}');
+                    context.push(
+                      AppRoutes.movieDetailView.path,
+                      extra: movie.id,
+                    );
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(
