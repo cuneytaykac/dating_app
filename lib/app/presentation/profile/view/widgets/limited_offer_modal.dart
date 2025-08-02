@@ -209,7 +209,23 @@ class LimitedOfferModal extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Expanded(child: Container(color: Colors.green)),
+                        Expanded(
+                          child: _buildPackageSelectionSection(
+                            context,
+                            originalAmount: "100",
+                            newAmount: "1.350",
+                            price: "₺399,99",
+                            bonusPercentage: "+10%",
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: const [
+                                ColorName.appRosewood,
+                                ColorName.appKUCrimson,
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
