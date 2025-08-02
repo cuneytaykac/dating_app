@@ -189,7 +189,26 @@ class LimitedOfferModal extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Expanded(child: Container(color: Colors.blue)),
+                        Expanded(
+                          child: _buildPackageSelectionSection(
+                            context,
+                            originalAmount: "2000",
+                            newAmount: "3.375",
+                            price: "₺799,99",
+                            bonusPercentage: "+70%",
+                            bonusPercentageColor: ColorName.appMajorelleBlue,
+                            gradient: RadialGradient(
+                              center: Alignment.topLeft,
+
+                              radius: 1.8,
+                              colors: [
+                                ColorName.appMajorelleBlue,
+                                ColorName.appKUCrimson.withOpacity(1),
+                              ],
+                              stops: [0.0, 1],
+                            ),
+                          ),
+                        ),
                         Expanded(child: Container(color: Colors.green)),
                       ],
                     ),
@@ -222,6 +241,7 @@ class LimitedOfferModal extends StatelessWidget {
     required String price,
     required String bonusPercentage,
     required Gradient? gradient,
+    Color? bonusPercentageColor,
   }) {
     return Stack(
       children: [
@@ -311,7 +331,7 @@ class LimitedOfferModal extends StatelessWidget {
 
           height: 30,
           decoration: BoxDecoration(
-            color: ColorName.appRosewood,
+            color: bonusPercentageColor ?? ColorName.appRosewood,
             borderRadius: BorderRadius.circular(24),
             border: Border.all(color: ColorName.appWhite, width: .8),
           ),
