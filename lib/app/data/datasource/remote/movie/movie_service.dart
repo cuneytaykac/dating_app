@@ -41,4 +41,20 @@ final class MovieService extends IMovieService {
         );
     return response;
   }
+
+  @override
+  ResultDecode<FavoriteMovieDetailResponse?, BaseNetworkErrorType>
+  getMovieList({required int page}) async {
+    final response = await client
+        .setRequestMethod(requestMethodEnum: RequestMethodEnum.GET)
+        .setBaseUrl(path: "https://caseapi.servicelabs.tech/")
+        .setPath(path: "movie/list")
+        .setQueryParameters(queryParameters: {"page": page})
+        .setInterceptor()
+        .setFunctionName(functionName: "movie/list")
+        .execute<FavoriteMovieDetailResponse, FavoriteMovieDetailResponse>(
+          FavoriteMovieDetailResponse(),
+        );
+    return response;
+  }
 }

@@ -7,4 +7,6 @@ abstract class IMovieService {
   ResultDecode<FavoriteMovieResponse?, BaseNetworkErrorType> getFavorites();
   ResultDecode<FavoriteMovieDetailResponse?, BaseNetworkErrorType>
   getFavoriteDetail({required String id});
+  ResultDecode<FavoriteMovieDetailResponse?, BaseNetworkErrorType>
+  getMovieList({required int page});
 }
