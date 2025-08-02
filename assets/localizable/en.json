@@ -68,5 +68,23 @@
         "upload_success": "Profile photo uploaded successfully",
         "upload_error": "An error occurred while uploading profile photo",
         "upload_error_message": "An error occurred while uploading the photo. Please try again."
+    },
+    "favorites": {
+        "empty_title": "You don't have any favorite movies yet",
+        "empty_description": "Add movies you like to your favorites to see them here",
+        "discover_movies": "Discover Movies"
+    },
+    "movie_detail": {
+        "movie_title": "Movie Title",
+        "genre": "Genre",
+        "director": "Director",
+        "writer": "Writer",
+        "actors": "Actors",
+        "country": "Country",
+        "language": "Language",
+        "summary": "Summary",
+        "cast": "Cast",
+        "watch": "Watch",
+        "rating_out_of": "/10"
     }
 }

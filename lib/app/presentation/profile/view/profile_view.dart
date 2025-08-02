@@ -192,24 +192,30 @@ class ProfileView extends StatelessWidget {
     required FavoriteMovieData movie,
     required BuildContext context,
   }) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: ColorName.appBlack,
-      ),
+    return GestureDetector(
+      onTap: () {
+        context.push(AppRoutes.movieDetailView.path, extra: movie.id);
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(10),
-              topRight: Radius.circular(10),
-            ),
-            child: cachedNetworkImage(
-              movie.images?.first ?? "",
-              width: double.infinity,
-              fit: BoxFit.fill,
-              height: context.screenHeight(.26),
+          SizedBox(
+            width: double.infinity,
+            height: context.screenHeight(.26),
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+              ),
+              child: Hero(
+                tag: 'movie_poster_${movie.id}',
+                child: cachedNetworkImage(
+                  movie.images?.first ?? "",
+                  width: double.infinity,
+                  fit: BoxFit.fill,
+                  height: context.screenHeight(.26),
+                ),
+              ),
             ),
           ),
           Expanded(
@@ -218,15 +224,21 @@ class ProfileView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    movie.title ?? "",
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
+                  Hero(
+                    tag: 'movie_title_${movie.id}',
+                    child: Material(
+                      color: Colors.transparent,
+                      child: Text(
+                        movie.title ?? "",
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 2),
                   Text(

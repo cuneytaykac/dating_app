@@ -31,9 +31,9 @@ final class MovieService extends IMovieService {
   ResultDecode<FavoriteMovieDetailResponse?, BaseNetworkErrorType>
   getFavoriteDetail({required String id}) async {
     final response = await client
-        .setRequestMethod(requestMethodEnum: RequestMethodEnum.GET)
+        .setRequestMethod(requestMethodEnum: RequestMethodEnum.POST)
         .setBaseUrl(path: "https://caseapi.servicelabs.tech/")
-        .setPath(path: "movie/favorite/$id  ")
+        .setPath(path: "movie/favorite/$id")
         .setInterceptor()
         .setFunctionName(functionName: "movie/favorite/$id")
         .execute<FavoriteMovieDetailResponse, FavoriteMovieDetailResponse>(

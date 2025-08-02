@@ -68,5 +68,23 @@
         "upload_success": "Profil fotoğrafı başarıyla yüklendi",
         "upload_error": "Profil fotoğrafı yüklenirken bir hata oluştu",
         "upload_error_message": "Fotoğraf yüklenirken bir hata oluştu. Lütfen tekrar deneyin."
+    },
+    "favorites": {
+        "empty_title": "Henüz favori filminiz yok",
+        "empty_description": "Beğendiğiniz filmleri favorilere ekleyerek burada görebilirsiniz",
+        "discover_movies": "Film Keşfet"
+    },
+    "movie_detail": {
+        "movie_title": "Film Adı",
+        "genre": "Tür",
+        "director": "Yönetmen",
+        "writer": "Senaryo",
+        "actors": "Oyuncular",
+        "country": "Ülke",
+        "language": "Dil",
+        "summary": "Özet",
+        "cast": "Oyuncular",
+        "watch": "İzle",
+        "rating_out_of": "/10"
     }
 }

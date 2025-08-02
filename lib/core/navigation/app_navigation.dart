@@ -95,8 +95,7 @@ final class AppNavigation {
         path: AppRoutes.movieDetailView.path,
         name: AppRoutes.movieDetailView.name,
         builder:
-            (context, state) =>
-                MovieDetailView(movieId: state.pathParameters['movieId'] ?? ''),
+            (context, state) => MovieDetailView(movieId: state.extra as String),
       ),
     ],
   );
