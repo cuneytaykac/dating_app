@@ -111,6 +111,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<void> refreshMovies() async {
+    log('Refresh movies called');
     // Refresh durumunda mevcut verileri temizleyerek yeni verileri yükle
     await getMovieList(isRefresh: true);
   }
