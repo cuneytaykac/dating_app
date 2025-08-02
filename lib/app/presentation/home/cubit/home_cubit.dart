@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dating_app/app/data/datasource/remote/movie/i_movie_service.dart';
 import 'package:dating_app/app/presentation/home/state/home_state.dart';
+import 'package:dating_app/app/presentation/home/view/widgets/empty_movies_widget.dart';
 import 'package:dating_app/core/getIt/injection.dart';
 import 'package:dating_app/core/results/view_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,6 +66,22 @@ class HomeCubit extends Cubit<HomeState> {
 
         // Mevcut film listesini al
         final currentMovies = state.movieList.data ?? [];
+
+        // Eğer currentPage 1 ise ve gelen data boş ise empty state göster
+        if (currentPage == 1 && newMovies.isNotEmpty) {
+          log('Empty data received for page 1, showing empty state');
+          emit(
+            state.copyWith(
+              movieList: ViewState.empty(
+                widget: EmptyMoviesWidget(onRefresh: refreshMovies),
+              ),
+              pagination: pagination,
+              currentPage: 1,
+              hasReachedMax: true,
+            ),
+          );
+          return;
+        }
 
         // Refresh durumunda sadece yeni verileri kullan, değilse mevcut listeye ekle
         final updatedMovies =
