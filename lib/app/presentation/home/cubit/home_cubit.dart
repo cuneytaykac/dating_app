@@ -68,7 +68,7 @@ class HomeCubit extends Cubit<HomeState> {
         final currentMovies = state.movieList.data ?? [];
 
         // Eğer currentPage 1 ise ve gelen data boş ise empty state göster
-        if (currentPage == 1 && newMovies.isNotEmpty) {
+        if (currentPage == 1 && newMovies.isEmpty) {
           log('Empty data received for page 1, showing empty state');
           emit(
             state.copyWith(
