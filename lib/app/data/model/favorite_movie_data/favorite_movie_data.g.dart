@@ -32,6 +32,7 @@ FavoriteMovieData _$FavoriteMovieDataFromJson(Map<String, dynamic> json) =>
           (json['Images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       comingSoon: json['ComingSoon'] as bool?,
       isFavorite: json['isFavorite'] as bool?,
+      action: json['action'] as String?,
     );
 
 Map<String, dynamic> _$FavoriteMovieDataToJson(FavoriteMovieData instance) =>
@@ -59,4 +60,5 @@ Map<String, dynamic> _$FavoriteMovieDataToJson(FavoriteMovieData instance) =>
       'Images': instance.images,
       'ComingSoon': instance.comingSoon,
       'isFavorite': instance.isFavorite,
+      'action': instance.action,
     };

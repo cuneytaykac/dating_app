@@ -52,6 +52,7 @@ final class FavoriteMovieData implements BaseNetworkModel<FavoriteMovieData> {
   final bool? comingSoon;
   @JsonKey(name: "isFavorite")
   final bool? isFavorite;
+  final String? action;
 
   FavoriteMovieData({
     this.id,
@@ -77,6 +78,7 @@ final class FavoriteMovieData implements BaseNetworkModel<FavoriteMovieData> {
     this.images,
     this.comingSoon,
     this.isFavorite,
+    this.action,
   });
 
   factory FavoriteMovieData.fromJson(Map<String, dynamic> json) =>

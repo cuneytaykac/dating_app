@@ -9,7 +9,8 @@ enum AppRoutes {
   createProfilePictureView(
     '/createProfilePictureView',
     'CreateProfilePictureView',
-  );
+  ),
+  movieDetailView('/movieDetailView', 'MovieDetailView');
 
   final String path;
   final String name;

@@ -2,6 +2,7 @@ import 'package:dating_app/app/data/datasource/local/local_signin/i_local_signin
 import 'package:dating_app/app/presentation/create_profile_picture/view/create_profile_picture.dart';
 import 'package:dating_app/app/presentation/discover/view/discover_view.dart';
 import 'package:dating_app/app/presentation/home/view/home_view.dart';
+import 'package:dating_app/app/presentation/movie_detail/view/movie_detail_view.dart';
 import 'package:dating_app/app/presentation/profile/view/profile_view.dart';
 import 'package:dating_app/app/presentation/register/view/register_view.dart';
 import 'package:dating_app/app/presentation/sign_in/view/sign_in_view.dart';
@@ -89,6 +90,13 @@ final class AppNavigation {
             builder: (context, state) => const CreateProfilePictureView(),
           ),
         ],
+      ),
+      GoRoute(
+        path: AppRoutes.movieDetailView.path,
+        name: AppRoutes.movieDetailView.name,
+        builder:
+            (context, state) =>
+                MovieDetailView(movieId: state.pathParameters['movieId'] ?? ''),
       ),
     ],
   );

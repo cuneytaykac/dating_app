@@ -1,4 +1,5 @@
 import 'package:dating_app/app/data/datasource/remote/movie/i_movie_service.dart';
+import 'package:dating_app/app/data/model/favorite_movie_detail_response/favorite_movie_detail_response.dart';
 import 'package:dating_app/app/data/model/favorite_movie_response/favorite_movie_response.dart';
 import 'package:dating_app/core/base/base_network_error_type.dart';
 import 'package:dating_app/core/base/base_network_type_def.dart';
@@ -22,6 +23,21 @@ final class MovieService extends IMovieService {
         .setFunctionName(functionName: "movie/favorites")
         .execute<FavoriteMovieResponse, FavoriteMovieResponse>(
           FavoriteMovieResponse(),
+        );
+    return response;
+  }
+
+  @override
+  ResultDecode<FavoriteMovieDetailResponse?, BaseNetworkErrorType>
+  getFavoriteDetail({required String id}) async {
+    final response = await client
+        .setRequestMethod(requestMethodEnum: RequestMethodEnum.GET)
+        .setBaseUrl(path: "https://caseapi.servicelabs.tech/")
+        .setPath(path: "movie/favorite/$id  ")
+        .setInterceptor()
+        .setFunctionName(functionName: "movie/favorite/$id")
+        .execute<FavoriteMovieDetailResponse, FavoriteMovieDetailResponse>(
+          FavoriteMovieDetailResponse(),
         );
     return response;
   }
