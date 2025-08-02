@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:dating_app/app/data/datasource/remote/movie/i_movie_service.dart';
 import 'package:dating_app/app/presentation/home/state/home_state.dart';
-import 'package:dating_app/app/presentation/home/view/widgets/empty_movies_widget.dart';
+import 'package:dating_app/app/presentation/home/widgets/empty_movies_widget.dart';
 import 'package:dating_app/core/getIt/injection.dart';
 import 'package:dating_app/core/results/view_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

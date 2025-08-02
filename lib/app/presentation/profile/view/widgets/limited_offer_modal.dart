@@ -57,8 +57,8 @@ class LimitedOfferModal extends StatelessWidget {
 
                   radius: 0.9,
                   colors: [
-                    ColorName.appKUCrimson.withOpacity(0.6),
-                    ColorName.appVampireBlack.withOpacity(0.1),
+                    ColorName.appKUCrimson.withValues(alpha: 0.6),
+                    ColorName.appVampireBlack.withValues(alpha: 0.1),
                   ],
                   stops: [0.0, 1],
                 ),
@@ -159,8 +159,8 @@ class LimitedOfferModal extends StatelessWidget {
 
                   radius: 0.7,
                   colors: [
-                    ColorName.appKUCrimson.withOpacity(0.4),
-                    ColorName.appVampireBlack.withOpacity(0.1),
+                    ColorName.appKUCrimson.withValues(alpha: 0.4),
+                    ColorName.appVampireBlack.withValues(alpha: 0.1),
                   ],
                   stops: [0.0, 1],
                 ),
@@ -203,7 +203,7 @@ class LimitedOfferModal extends StatelessWidget {
                               radius: 1.8,
                               colors: [
                                 ColorName.appMajorelleBlue,
-                                ColorName.appKUCrimson.withOpacity(1),
+                                ColorName.appKUCrimson,
                               ],
                               stops: [0.0, 1],
                             ),
