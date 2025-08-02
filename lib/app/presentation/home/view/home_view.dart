@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:dating_app/app/components/app_bar/custom_app_bar.dart';
 import 'package:dating_app/app/components/bottom_navigation/custom_bottom_navigation.dart';
 import 'package:dating_app/app/components/cache_image/cached_network_image.dart';
 import 'package:dating_app/app/data/model/favorite_movie_data/favorite_movie_data.dart';
@@ -17,15 +20,17 @@ class HomeView extends StatelessWidget {
     return BlocProvider(
       create: (context) => HomeCubit()..getMovieList(),
       child: Scaffold(
+        appBar: CustomAppBar(
+          showBackButton: false,
+          title: 'Anasayfa',
+          backgroundColor: ColorName.appBlack,
+        ),
         backgroundColor: ColorName.appBlack,
         body: Stack(
           children: [
             BlocBuilder<HomeCubit, HomeState>(
               builder: (context, state) {
-                return ResultStateBuilder(
-                  resultState: state.movieList,
-                  completed: (movies) => _buildMovieList(context, movies),
-                );
+                return _buildRefreshableContent(context, state);
               },
             ),
             const Positioned(
@@ -40,18 +45,28 @@ class HomeView extends StatelessWidget {
     );
   }
 
+  Widget _buildRefreshableContent(BuildContext context, HomeState state) {
+    return ResultStateBuilder(
+      resultState: state.movieList,
+      completed: (movies) => _buildMovieList(context, movies),
+    );
+  }
+
   Widget _buildMovieList(BuildContext context, List<FavoriteMovieData> movies) {
-    return RefreshIndicator(
-      onRefresh: () => context.read<HomeCubit>().refreshMovies(),
-      color: ColorName.appKUCrimson,
-      backgroundColor: ColorName.appBlack,
-      child: NotificationListener<ScrollNotification>(
-        onNotification: (ScrollNotification scrollInfo) {
-          if (scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent) {
-            context.read<HomeCubit>().loadMoreMovies();
-          }
-          return true;
+    return NotificationListener<ScrollNotification>(
+      onNotification: (ScrollNotification scrollInfo) {
+        if (scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent) {
+          context.read<HomeCubit>().loadMoreMovies();
+        }
+        return true;
+      },
+      child: RefreshIndicator(
+        onRefresh: () async {
+          log("2222");
+          await context.read<HomeCubit>().refreshMovies();
         },
+        color: ColorName.appKUCrimson,
+        backgroundColor: ColorName.appBlack,
         child: ListView.builder(
           padding: const EdgeInsets.only(
             top: 60,
