@@ -172,7 +172,23 @@ class LimitedOfferModal extends StatelessWidget {
                     child: Row(
                       spacing: 10,
                       children: [
-                        Expanded(child: _buildPackageSelectionSection(context)),
+                        Expanded(
+                          child: _buildPackageSelectionSection(
+                            context,
+                            originalAmount: "200",
+                            newAmount: "330",
+                            price: "₺99,99",
+                            bonusPercentage: "+10%",
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: const [
+                                ColorName.appRosewood,
+                                ColorName.appKUCrimson,
+                              ],
+                            ),
+                          ),
+                        ),
                         Expanded(child: Container(color: Colors.blue)),
                         Expanded(child: Container(color: Colors.green)),
                       ],
@@ -199,27 +215,23 @@ class LimitedOfferModal extends StatelessWidget {
     );
   }
 
-  Stack _buildPackageSelectionSection(BuildContext context) {
+  Stack _buildPackageSelectionSection(
+    BuildContext context, {
+    required String originalAmount,
+    required String newAmount,
+    required String price,
+    required String bonusPercentage,
+    required Gradient? gradient,
+  }) {
     return Stack(
       children: [
         Container(
           width: context.screenWidth(1),
           margin: const EdgeInsets.only(top: 32),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: const [ColorName.appRosewood, ColorName.appKUCrimson],
-            ),
+            gradient: gradient,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: ColorName.appWhite, width: 1),
-            boxShadow: [
-              BoxShadow(
-                color: ColorName.appKUCrimson.withOpacity(0.3),
-                blurRadius: 8,
-                spreadRadius: 0,
-              ),
-            ],
+            border: Border.all(color: ColorName.appWhite, width: .4),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -233,7 +245,7 @@ class LimitedOfferModal extends StatelessWidget {
                     Spacer(flex: 2),
                     Flexible(
                       child: Text(
-                        "200",
+                        originalAmount,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 14,
@@ -245,7 +257,7 @@ class LimitedOfferModal extends StatelessWidget {
                     ),
                     Flexible(
                       child: Text(
-                        "330",
+                        newAmount,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 24,
@@ -274,7 +286,7 @@ class LimitedOfferModal extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        "₺99,99",
+                        price,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -295,8 +307,8 @@ class LimitedOfferModal extends StatelessWidget {
           ),
         ),
         Container(
-          margin: const EdgeInsets.only(top: 20, left: 16, right: 16),
-          width: context.screenWidth(1),
+          margin: const EdgeInsets.only(top: 16, left: 30, right: 30),
+
           height: 30,
           decoration: BoxDecoration(
             color: ColorName.appRosewood,
@@ -305,7 +317,7 @@ class LimitedOfferModal extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              "+10 Jeton %",
+              bonusPercentage,
               style: TextStyle(color: Colors.white, fontSize: 12),
             ),
           ),
