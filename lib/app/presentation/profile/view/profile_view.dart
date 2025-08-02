@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:dating_app/app/components/app_bar/custom_app_bar.dart';
 import 'package:dating_app/app/components/bottom_navigation/custom_bottom_navigation.dart';
 import 'package:dating_app/app/components/cache_image/cached_network_image.dart';
@@ -34,7 +36,12 @@ class ProfileView extends StatelessWidget {
               context: context,
               isScrollControlled: true,
               backgroundColor: Colors.transparent,
-              builder: (context) => const LimitedOfferModal(),
+              barrierColor: Colors.black.withOpacity(0.5),
+              builder:
+                  (context) => BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                    child: const LimitedOfferModal(),
+                  ),
             );
           },
         ),
