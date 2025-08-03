@@ -2,8 +2,8 @@ import 'package:dating_app/app/components/cache_image/cached_network_image.dart'
 import 'package:dating_app/app/data/model/favorite_movie_data/favorite_movie_data.dart';
 import 'package:dating_app/app/presentation/movie_detail/cubit/movie_detail_cubit.dart';
 import 'package:dating_app/app/presentation/movie_detail/state/movie_detail_state.dart';
+import 'package:dating_app/core/mixins/theme_mixin.dart';
 import 'package:dating_app/core/result_state_builder/result_state_builder.dart';
-import 'package:dating_app/gen/colors.gen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +20,6 @@ class MovieDetailView extends StatelessWidget {
     return BlocProvider(
       create: (context) => MovieDetailCubit()..getMovieDetail(movieId),
       child: Scaffold(
-        backgroundColor: ColorName.appBlack,
         body: BlocBuilder<MovieDetailCubit, MovieDetailState>(
           builder: (context, state) {
             return ResultStateBuilder(
@@ -43,13 +42,13 @@ class MovieDetailView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildMovieHeader(movie),
+                _buildMovieHeader(context, movie),
                 const SizedBox(height: 24),
-                _buildMovieInfo(movie),
+                _buildMovieInfo(context, movie),
                 const SizedBox(height: 24),
-                _buildMovieDescription(movie),
+                _buildMovieDescription(context, movie),
                 const SizedBox(height: 24),
-                _buildCastInfo(movie),
+                _buildCastInfo(context, movie),
                 const SizedBox(height: 24),
                 _buildActionButtons(context),
                 const SizedBox(height: 100),
@@ -65,9 +64,9 @@ class MovieDetailView extends StatelessWidget {
     return SliverAppBar(
       expandedHeight: context.screenHeight(.5),
       pinned: true,
-      backgroundColor: ColorName.appBlack,
+      automaticallyImplyLeading: false,
       elevation: 0,
-      shadowColor: ColorName.appKUCrimson.withValues(alpha: 0.3),
+      shadowColor: context.theme.colorScheme.primary.withValues(alpha: 0.3),
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           fit: StackFit.expand,
@@ -88,8 +87,10 @@ class MovieDetailView extends StatelessWidget {
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    ColorName.appBlack.withValues(alpha: 0.7),
-                    ColorName.appBlack,
+                    context.theme.scaffoldBackgroundColor.withValues(
+                      alpha: 0.7,
+                    ),
+                    context.theme.scaffoldBackgroundColor,
                   ],
                 ),
               ),
@@ -100,14 +101,19 @@ class MovieDetailView extends StatelessWidget {
               left: 20,
               child: Container(
                 decoration: BoxDecoration(
-                  color: ColorName.appBlack.withValues(alpha: 0.5),
+                  color: context.theme.scaffoldBackgroundColor.withValues(
+                    alpha: 0.5,
+                  ),
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: IconButton(
                   onPressed: () {
                     context.pop();
                   },
-                  icon: const Icon(Icons.arrow_back, color: ColorName.appWhite),
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: context.theme.colorScheme.onSurface,
+                  ),
                 ),
               ),
             ),
@@ -117,7 +123,9 @@ class MovieDetailView extends StatelessWidget {
               right: 20,
               child: Container(
                 decoration: BoxDecoration(
-                  color: ColorName.appBlack.withValues(alpha: 0.5),
+                  color: context.theme.scaffoldBackgroundColor.withValues(
+                    alpha: 0.5,
+                  ),
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: IconButton(
@@ -128,8 +136,8 @@ class MovieDetailView extends StatelessWidget {
                         : Icons.favorite_border,
                     color:
                         movie.isFavorite == true
-                            ? ColorName.appKUCrimson
-                            : ColorName.appWhite,
+                            ? context.theme.colorScheme.primary
+                            : context.theme.colorScheme.onSurface,
                   ),
                 ),
               ),
@@ -140,7 +148,7 @@ class MovieDetailView extends StatelessWidget {
     );
   }
 
-  Widget _buildMovieHeader(FavoriteMovieData movie) {
+  Widget _buildMovieHeader(BuildContext context, FavoriteMovieData movie) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -150,9 +158,7 @@ class MovieDetailView extends StatelessWidget {
             color: Colors.transparent,
             child: Text(
               movie.title ?? 'movie_detail.movie_title'.tr(),
-              style: const TextStyle(
-                color: ColorName.appWhite,
-                fontSize: 28,
+              style: context.theme.textTheme.headlineLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -164,17 +170,18 @@ class MovieDetailView extends StatelessWidget {
             if (movie.year != null) ...[
               Text(
                 movie.year!,
-                style: TextStyle(
-                  color: ColorName.appWhite.withValues(alpha: 0.7),
-                  fontSize: 16,
+                style: context.theme.textTheme.bodyLarge?.copyWith(
+                  color: context.theme.colorScheme.onSurface.withValues(
+                    alpha: 0.7,
+                  ),
                 ),
               ),
               const SizedBox(width: 8),
               Container(
                 width: 4,
                 height: 4,
-                decoration: const BoxDecoration(
-                  color: ColorName.appKUCrimson,
+                decoration: BoxDecoration(
+                  color: context.theme.colorScheme.primary,
                   shape: BoxShape.circle,
                 ),
               ),
@@ -183,9 +190,10 @@ class MovieDetailView extends StatelessWidget {
             if (movie.runtime != null)
               Text(
                 movie.runtime!,
-                style: TextStyle(
-                  color: ColorName.appWhite.withValues(alpha: 0.7),
-                  fontSize: 16,
+                style: context.theme.textTheme.bodyLarge?.copyWith(
+                  color: context.theme.colorScheme.onSurface.withValues(
+                    alpha: 0.7,
+                  ),
                 ),
               ),
           ],
@@ -194,21 +202,24 @@ class MovieDetailView extends StatelessWidget {
           const SizedBox(height: 12),
           Row(
             children: [
-              const Icon(Icons.star, color: ColorName.appKUCrimson, size: 20),
+              Icon(
+                Icons.star,
+                color: context.theme.colorScheme.primary,
+                size: 20,
+              ),
               const SizedBox(width: 4),
               Text(
                 movie.imdbRating!,
-                style: const TextStyle(
-                  color: ColorName.appWhite,
-                  fontSize: 16,
+                style: context.theme.textTheme.bodyLarge?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
               ),
               Text(
                 'movie_detail.rating_out_of'.tr(),
-                style: TextStyle(
-                  color: ColorName.appWhite.withValues(alpha: 0.7),
-                  fontSize: 16,
+                style: context.theme.textTheme.bodyLarge?.copyWith(
+                  color: context.theme.colorScheme.onSurface.withValues(
+                    alpha: 0.7,
+                  ),
                 ),
               ),
             ],
@@ -218,33 +229,41 @@ class MovieDetailView extends StatelessWidget {
     );
   }
 
-  Widget _buildMovieInfo(FavoriteMovieData movie) {
+  Widget _buildMovieInfo(BuildContext context, FavoriteMovieData movie) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: ColorName.appVampireBlack,
+        color: context.theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         children: [
           if (movie.genre != null)
-            _buildInfoRow('movie_detail.genre'.tr(), movie.genre!),
+            _buildInfoRow(context, 'movie_detail.genre'.tr(), movie.genre!),
           if (movie.director != null)
-            _buildInfoRow('movie_detail.director'.tr(), movie.director!),
+            _buildInfoRow(
+              context,
+              'movie_detail.director'.tr(),
+              movie.director!,
+            ),
           if (movie.writer != null)
-            _buildInfoRow('movie_detail.writer'.tr(), movie.writer!),
+            _buildInfoRow(context, 'movie_detail.writer'.tr(), movie.writer!),
           if (movie.actors != null)
-            _buildInfoRow('movie_detail.actors'.tr(), movie.actors!),
+            _buildInfoRow(context, 'movie_detail.actors'.tr(), movie.actors!),
           if (movie.country != null)
-            _buildInfoRow('movie_detail.country'.tr(), movie.country!),
+            _buildInfoRow(context, 'movie_detail.country'.tr(), movie.country!),
           if (movie.language != null)
-            _buildInfoRow('movie_detail.language'.tr(), movie.language!),
+            _buildInfoRow(
+              context,
+              'movie_detail.language'.tr(),
+              movie.language!,
+            ),
         ],
       ),
     );
   }
 
-  Widget _buildInfoRow(String label, String value) {
+  Widget _buildInfoRow(BuildContext context, String label, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
@@ -254,25 +273,23 @@ class MovieDetailView extends StatelessWidget {
             width: 80,
             child: Text(
               label,
-              style: TextStyle(
-                color: ColorName.appWhite.withValues(alpha: 0.7),
-                fontSize: 14,
+              style: context.theme.textTheme.bodyMedium?.copyWith(
+                color: context.theme.colorScheme.onSurface.withValues(
+                  alpha: 0.7,
+                ),
                 fontWeight: FontWeight.w500,
               ),
             ),
           ),
           Expanded(
-            child: Text(
-              value,
-              style: const TextStyle(color: ColorName.appWhite, fontSize: 14),
-            ),
+            child: Text(value, style: context.theme.textTheme.bodyMedium),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildMovieDescription(FavoriteMovieData movie) {
+  Widget _buildMovieDescription(BuildContext context, FavoriteMovieData movie) {
     return (movie.plot == null || movie.plot!.isEmpty)
         ? const SizedBox.shrink()
         : Column(
@@ -280,18 +297,17 @@ class MovieDetailView extends StatelessWidget {
           children: [
             Text(
               'movie_detail.summary'.tr(),
-              style: const TextStyle(
-                color: ColorName.appWhite,
-                fontSize: 20,
+              style: context.theme.textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 12),
             Text(
               movie.plot!,
-              style: TextStyle(
-                color: ColorName.appWhite.withValues(alpha: 0.9),
-                fontSize: 16,
+              style: context.theme.textTheme.bodyLarge?.copyWith(
+                color: context.theme.colorScheme.onSurface.withValues(
+                  alpha: 0.9,
+                ),
                 height: 1.5,
               ),
             ),
@@ -299,7 +315,7 @@ class MovieDetailView extends StatelessWidget {
         );
   }
 
-  Widget _buildCastInfo(FavoriteMovieData movie) {
+  Widget _buildCastInfo(BuildContext context, FavoriteMovieData movie) {
     return (movie.actors == null || movie.actors!.isEmpty)
         ? const SizedBox.shrink()
         : Column(
@@ -307,18 +323,17 @@ class MovieDetailView extends StatelessWidget {
           children: [
             Text(
               'movie_detail.cast'.tr(),
-              style: const TextStyle(
-                color: ColorName.appWhite,
-                fontSize: 20,
+              style: context.theme.textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 12),
             Text(
               movie.actors!,
-              style: TextStyle(
-                color: ColorName.appWhite.withValues(alpha: 0.9),
-                fontSize: 16,
+              style: context.theme.textTheme.bodyLarge?.copyWith(
+                color: context.theme.colorScheme.onSurface.withValues(
+                  alpha: 0.9,
+                ),
               ),
             ),
           ],
@@ -332,8 +347,8 @@ class MovieDetailView extends StatelessWidget {
           child: ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              backgroundColor: ColorName.appKUCrimson,
-              foregroundColor: ColorName.appWhite,
+              backgroundColor: context.theme.colorScheme.primary,
+              foregroundColor: context.theme.colorScheme.onPrimary,
               padding: const EdgeInsets.symmetric(vertical: 16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
@@ -346,8 +361,7 @@ class MovieDetailView extends StatelessWidget {
                 const SizedBox(width: 8),
                 Text(
                   'movie_detail.watch'.tr(),
-                  style: const TextStyle(
-                    fontSize: 16,
+                  style: context.theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -359,13 +373,13 @@ class MovieDetailView extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             border: Border.all(
-              color: ColorName.appWhite.withValues(alpha: 0.3),
+              color: context.theme.colorScheme.onSurface.withValues(alpha: 0.3),
             ),
             borderRadius: BorderRadius.circular(8),
           ),
           child: IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.share, color: ColorName.appWhite),
+            icon: Icon(Icons.share, color: context.theme.colorScheme.onSurface),
           ),
         ),
       ],

@@ -32,7 +32,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: backgroundColor ?? ColorName.appBlack,
       elevation: 0,
       automaticallyImplyLeading: false,
       leading:
@@ -48,11 +47,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         ColorName.appWhite.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: Colors.white.withValues(alpha: 0.5),
+                      color:
+                          context.theme.brightness == Brightness.dark
+                              ? Colors.white.withValues(alpha: 0.5)
+                              : Colors.black.withValues(alpha: 0.5),
                       width: 1,
                     ),
                   ),
-                  child: Icon(Icons.arrow_back, color: Colors.white, size: 20),
+                  child: Icon(
+                    Icons.arrow_back,
+                    color:
+                        context.theme.brightness == Brightness.dark
+                            ? ColorName.appWhite
+                            : ColorName.appBlack,
+                    size: 20,
+                  ),
                 ),
               )
               : null,

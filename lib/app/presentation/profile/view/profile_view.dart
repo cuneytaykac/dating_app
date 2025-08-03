@@ -49,29 +49,33 @@ class ProfileView extends StatelessWidget {
           },
         ),
         backgroundColor: context.theme.scaffoldBackgroundColor,
-        body: Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                children: [
-                  const SizedBox(height: 20),
-                  _buildProfileCard(context),
-                  const SizedBox(height: 30),
-                  Expanded(child: _buildLikedMoviesSection()),
-                  const SizedBox(height: 30),
-                ],
-              ),
-            ),
-            const Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: CustomBottomNavigation(currentIndex: 1),
-            ),
-          ],
-        ),
+        body: _body(context),
       ),
+    );
+  }
+
+  Stack _body(BuildContext context) {
+    return Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              _buildProfileCard(context),
+              const SizedBox(height: 30),
+              Expanded(child: _buildLikedMoviesSection()),
+              const SizedBox(height: 30),
+            ],
+          ),
+        ),
+        const Positioned(
+          bottom: 0,
+          left: 0,
+          right: 0,
+          child: CustomBottomNavigation(currentIndex: 1),
+        ),
+      ],
     );
   }
 
