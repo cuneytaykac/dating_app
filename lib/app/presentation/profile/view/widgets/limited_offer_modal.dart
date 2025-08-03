@@ -1,6 +1,7 @@
 import 'package:dating_app/app/components/buttons/custom_button.dart';
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/gen/colors.gen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:moon_extension/moon_extension.dart';
 
@@ -81,13 +82,19 @@ class LimitedOfferModal extends StatelessWidget {
                         spacing: 10,
                         children: [
                           Text(
-                            "Sınırlı Teklif",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
+                            "limited_offer.title".tr(),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
                           ),
                           Text(
-                            "Jeton paketin’ni seçerek bonus kazanın ve yeni bölümlerin kilidini açın!",
+                            "limited_offer.description".tr(),
                             textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white, fontSize: 14),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
                           ),
                         ],
                       ),
@@ -106,9 +113,9 @@ class LimitedOfferModal extends StatelessWidget {
                       child: Column(
                         spacing: 40,
                         children: [
-                          const Text(
-                            'Alacağınız Bonuslar',
-                            style: TextStyle(
+                          Text(
+                            'limited_offer.bonuses_title'.tr(),
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -119,19 +126,19 @@ class LimitedOfferModal extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               __buildBonusItem(
-                                title: "1000 Jeton\n",
+                                title: "limited_offer.bonus_jeton".tr(),
                                 icon: Assets.icons.limitedDiamond,
                               ),
                               __buildBonusItem(
-                                title: "Daha\nFazla Eşleşme",
+                                title: "limited_offer.bonus_matches".tr(),
                                 icon: Assets.icons.limitedHearts,
                               ),
                               __buildBonusItem(
-                                title: "Öne \n Çıkma",
+                                title: "limited_offer.bonus_featured".tr(),
                                 icon: Assets.icons.limitedUnknow,
                               ),
                               __buildBonusItem(
-                                title: "Daha\nFazla Begeni",
+                                title: "limited_offer.bonus_likes".tr(),
                                 icon: Assets.icons.limitedHeart,
                               ),
                             ],
@@ -145,9 +152,9 @@ class LimitedOfferModal extends StatelessWidget {
             ),
           ),
           Flexible(
-            child: const Text(
-              'Kilidi açmak için bir jeton paketi seçin',
-              style: TextStyle(color: Colors.white, fontSize: 15),
+            child: Text(
+              'limited_offer.unlock_message'.tr(),
+              style: const TextStyle(color: Colors.white, fontSize: 15),
             ),
           ),
           Expanded(
@@ -236,7 +243,7 @@ class LimitedOfferModal extends StatelessWidget {
                       child: CustomButton(
                         backgroundColor: ColorName.appKUCrimson,
                         borderRadius: 30,
-                        text: "Tüm Jetonları Gör",
+                        text: "limited_offer.view_all_jetons".tr(),
                         onPressed: () {},
                       ),
                     ),
@@ -303,8 +310,11 @@ class LimitedOfferModal extends StatelessWidget {
                     ),
                     Flexible(
                       child: Text(
-                        "Jeton",
-                        style: TextStyle(color: Colors.white, fontSize: 14),
+                        "limited_offer.jeton".tr(),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                        ),
                       ),
                     ),
                   ],
@@ -332,8 +342,11 @@ class LimitedOfferModal extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        "Başına haftalık",
-                        style: TextStyle(color: Colors.white, fontSize: 14),
+                        "limited_offer.per_week".tr(),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                        ),
                       ),
                     ),
                   ],

@@ -46,6 +46,42 @@
         "home": "Home",
         "profile": "Profile"
     },
+    "home": {
+        "title": "Home",
+        "empty_title": "Movie Collection Empty",
+        "empty_description": "No movies have been added yet.\nYou'll meet great movies soon!",
+        "refresh": "Refresh",
+        "all_movies_loaded": "All movies loaded",
+        "movie_title_default": "Movie Title",
+        "view_details": "View Details"
+    },
+    "navigation": {
+        "home": "Home",
+        "profile": "Profile"
+    },
+    "no_connection": {
+        "title": "No Internet Connection",
+        "description": "Please check your internet connection and try again."
+    },
+    "profile": {
+        "title": "Profile Details",
+        "limited_offer": "Limited Offer",
+        "add_photo": "Add Photo",
+        "liked_movies": "My Liked Movies"
+    },
+    "limited_offer": {
+        "title": "Limited Offer",
+        "description": "Choose your token package to earn bonuses and unlock new episodes!",
+        "bonuses_title": "Bonuses You'll Get",
+        "bonus_jeton": "1000 Tokens",
+        "bonus_matches": "More Matches",
+        "bonus_featured": "Featured",
+        "bonus_likes": "More Likes",
+        "unlock_message": "Select a token package to unlock",
+        "view_all_jetons": "View All Tokens",
+        "jeton": "Tokens",
+        "per_week": "per week"
+    },
     "photo_picker": {
         "camera": "Camera",
         "gallery": "Gallery",

@@ -46,6 +46,53 @@
         "home": "Anasayfa",
         "profile": "Profil"
     },
+    "home": {
+        "title": "Anasayfa",
+        "empty_title": "Film Koleksiyonu Boş",
+        "empty_description": "Henüz hiç film eklenmemiş.\nYakında harika filmlerle tanışacaksın!",
+        "refresh": "Yenile",
+        "all_movies_loaded": "Tüm filmler yüklendi",
+        "movie_title_default": "Film Başlığı",
+        "view_details": "Detayları Gör"
+    },
+    "navigation": {
+        "home": "Ana Sayfa",
+        "profile": "Profil"
+    },
+    "photo_picker": {
+        "camera": "Kamera",
+        "gallery": "Galeri",
+        "take_photo": "Fotoğraf çek",
+        "select_from_gallery": "Galeriden seç",
+        "loading": "Yükleniyor...",
+        "error_occurred": "Fotoğraf seçilirken hata oluştu",
+        "permission_required": "Kamera veya galeri izni gerekli",
+        "camera_not_available": "Kamera erişimi şu anda kullanılamıyor. Lütfen tekrar deneyin.",
+        "ok": "Tamam"
+    },
+    "no_connection": {
+        "title": "İnternet Bağlantısı Yok",
+        "description": "Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin."
+    },
+    "profile": {
+        "title": "Profil Detayı",
+        "limited_offer": "Sınırlı Teklif",
+        "add_photo": "Fotoğraf Ekle",
+        "liked_movies": "Beğendiğim Filmler"
+    },
+    "limited_offer": {
+        "title": "Sınırlı Teklif",
+        "description": "Jeton paketin'ni seçerek bonus kazanın ve yeni bölümlerin kilidini açın!",
+        "bonuses_title": "Alacağınız Bonuslar",
+        "bonus_jeton": "1000 Jeton",
+        "bonus_matches": "Daha Fazla Eşleşme",
+        "bonus_featured": "Öne Çıkma",
+        "bonus_likes": "Daha Fazla Begeni",
+        "unlock_message": "Kilidi açmak için bir jeton paketi seçin",
+        "view_all_jetons": "Tüm Jetonları Gör",
+        "jeton": "Jeton",
+        "per_week": "Başına haftalık"
+    },
     "photo_picker": {
         "camera": "Kamera",
         "gallery": "Galeri",

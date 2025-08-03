@@ -7,6 +7,7 @@ import 'package:dating_app/app/presentation/home/state/home_state.dart';
 import 'package:dating_app/core/navigation/app_routes.dart';
 import 'package:dating_app/core/result_state_builder/result_state_builder.dart';
 import 'package:dating_app/gen/colors.gen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -25,7 +26,7 @@ class HomeView extends StatelessWidget {
       child: Scaffold(
         appBar: CustomAppBar(
           showBackButton: false,
-          title: 'Anasayfa',
+          title: 'home.title'.tr(),
           backgroundColor: ColorName.appBlack,
         ),
         backgroundColor: ColorName.appBlack,

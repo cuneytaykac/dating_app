@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dating_app/gen/colors.gen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -89,14 +90,14 @@ class _PhotoPickerWidgetState extends State<PhotoPickerWidget>
           const SizedBox(height: 20),
           _buildOptionTile(
             icon: Icons.camera_alt,
-            title: 'Kamera',
-            subtitle: 'Fotoğraf çek',
+            title: 'photo_picker.camera'.tr(),
+            subtitle: 'photo_picker.take_photo'.tr(),
             onTap: () => _pickImage(ImageSource.camera),
           ),
           _buildOptionTile(
             icon: Icons.photo_library,
-            title: 'Galeri',
-            subtitle: 'Galeriden seç',
+            title: 'photo_picker.gallery'.tr(),
+            subtitle: 'photo_picker.select_from_gallery'.tr(),
             onTap: () => _pickImage(ImageSource.gallery),
           ),
           const SizedBox(height: 20),
@@ -181,13 +182,12 @@ class _PhotoPickerWidgetState extends State<PhotoPickerWidget>
         _isLoading = false;
       });
 
-      String errorMessage = 'Fotoğraf seçilirken hata oluştu';
+      String errorMessage = 'photo_picker.error_occurred'.tr();
 
       if (e.toString().contains('permission')) {
-        errorMessage = 'Kamera veya galeri izni gerekli';
+        errorMessage = 'photo_picker.permission_required'.tr();
       } else if (e.toString().contains('channel-error')) {
-        errorMessage =
-            'Kamera erişimi şu anda kullanılamıyor. Lütfen tekrar deneyin.';
+        errorMessage = 'photo_picker.camera_not_available'.tr();
       }
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -196,7 +196,7 @@ class _PhotoPickerWidgetState extends State<PhotoPickerWidget>
           backgroundColor: Colors.red,
           duration: const Duration(seconds: 3),
           action: SnackBarAction(
-            label: 'Tamam',
+            label: 'photo_picker.ok'.tr(),
             textColor: Colors.white,
             onPressed: () {
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -303,7 +303,7 @@ class _PhotoPickerWidgetState extends State<PhotoPickerWidget>
         ),
         const SizedBox(height: 8),
         Text(
-          'Yükleniyor...',
+          'photo_picker.loading'.tr(),
           style: TextStyle(
             color: Colors.white.withValues(alpha: 0.7),
             fontSize: 14,

@@ -39,7 +39,7 @@ class MovieCardWidget extends StatelessWidget {
               children: [
                 // Film başlığı
                 Text(
-                  movie.title ?? 'Film Başlığı',
+                  movie.title ?? 'home.movie_title_default'.tr(),
                   style: const TextStyle(
                     color: ColorName.appWhite,
                     fontSize: 18,
@@ -120,9 +120,9 @@ class MovieCardWidget extends StatelessWidget {
                       color: ColorName.appKUCrimson,
                       borderRadius: BorderRadius.circular(6),
                     ),
-                    child: const Text(
-                      'Detayları Gör',
-                      style: TextStyle(
+                    child: Text(
+                      'home.view_details'.tr(),
+                      style: const TextStyle(
                         color: ColorName.appWhite,
                         fontSize: 14,
                         fontWeight: FontWeight.w600,

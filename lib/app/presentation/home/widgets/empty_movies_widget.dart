@@ -1,4 +1,5 @@
 import 'package:dating_app/gen/colors.gen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class EmptyMoviesWidget extends StatelessWidget {
@@ -42,9 +43,9 @@ class EmptyMoviesWidget extends StatelessWidget {
             const SizedBox(height: 32.0),
 
             // Başlık
-            const Text(
-              'Film Koleksiyonu Boş',
-              style: TextStyle(
+            Text(
+              'home.empty_title'.tr(),
+              style: const TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,
                 color: ColorName.appWhite,
@@ -55,9 +56,9 @@ class EmptyMoviesWidget extends StatelessWidget {
             const SizedBox(height: 16.0),
 
             // Açıklama
-            const Text(
-              'Henüz hiç film eklenmemiş.\nYakında harika filmlerle tanışacaksın!',
-              style: TextStyle(
+            Text(
+              'home.empty_description'.tr(),
+              style: const TextStyle(
                 fontSize: 16.0,
                 color: ColorName.appWhite,
                 height: 1.5,
@@ -91,14 +92,18 @@ class EmptyMoviesWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(Icons.refresh, color: ColorName.appWhite, size: 20),
-                      SizedBox(width: 8),
+                      const Icon(
+                        Icons.refresh,
+                        color: ColorName.appWhite,
+                        size: 20,
+                      ),
+                      const SizedBox(width: 8),
                       Text(
-                        'Yenile',
-                        style: TextStyle(
+                        'home.refresh'.tr(),
+                        style: const TextStyle(
                           color: ColorName.appWhite,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,

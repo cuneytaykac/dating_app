@@ -12,6 +12,7 @@ import 'package:dating_app/core/navigation/app_routes.dart';
 import 'package:dating_app/core/result_state_builder/result_state_builder.dart';
 import 'package:dating_app/core/utility/cache/cache_manager.dart';
 import 'package:dating_app/gen/colors.gen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -26,10 +27,10 @@ class ProfileView extends StatelessWidget {
       create: (context) => ProfileCubit()..getfavoriteMovies(),
       child: Scaffold(
         appBar: CustomAppBar(
-          title: 'Profil Detayı',
+          title: 'profile.title'.tr(),
           showBackButton: true,
           showLimitedOffer: true,
-          limitedOfferText: 'Sınırlı Teklif',
+          limitedOfferText: 'profile.limited_offer'.tr(),
           onBackPressed: () => Navigator.of(context).pop(),
           onLimitedOfferPressed: () {
             showModalBottomSheet(
@@ -133,9 +134,9 @@ class ProfileView extends StatelessWidget {
             ),
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           ),
-          child: const Text(
-            'Fotoğraf Ekle',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+          child: Text(
+            'profile.add_photo'.tr(),
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
         ),
       ),
@@ -151,9 +152,9 @@ class ProfileView extends StatelessWidget {
               (data) => Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Beğendiğim Filmler',
-                    style: TextStyle(
+                  Text(
+                    'profile.liked_movies'.tr(),
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,

@@ -8,12 +8,12 @@ class LoadMoreIndicatorWidget extends StatelessWidget {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         if (state.hasReachedMax) {
-          return const Padding(
-            padding: EdgeInsets.all(20),
+          return Padding(
+            padding: const EdgeInsets.all(20),
             child: Center(
               child: Text(
-                'Tüm filmler yüklendi',
-                style: TextStyle(color: ColorName.appWhite, fontSize: 16),
+                'home.all_movies_loaded'.tr(),
+                style: const TextStyle(color: ColorName.appWhite, fontSize: 16),
               ),
             ),
           );

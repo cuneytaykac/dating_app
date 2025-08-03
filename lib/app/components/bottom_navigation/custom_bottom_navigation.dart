@@ -1,5 +1,6 @@
 import 'package:dating_app/core/navigation/app_routes.dart';
 import 'package:dating_app/gen/colors.gen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,7 +23,7 @@ class CustomBottomNavigation extends StatelessWidget {
             _buildNavButton(
               context: context,
               icon: Icons.home,
-              label: 'Ana Sayfa',
+              label: 'navigation.home'.tr(),
               index: 0,
               currentIndex: currentIndex,
               routeName: AppRoutes.homeView.name,
@@ -30,7 +31,7 @@ class CustomBottomNavigation extends StatelessWidget {
             _buildNavButton(
               context: context,
               icon: Icons.person,
-              label: 'Profil',
+              label: 'navigation.profile'.tr(),
               index: 1,
               currentIndex: currentIndex,
               routeName: AppRoutes.profileView.name,

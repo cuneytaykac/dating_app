@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class NoConnectionView extends StatelessWidget {
@@ -21,20 +22,20 @@ class NoConnectionView extends StatelessWidget {
                 color: Color(0xFF2C7FDE), // appBlue
               ),
               const SizedBox(height: 24),
-              const Text(
-                'İnternet Bağlantısı Yok',
+              Text(
+                'no_connection.title'.tr(),
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF090A0A), // appVampireBlack
                 ),
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.',
+              Text(
+                'no_connection.description'.tr(),
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   color: Color(0xFF72777A), // appSonicSilver
                 ),

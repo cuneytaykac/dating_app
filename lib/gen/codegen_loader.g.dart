@@ -62,6 +62,13 @@ class CodegenLoader extends AssetLoader{
     "home": "Anasayfa",
     "profile": "Profil"
   },
+  "home": {
+    "title": "Anasayfa",
+    "empty_title": "Film Koleksiyonu Boş",
+    "empty_description": "Henüz hiç film eklenmemiş.\nYakında harika filmlerle tanışacaksın!",
+    "refresh": "Yenile",
+    "all_movies_loaded": "Tüm filmler yüklendi"
+  },
   "photo_picker": {
     "camera": "Kamera",
     "gallery": "Galeri",
@@ -151,6 +158,13 @@ static const Map<String,dynamic> _en = {
     "read_more": "Read More",
     "home": "Home",
     "profile": "Profile"
+  },
+  "home": {
+    "title": "Home",
+    "empty_title": "Movie Collection Empty",
+    "empty_description": "No movies have been added yet.\nYou'll meet great movies soon!",
+    "refresh": "Refresh",
+    "all_movies_loaded": "All movies loaded"
   },
   "photo_picker": {
     "camera": "Camera",
