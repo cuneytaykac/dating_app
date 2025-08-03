@@ -10,11 +10,11 @@ class MovieCardWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
-        color: ColorName.appVampireBlack,
+        color: context.theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: ColorName.appKUCrimson.withValues(alpha: 0.1),
+            color: context.theme.colorScheme.primary.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -40,9 +40,7 @@ class MovieCardWidget extends StatelessWidget {
                 // Film başlığı
                 Text(
                   movie.title ?? 'home.movie_title_default'.tr(),
-                  style: const TextStyle(
-                    color: ColorName.appWhite,
-                    fontSize: 18,
+                  style: context.theme.textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                   maxLines: 2,
@@ -55,17 +53,18 @@ class MovieCardWidget extends StatelessWidget {
                     if (movie.year != null) ...[
                       Text(
                         movie.year!,
-                        style: TextStyle(
-                          color: ColorName.appWhite.withValues(alpha: 0.7),
-                          fontSize: 14,
+                        style: context.theme.textTheme.bodyMedium?.copyWith(
+                          color: context.theme.colorScheme.onSurface.withValues(
+                            alpha: 0.7,
+                          ),
                         ),
                       ),
                       const SizedBox(width: 8),
                       Container(
                         width: 3,
                         height: 3,
-                        decoration: const BoxDecoration(
-                          color: ColorName.appKUCrimson,
+                        decoration: BoxDecoration(
+                          color: context.theme.colorScheme.primary,
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -74,9 +73,10 @@ class MovieCardWidget extends StatelessWidget {
                     if (movie.runtime != null)
                       Text(
                         movie.runtime!,
-                        style: TextStyle(
-                          color: ColorName.appWhite.withValues(alpha: 0.7),
-                          fontSize: 14,
+                        style: context.theme.textTheme.bodyMedium?.copyWith(
+                          color: context.theme.colorScheme.onSurface.withValues(
+                            alpha: 0.7,
+                          ),
                         ),
                       ),
                   ],
@@ -86,17 +86,15 @@ class MovieCardWidget extends StatelessWidget {
                 if (movie.imdbRating != null)
                   Row(
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.star,
-                        color: ColorName.appKUCrimson,
+                        color: context.theme.colorScheme.primary,
                         size: 16,
                       ),
                       const SizedBox(width: 4),
                       Text(
                         movie.imdbRating!,
-                        style: const TextStyle(
-                          color: ColorName.appWhite,
-                          fontSize: 14,
+                        style: context.theme.textTheme.bodyMedium?.copyWith(
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -117,14 +115,13 @@ class MovieCardWidget extends StatelessWidget {
                       horizontal: 16,
                     ),
                     decoration: BoxDecoration(
-                      color: ColorName.appKUCrimson,
+                      color: context.theme.colorScheme.primary,
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
                       'home.view_details'.tr(),
-                      style: const TextStyle(
-                        color: ColorName.appWhite,
-                        fontSize: 14,
+                      style: context.theme.textTheme.bodyMedium?.copyWith(
+                        color: context.theme.colorScheme.onPrimary,
                         fontWeight: FontWeight.w600,
                       ),
                     ),

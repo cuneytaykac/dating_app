@@ -66,6 +66,7 @@ class MovieDetailView extends StatelessWidget {
       pinned: true,
       automaticallyImplyLeading: false,
       elevation: 0,
+      surfaceTintColor: Colors.transparent,
       shadowColor: context.theme.colorScheme.primary.withValues(alpha: 0.3),
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(

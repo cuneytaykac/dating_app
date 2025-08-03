@@ -18,8 +18,8 @@ class MovieListWidget extends StatelessWidget {
         onRefresh: () async {
           await context.read<HomeCubit>().refreshMovies();
         },
-        color: ColorName.appKUCrimson,
-        backgroundColor: ColorName.appBlack,
+        color: context.theme.colorScheme.primary,
+        backgroundColor: context.theme.scaffoldBackgroundColor,
         child: ListView.builder(
           padding: const EdgeInsets.only(
             top: 60,

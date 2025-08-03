@@ -13,7 +13,7 @@ class LoadMoreIndicatorWidget extends StatelessWidget {
             child: Center(
               child: Text(
                 'home.all_movies_loaded'.tr(),
-                style: const TextStyle(color: ColorName.appWhite, fontSize: 16),
+                style: context.theme.textTheme.bodyLarge,
               ),
             ),
           );
@@ -24,10 +24,12 @@ class LoadMoreIndicatorWidget extends StatelessWidget {
           pending: (_) => true,
           orElse: () => false,
         )) {
-          return const Padding(
-            padding: EdgeInsets.all(20),
+          return Padding(
+            padding: const EdgeInsets.all(20),
             child: Center(
-              child: CircularProgressIndicator(color: ColorName.appKUCrimson),
+              child: CircularProgressIndicator(
+                color: context.theme.colorScheme.primary,
+              ),
             ),
           );
         }

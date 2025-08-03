@@ -34,6 +34,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0,
       automaticallyImplyLeading: false,
+      backgroundColor: context.theme.scaffoldBackgroundColor,
+      surfaceTintColor: context.theme.scaffoldBackgroundColor,
       leading:
           showBackButton
               ? IconButton(

@@ -1,4 +1,4 @@
-import 'package:dating_app/gen/colors.gen.dart';
+import 'package:dating_app/core/mixins/theme_mixin.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -24,20 +24,22 @@ class EmptyMoviesWidget extends StatelessWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    ColorName.appKUCrimson.withValues(alpha: 0.2),
-                    ColorName.appMajorelleBlue.withValues(alpha: 0.2),
+                    context.theme.colorScheme.primary.withValues(alpha: 0.2),
+                    context.theme.colorScheme.secondary.withValues(alpha: 0.2),
                   ],
                 ),
                 borderRadius: BorderRadius.circular(60),
                 border: Border.all(
-                  color: ColorName.appKUCrimson.withValues(alpha: 0.3),
+                  color: context.theme.colorScheme.primary.withValues(
+                    alpha: 0.3,
+                  ),
                   width: 2,
                 ),
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.movie_creation,
                 size: 48.0,
-                color: ColorName.appKUCrimson,
+                color: context.theme.colorScheme.primary,
               ),
             ),
             const SizedBox(height: 32.0),
@@ -45,10 +47,8 @@ class EmptyMoviesWidget extends StatelessWidget {
             // Başlık
             Text(
               'home.empty_title'.tr(),
-              style: const TextStyle(
-                fontSize: 24.0,
+              style: context.theme.textTheme.headlineMedium?.copyWith(
                 fontWeight: FontWeight.bold,
-                color: ColorName.appWhite,
                 letterSpacing: 0.5,
               ),
               textAlign: TextAlign.center,
@@ -58,11 +58,7 @@ class EmptyMoviesWidget extends StatelessWidget {
             // Açıklama
             Text(
               'home.empty_description'.tr(),
-              style: const TextStyle(
-                fontSize: 16.0,
-                color: ColorName.appWhite,
-                height: 1.5,
-              ),
+              style: context.theme.textTheme.bodyLarge?.copyWith(height: 1.5),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 40.0),
@@ -77,16 +73,18 @@ class EmptyMoviesWidget extends StatelessWidget {
                     vertical: 12.0,
                   ),
                   decoration: BoxDecoration(
-                    gradient: const LinearGradient(
+                    gradient: LinearGradient(
                       colors: [
-                        ColorName.appKUCrimson,
-                        ColorName.appMajorelleBlue,
+                        context.theme.colorScheme.primary,
+                        context.theme.colorScheme.secondary,
                       ],
                     ),
                     borderRadius: BorderRadius.circular(25),
                     boxShadow: [
                       BoxShadow(
-                        color: ColorName.appKUCrimson.withValues(alpha: 0.3),
+                        color: context.theme.colorScheme.primary.withValues(
+                          alpha: 0.3,
+                        ),
                         blurRadius: 8,
                         offset: const Offset(0, 4),
                       ),
@@ -95,17 +93,16 @@ class EmptyMoviesWidget extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.refresh,
-                        color: ColorName.appWhite,
+                        color: context.theme.colorScheme.onPrimary,
                         size: 20,
                       ),
                       const SizedBox(width: 8),
                       Text(
                         'home.refresh'.tr(),
-                        style: const TextStyle(
-                          color: ColorName.appWhite,
-                          fontSize: 16,
+                        style: context.theme.textTheme.titleMedium?.copyWith(
+                          color: context.theme.colorScheme.onPrimary,
                           fontWeight: FontWeight.w600,
                         ),
                       ),

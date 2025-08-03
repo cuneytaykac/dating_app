@@ -1,5 +1,5 @@
+import 'package:dating_app/core/mixins/theme_mixin.dart';
 import 'package:dating_app/core/navigation/app_routes.dart';
-import 'package:dating_app/gen/colors.gen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -14,7 +14,7 @@ class CustomBottomNavigation extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 100,
-      color: ColorName.appBlack,
+      color: context.theme.scaffoldBackgroundColor,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Row(
@@ -60,10 +60,15 @@ class CustomBottomNavigation extends StatelessWidget {
         }
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
           border: Border.all(
-            color: isSelected ? Colors.white : Colors.grey,
+            color:
+                isSelected
+                    ? context.theme.colorScheme.onSurface
+                    : context.theme.colorScheme.onSurface.withValues(
+                      alpha: 0.5,
+                    ),
             width: 1,
           ),
           borderRadius: BorderRadius.circular(40),
@@ -71,21 +76,29 @@ class CustomBottomNavigation extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const SizedBox(width: 8),
             Icon(
               icon,
-              color: isSelected ? Colors.white : Colors.grey,
+              color:
+                  isSelected
+                      ? context.theme.colorScheme.onSurface
+                      : context.theme.colorScheme.onSurface.withValues(
+                        alpha: 0.7,
+                      ),
               size: 20,
             ),
             const SizedBox(width: 8),
             Text(
               label,
-              style: TextStyle(
-                color: isSelected ? Colors.white : Colors.grey,
-                fontSize: 16,
+              style: context.theme.textTheme.titleMedium?.copyWith(
+                color:
+                    isSelected
+                        ? context.theme.colorScheme.onSurface
+                        : context.theme.colorScheme.onSurface.withValues(
+                          alpha: 0.7,
+                        ),
+                fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(width: 8),
           ],
         ),
       ),

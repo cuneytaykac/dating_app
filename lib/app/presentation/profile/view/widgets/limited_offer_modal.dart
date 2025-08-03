@@ -1,4 +1,5 @@
 import 'package:dating_app/app/components/buttons/custom_button.dart';
+import 'package:dating_app/core/mixins/theme_mixin.dart';
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/gen/colors.gen.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -16,36 +17,11 @@ class LimitedOfferModal extends StatelessWidget {
       width: context.screenWidth(1),
       decoration: const BoxDecoration(
         color: ColorName.appVampireBlack,
-        /* gradient: RadialGradient(
-          center: Alignment.topCenter,
-          radius: 1.5,
-          colors: [
-            Color(0xFFE53E3E), // Ortada kırmızı
-            Color(0xFFC53030), // Biraz daha koyu kırmızı
-            Color(0xFF2D1B1B), // Kırmızı-siyah karışımı
-            Color(0xFF1A1A1A), // Koyu siyah
-          ],
-          stops: [0.0, 0.3, 0.7, 1.0],
-        ),*/
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),
       ),
-      /**
-     *   decoration: const BoxDecoration(
-        color: ColorName.appVampireBlack,
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [ColorName.appRosewood, ColorName.appVampireBlack],
-        ),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
-      ),
-     */
       child: Column(
         children: [
           Expanded(
@@ -55,15 +31,14 @@ class LimitedOfferModal extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: RadialGradient(
                   center: Alignment.topCenter,
-
                   radius: 0.9,
                   colors: [
                     ColorName.appKUCrimson.withValues(alpha: 0.6),
                     ColorName.appVampireBlack.withValues(alpha: 0.1),
                   ],
-                  stops: [0.0, 1],
+                  stops: const [0.0, 1],
                 ),
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),
                 ),
@@ -83,17 +58,15 @@ class LimitedOfferModal extends StatelessWidget {
                         children: [
                           Text(
                             "limited_offer.title".tr(),
-                            style: const TextStyle(
+                            style: context.theme.textTheme.titleLarge?.copyWith(
                               color: Colors.white,
-                              fontSize: 20,
                             ),
                           ),
                           Text(
                             "limited_offer.description".tr(),
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: context.theme.textTheme.bodyMedium?.copyWith(
                               color: Colors.white,
-                              fontSize: 14,
                             ),
                           ),
                         ],
@@ -115,9 +88,7 @@ class LimitedOfferModal extends StatelessWidget {
                         children: [
                           Text(
                             'limited_offer.bonuses_title'.tr(),
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
+                            style: context.theme.textTheme.titleLarge?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -126,18 +97,22 @@ class LimitedOfferModal extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               __buildBonusItem(
+                                context,
                                 title: "limited_offer.bonus_jeton".tr(),
                                 icon: Assets.icons.limitedDiamond,
                               ),
                               __buildBonusItem(
+                                context,
                                 title: "limited_offer.bonus_matches".tr(),
                                 icon: Assets.icons.limitedHearts,
                               ),
                               __buildBonusItem(
+                                context,
                                 title: "limited_offer.bonus_featured".tr(),
                                 icon: Assets.icons.limitedUnknow,
                               ),
                               __buildBonusItem(
+                                context,
                                 title: "limited_offer.bonus_likes".tr(),
                                 icon: Assets.icons.limitedHeart,
                               ),
@@ -154,7 +129,9 @@ class LimitedOfferModal extends StatelessWidget {
           Flexible(
             child: Text(
               'limited_offer.unlock_message'.tr(),
-              style: const TextStyle(color: Colors.white, fontSize: 15),
+              style: context.theme.textTheme.bodyLarge?.copyWith(
+                color: Colors.white,
+              ),
             ),
           ),
           Expanded(
@@ -163,13 +140,12 @@ class LimitedOfferModal extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: RadialGradient(
                   center: Alignment.bottomCenter,
-
                   radius: 0.7,
                   colors: [
                     ColorName.appKUCrimson.withValues(alpha: 0.4),
                     ColorName.appVampireBlack.withValues(alpha: 0.1),
                   ],
-                  stops: [0.0, 1],
+                  stops: const [0.0, 1],
                 ),
               ),
               child: Column(
@@ -186,10 +162,10 @@ class LimitedOfferModal extends StatelessWidget {
                             newAmount: "330",
                             price: "₺99,99",
                             bonusPercentage: "+10%",
-                            gradient: LinearGradient(
+                            gradient: const LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
-                              colors: const [
+                              colors: [
                                 ColorName.appRosewood,
                                 ColorName.appKUCrimson,
                               ],
@@ -206,13 +182,12 @@ class LimitedOfferModal extends StatelessWidget {
                             bonusPercentageColor: ColorName.appMajorelleBlue,
                             gradient: RadialGradient(
                               center: Alignment.topLeft,
-
                               radius: 1.8,
                               colors: [
                                 ColorName.appMajorelleBlue,
                                 ColorName.appKUCrimson,
                               ],
-                              stops: [0.0, 1],
+                              stops: const [0.0, 1],
                             ),
                           ),
                         ),
@@ -222,11 +197,11 @@ class LimitedOfferModal extends StatelessWidget {
                             originalAmount: "100",
                             newAmount: "1.350",
                             price: "₺399,99",
-                            bonusPercentage: "+10%",
-                            gradient: LinearGradient(
+                            bonusPercentage: "+35%",
+                            gradient: const LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
-                              colors: const [
+                              colors: [
                                 ColorName.appRosewood,
                                 ColorName.appKUCrimson,
                               ],
@@ -274,7 +249,7 @@ class LimitedOfferModal extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: gradient,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: ColorName.appWhite, width: .4),
+            border: Border.all(color: ColorName.appWhite, width: 0.4),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -285,13 +260,12 @@ class LimitedOfferModal extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Spacer(flex: 2),
+                    const Spacer(flex: 2),
                     Flexible(
                       child: Text(
                         originalAmount,
-                        style: TextStyle(
+                        style: context.theme.textTheme.bodySmall?.copyWith(
                           color: Colors.white,
-                          fontSize: 14,
                           decoration: TextDecoration.lineThrough,
                           decorationColor: Colors.white,
                           decorationThickness: 2,
@@ -301,9 +275,8 @@ class LimitedOfferModal extends StatelessWidget {
                     Flexible(
                       child: Text(
                         newAmount,
-                        style: TextStyle(
+                        style: context.theme.textTheme.headlineSmall?.copyWith(
                           color: Colors.white,
-                          fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -311,19 +284,17 @@ class LimitedOfferModal extends StatelessWidget {
                     Flexible(
                       child: Text(
                         "limited_offer.jeton".tr(),
-                        style: const TextStyle(
+                        style: context.theme.textTheme.bodySmall?.copyWith(
                           color: Colors.white,
-                          fontSize: 14,
                         ),
                       ),
                     ),
                   ],
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Divider(color: ColorName.appWhite, thickness: .2),
+                child: Divider(color: ColorName.appWhite, thickness: 0.2),
               ),
               Expanded(
                 child: Column(
@@ -333,9 +304,8 @@ class LimitedOfferModal extends StatelessWidget {
                     Expanded(
                       child: Text(
                         price,
-                        style: TextStyle(
+                        style: context.theme.textTheme.titleMedium?.copyWith(
                           color: Colors.white,
-                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -343,9 +313,8 @@ class LimitedOfferModal extends StatelessWidget {
                     Expanded(
                       child: Text(
                         "limited_offer.per_week".tr(),
-                        style: const TextStyle(
+                        style: context.theme.textTheme.bodySmall?.copyWith(
                           color: Colors.white,
-                          fontSize: 14,
                         ),
                       ),
                     ),
@@ -357,17 +326,18 @@ class LimitedOfferModal extends StatelessWidget {
         ),
         Container(
           margin: const EdgeInsets.only(top: 16, left: 30, right: 30),
-
           height: 30,
           decoration: BoxDecoration(
             color: bonusPercentageColor ?? ColorName.appRosewood,
             borderRadius: BorderRadius.circular(24),
-            border: Border.all(color: ColorName.appWhite, width: .8),
+            border: Border.all(color: ColorName.appWhite, width: 0.8),
           ),
           child: Center(
             child: Text(
               bonusPercentage,
-              style: TextStyle(color: Colors.white, fontSize: 12),
+              style: context.theme.textTheme.bodySmall?.copyWith(
+                color: Colors.white,
+              ),
             ),
           ),
         ),
@@ -375,7 +345,8 @@ class LimitedOfferModal extends StatelessWidget {
     );
   }
 
-  Column __buildBonusItem({
+  Column __buildBonusItem(
+    BuildContext context, {
     required String title,
     required AssetGenImage icon,
   }) {
@@ -389,7 +360,7 @@ class LimitedOfferModal extends StatelessWidget {
           decoration: BoxDecoration(
             color: ColorName.appRosewood,
             borderRadius: BorderRadius.circular(25),
-            border: Border.all(color: ColorName.appWhite, width: .4),
+            border: Border.all(color: ColorName.appWhite, width: 0.4),
           ),
           child: icon.image(width: 24, height: 24),
         ),
@@ -397,9 +368,8 @@ class LimitedOfferModal extends StatelessWidget {
         Text(
           title,
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: context.theme.textTheme.bodySmall?.copyWith(
             color: Colors.white,
-            fontSize: 12,
             fontWeight: FontWeight.w500,
           ),
         ),

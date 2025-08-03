@@ -31,13 +31,13 @@ class ProfileView extends StatelessWidget {
           showBackButton: true,
           showLimitedOffer: true,
           limitedOfferText: 'profile.limited_offer'.tr(),
-          onBackPressed: () => Navigator.of(context).pop(),
+          onBackPressed: () => context.pushNamed(AppRoutes.discoverView.name),
           onLimitedOfferPressed: () {
             showModalBottomSheet(
               context: context,
               isScrollControlled: true,
               backgroundColor: Colors.transparent,
-              barrierColor: context.theme.colorScheme.surface.withValues(
+              barrierColor: context.themeRead.colorScheme.surface.withValues(
                 alpha: 0.5,
               ),
               builder:
