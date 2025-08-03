@@ -1,3 +1,4 @@
+import 'package:dating_app/core/mixins/theme_mixin.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -11,9 +12,7 @@ class RegisterHeader extends StatelessWidget {
       children: [
         Text(
           'register.welcome'.tr(),
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 32,
+          style: context.theme.textTheme.headlineLarge?.copyWith(
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -21,9 +20,8 @@ class RegisterHeader extends StatelessWidget {
         Text(
           'register.description'.tr(),
           textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white.withValues(alpha: 0.7),
-            fontSize: 16,
+          style: context.theme.textTheme.bodyLarge?.copyWith(
+            color: context.theme.colorScheme.onSurface.withValues(alpha: 0.7),
             height: 1.4,
           ),
         ),

@@ -3,6 +3,7 @@ import 'package:dating_app/app/presentation/register/state/register_state.dart';
 import 'package:dating_app/app/presentation/register/view/widgets/register_form.dart';
 import 'package:dating_app/app/presentation/register/view/widgets/register_header.dart';
 import 'package:dating_app/app/presentation/register/view/widgets/social_register_buttons.dart';
+import 'package:dating_app/core/mixins/theme_mixin.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +25,7 @@ class RegisterView extends StatelessWidget {
           }
         },
         child: Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: context.theme.scaffoldBackgroundColor,
           body: SafeArea(
             child: const SingleChildScrollView(
               padding: EdgeInsets.only(left: 24, right: 24, top: 40),
@@ -58,18 +59,16 @@ class _SignInLink extends StatelessWidget {
       children: [
         Text(
           'register.already_have_account'.tr(),
-          style: TextStyle(
-            color: Colors.white.withValues(alpha: 0.7),
-            fontSize: 14,
+          style: context.theme.textTheme.bodySmall?.copyWith(
+            color: context.theme.colorScheme.onSurface.withValues(alpha: 0.7),
           ),
         ),
+        const SizedBox(width: 8),
         GestureDetector(
           onTap: () => context.read<RegisterCubit>().onSignIn(context),
           child: Text(
             'register.sign_in'.tr(),
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 14,
+            style: context.theme.textTheme.bodySmall?.copyWith(
               fontWeight: FontWeight.bold,
             ),
           ),

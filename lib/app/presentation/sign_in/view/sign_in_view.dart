@@ -82,29 +82,26 @@ class SignUpSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: RichText(
-        text: TextSpan(
-          style: context.theme.textTheme.titleSmall,
-          children: [
-            TextSpan(text: 'sign_in.no_account'.tr()),
-            const WidgetSpan(child: SizedBox(width: 4)),
-            WidgetSpan(
-              alignment: PlaceholderAlignment.middle,
-              child: GestureDetector(
-                onTap: () => context.read<SignInCubit>().onSignUp(context),
-                child: Text(
-                  'sign_in.sign_up'.tr(),
-                  style: context.theme.textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-            ),
-          ],
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          'register.already_have_account'.tr(),
+          style: context.theme.textTheme.bodySmall?.copyWith(
+            color: context.theme.colorScheme.onSurface.withValues(alpha: 0.7),
+          ),
         ),
-      ),
+        const SizedBox(width: 8),
+        GestureDetector(
+          onTap: () => context.read<SignInCubit>().onSignUp(context),
+          child: Text(
+            'sign_in.sign_up'.tr(),
+            style: context.theme.textTheme.bodySmall?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

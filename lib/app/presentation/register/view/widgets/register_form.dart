@@ -2,6 +2,7 @@ import 'package:dating_app/app/components/buttons/custom_button.dart';
 import 'package:dating_app/app/components/form_fields/custom_text_form_field.dart';
 import 'package:dating_app/app/presentation/register/cubit/register_cubit.dart';
 import 'package:dating_app/app/presentation/register/state/register_state.dart';
+import 'package:dating_app/core/mixins/theme_mixin.dart';
 import 'package:dating_app/gen/colors.gen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
@@ -96,19 +97,28 @@ class _TermsAndConditions extends StatelessWidget {
             width: 20,
             height: 20,
             decoration: BoxDecoration(
-              color: state.isTermsAccepted ? Colors.red : Colors.transparent,
+              color:
+                  state.isTermsAccepted
+                      ? context.theme.colorScheme.primary
+                      : Colors.transparent,
               border: Border.all(
                 color:
                     state.isTermsAccepted
-                        ? Colors.red
-                        : Colors.white.withValues(alpha: 0.3),
+                        ? context.theme.colorScheme.primary
+                        : context.theme.colorScheme.onSurface.withValues(
+                          alpha: 0.3,
+                        ),
                 width: 2,
               ),
               borderRadius: BorderRadius.circular(4),
             ),
             child:
                 state.isTermsAccepted
-                    ? const Icon(Icons.check, color: Colors.white, size: 14)
+                    ? Icon(
+                      Icons.check,
+                      color: context.theme.colorScheme.onPrimary,
+                      size: 14,
+                    )
                     : null,
           ),
         ),
@@ -116,16 +126,16 @@ class _TermsAndConditions extends StatelessWidget {
         Expanded(
           child: RichText(
             text: TextSpan(
-              style: TextStyle(
-                color: Colors.white.withValues(alpha: 0.7),
-                fontSize: 14,
+              style: context.theme.textTheme.bodySmall?.copyWith(
+                color: context.theme.colorScheme.onSurface.withValues(
+                  alpha: 0.7,
+                ),
               ),
               children: [
                 TextSpan(text: 'register.terms_title'.tr()),
                 TextSpan(
                   text: 'register.terms_accepted'.tr(),
-                  style: const TextStyle(
-                    color: Colors.white,
+                  style: context.theme.textTheme.bodySmall?.copyWith(
                     fontWeight: FontWeight.bold,
                     decoration: TextDecoration.underline,
                   ),
