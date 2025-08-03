@@ -8,10 +8,10 @@ import 'package:dating_app/app/data/model/sign_in/sign_in.dart';
 import 'package:dating_app/app/presentation/profile/cubit/profile_cubit.dart';
 import 'package:dating_app/app/presentation/profile/state/profile_state.dart';
 import 'package:dating_app/app/presentation/profile/view/widgets/limited_offer_modal.dart';
+import 'package:dating_app/core/mixins/theme_mixin.dart';
 import 'package:dating_app/core/navigation/app_routes.dart';
 import 'package:dating_app/core/result_state_builder/result_state_builder.dart';
 import 'package:dating_app/core/utility/cache/cache_manager.dart';
-import 'package:dating_app/gen/colors.gen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,7 +37,9 @@ class ProfileView extends StatelessWidget {
               context: context,
               isScrollControlled: true,
               backgroundColor: Colors.transparent,
-              barrierColor: Colors.black.withValues(alpha: 0.5),
+              barrierColor: context.theme.colorScheme.surface.withValues(
+                alpha: 0.5,
+              ),
               builder:
                   (context) => BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
@@ -46,7 +48,7 @@ class ProfileView extends StatelessWidget {
             );
           },
         ),
-        backgroundColor: ColorName.appBlack,
+        backgroundColor: context.theme.scaffoldBackgroundColor,
         body: Stack(
           children: [
             Padding(
@@ -77,68 +79,60 @@ class ProfileView extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.zero,
-      child: ListTile(
-        contentPadding: EdgeInsets.zero,
-        leading: ValueListenableBuilder(
-          valueListenable: HiveHelper.shared.listenable<SignIn>(
-            boxName: HiveHelper.signInBoxKey,
-          ),
-          builder: (BuildContext context, value, Widget? child) {
-            final photoUrl = value.values.first.photoUrl;
-
-            return ClipRRect(
-              borderRadius: BorderRadius.circular(30),
-              child: cachedNetworkImage(
-                photoUrl ?? "",
-                fit: BoxFit.fill,
-                width: 50,
-                height: 50,
-              ),
-            );
-
-            /**
-             *  SizedBox(
-              width: 100,
-              height: 100,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(50),
+      child: ValueListenableBuilder(
+        valueListenable: HiveHelper.shared.listenable<SignIn>(
+          boxName: HiveHelper.signInBoxKey,
+        ),
+        builder:
+            (BuildContext context, value, Widget? child) => ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: ClipRRect(
+                borderRadius: BorderRadius.circular(30),
                 child: cachedNetworkImage(
-                  photoUrl ?? "",
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
+                  value.values.first.photoUrl ?? "",
+                  fit: BoxFit.fill,
+                  width: 50,
+                  height: 50,
                 ),
               ),
-            );
-             */
-          },
-        ),
-        title: const Text(
-          'Ayça Aydoğan',
-          style: TextStyle(color: Colors.white),
-        ),
-        subtitle: Text(
-          'ID: 245677',
-          style: TextStyle(color: Colors.white.withValues(alpha: 0.5)),
-        ),
-        trailing: ElevatedButton(
-          onPressed: () {
-            context.pushNamed(AppRoutes.createProfilePictureView.name);
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: ColorName.appKUCrimson,
-            foregroundColor: ColorName.appWhite,
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
+              title: Text(
+                value.values.first.name ?? "",
+                style: context.theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subtitle: Text(
+                'ID: ${value.values.first.id}',
+                style: context.theme.textTheme.bodySmall?.copyWith(
+                  color: context.theme.colorScheme.onSurface.withValues(
+                    alpha: 0.5,
+                  ),
+                ),
+              ),
+              trailing: ElevatedButton(
+                onPressed: () {
+                  context.pushNamed(AppRoutes.createProfilePictureView.name);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: context.theme.colorScheme.primary,
+                  foregroundColor: context.theme.colorScheme.onPrimary,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ),
+                ),
+                child: Text(
+                  'profile.add_photo'.tr(),
+                  style: context.theme.textTheme.bodySmall?.copyWith(
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          ),
-          child: Text(
-            'profile.add_photo'.tr(),
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-          ),
-        ),
       ),
     );
   }
@@ -154,9 +148,7 @@ class ProfileView extends StatelessWidget {
                 children: [
                   Text(
                     'profile.liked_movies'.tr(),
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
+                    style: context.theme.textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -168,8 +160,7 @@ class ProfileView extends StatelessWidget {
                             crossAxisCount: 2,
                             mainAxisSpacing: 10,
                             crossAxisSpacing: 10,
-                            childAspectRatio:
-                                0.6, // Yüksekliği artırdığımız için oranı düşürdük
+                            childAspectRatio: 0.6,
                           ),
                       itemCount: data?.data?.length ?? 0,
                       itemBuilder: (context, index) {
@@ -230,9 +221,7 @@ class ProfileView extends StatelessWidget {
                       color: Colors.transparent,
                       child: Text(
                         movie.title ?? "",
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
+                        style: context.theme.textTheme.bodyMedium?.copyWith(
                           fontWeight: FontWeight.w600,
                         ),
                         maxLines: 1,
@@ -243,9 +232,10 @@ class ProfileView extends StatelessWidget {
                   const SizedBox(height: 2),
                   Text(
                     movie.director ?? "",
-                    style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.7),
-                      fontSize: 10,
+                    style: context.theme.textTheme.labelSmall?.copyWith(
+                      color: context.theme.colorScheme.onSurface.withValues(
+                        alpha: 0.7,
+                      ),
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

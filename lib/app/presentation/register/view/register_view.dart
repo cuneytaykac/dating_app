@@ -25,7 +25,6 @@ class RegisterView extends StatelessWidget {
           }
         },
         child: Scaffold(
-          backgroundColor: context.theme.scaffoldBackgroundColor,
           body: SafeArea(
             child: const SingleChildScrollView(
               padding: EdgeInsets.only(left: 24, right: 24, top: 40),
