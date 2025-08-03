@@ -1,6 +1,7 @@
 import 'package:dating_app/app/data/datasource/local/local_signin/i_local_signin_service.dart';
 import 'package:dating_app/app/data/datasource/remote/sign_in/i_sign_in_service.dart';
 import 'package:dating_app/app/data/model/sign_in/sign_in.dart';
+import 'package:dating_app/core/error/view_error.dart';
 import 'package:dating_app/core/getIt/injection.dart';
 import 'package:dating_app/core/navigation/app_routes.dart';
 import 'package:dating_app/core/utility/snackbar/snackbar_manager.dart';
@@ -91,11 +92,13 @@ class SignInCubit extends Cubit<SignInState> {
         emit(
           state.copyWith(
             isLoading: false,
-            generalError: error.localizedErrorMessage,
+            generalError: error.handleError.response?.message,
           ),
         );
         // Hata snackbar'ı göster
-        _showErrorSnackbar(error.localizedErrorMessage ?? 'An error occurred');
+        _showErrorSnackbar(
+          error.handleError.response?.message ?? 'An error occurred',
+        );
       },
     );
   }

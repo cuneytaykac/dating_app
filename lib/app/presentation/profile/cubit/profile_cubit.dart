@@ -1,6 +1,7 @@
 import 'package:dating_app/app/data/datasource/remote/movie/i_movie_service.dart';
 import 'package:dating_app/app/presentation/profile/state/profile_state.dart';
 import 'package:dating_app/app/presentation/profile/view/widgets/empty_favorites_widget.dart';
+import 'package:dating_app/core/error/view_error.dart';
 import 'package:dating_app/core/getIt/injection.dart';
 import 'package:dating_app/core/results/view_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,7 +32,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       failure: (error) {
         emit(
           state.copyWith(
-            getFavorites: ViewState.failed(error.localizedErrorMessage),
+            getFavorites: ViewState.failed(error.handleError.response?.message),
           ),
         );
       },

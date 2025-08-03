@@ -4,21 +4,42 @@ import 'package:dating_app/core/base/base_network_error_type.dart';
 import 'package:dating_app/core/network/interfaces/base_network_model.dart';
 
 class ViewError implements BaseNetworkModel<ViewError>, Exception {
-  bool? success;
-  String? message;
-  ViewError({required this.message, this.success});
+  Response? response;
+
+  ViewError({this.response});
 
   ViewError.fromJson(Map<String, dynamic> json) {
-    success = json['success'];
+    response =
+        json['response'] != null ? Response.fromJson(json['response']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (response != null) {
+      data['response'] = response!.toJson();
+    }
+    return data;
+  }
+
+  @override
+  ViewError fromJson(Map<String, dynamic> json) => ViewError.fromJson(json);
+}
+
+class Response {
+  int? code;
+  String? message;
+
+  Response({this.code, this.message});
+
+  Response.fromJson(Map<String, dynamic> json) {
+    code = json['code'];
     message = json['message'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-
+    data['code'] = code;
     data['message'] = message;
-    data['success'] = success;
-
     return data;
   }
 
@@ -31,21 +52,27 @@ extension ViewErrorExtension on BaseNetworkErrorType {
     request: (error) {
       if (error.response?.data == null) {
         final decode = ViewError(
-          message: "Sunucudan kaynaklı beklenmedik bir hata olustu.",
-          success: false,
+          response: Response(
+            code: 500,
+            message: "Sunucudan kaynaklı beklenmedik bir hata olustu.",
+          ),
         );
         return decode;
       } else {
         if (error.response?.statusCode == 503 ||
             error.response?.statusCode == 502) {
           return ViewError(
-            message: error.response?.statusMessage,
-            success: false,
+            response: Response(
+              code: error.response?.statusCode,
+              message: error.response?.statusMessage,
+            ),
           );
         } else if (error.response?.statusCode == -1) {
           return ViewError(
-            message: "Status Kodu Hatalı ${error.response?.statusCode}",
-            success: false,
+            response: Response(
+              code: error.response?.statusCode,
+              message: "Status Kodu Hatalı ${error.response?.statusCode}",
+            ),
           );
         } else {
           final decode = ViewError.fromJson(error.response?.data);
@@ -53,7 +80,8 @@ extension ViewErrorExtension on BaseNetworkErrorType {
         }
       }
     },
-    type: (error) => ViewError(message: error, success: false),
-    connectivity: (error) => ViewError(message: error, success: false),
+    type: (error) => ViewError(response: Response(code: 500, message: error)),
+    connectivity:
+        (error) => ViewError(response: Response(code: 500, message: error)),
   );
 }

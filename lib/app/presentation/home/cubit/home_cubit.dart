@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dating_app/app/data/datasource/remote/movie/i_movie_service.dart';
 import 'package:dating_app/app/presentation/home/state/home_state.dart';
 import 'package:dating_app/app/presentation/home/widgets/empty_movies_widget.dart';
+import 'package:dating_app/core/error/view_error.dart';
 import 'package:dating_app/core/getIt/injection.dart';
 import 'package:dating_app/core/results/view_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -105,10 +106,10 @@ class HomeCubit extends Cubit<HomeState> {
         );
       },
       failure: (error) {
-        log('Failure response - error: ${error.localizedErrorMessage}');
+        log('Failure response - error: ${error.handleError.response?.message}');
         emit(
           state.copyWith(
-            movieList: ViewState.failed(error.localizedErrorMessage),
+            movieList: ViewState.failed(error.handleError.response?.message),
           ),
         );
       },

@@ -1,5 +1,6 @@
 import 'package:dating_app/app/data/datasource/remote/movie/i_movie_service.dart';
 import 'package:dating_app/app/presentation/movie_detail/state/movie_detail_state.dart';
+import 'package:dating_app/core/error/view_error.dart';
 import 'package:dating_app/core/getIt/injection.dart';
 import 'package:dating_app/core/results/view_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +23,7 @@ class MovieDetailCubit extends Cubit<MovieDetailState> {
       failure: (error) {
         emit(
           state.copyWith(
-            movieDetail: ViewState.failed(error.localizedErrorMessage),
+            movieDetail: ViewState.failed(error.handleError.response?.message),
           ),
         );
       },

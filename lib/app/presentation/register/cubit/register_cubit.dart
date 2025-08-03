@@ -1,5 +1,6 @@
 import 'package:dating_app/app/data/datasource/local/local_signin/i_local_signin_service.dart';
 import 'package:dating_app/app/data/datasource/remote/register/i_register_service.dart';
+import 'package:dating_app/core/error/view_error.dart';
 import 'package:dating_app/core/getIt/injection.dart';
 import 'package:dating_app/core/navigation/app_routes.dart';
 import 'package:dating_app/core/utility/snackbar/snackbar_manager.dart';
@@ -153,12 +154,12 @@ class RegisterCubit extends Cubit<RegisterState> {
         emit(
           state.copyWith(
             isLoading: false,
-            generalError: error.localizedErrorMessage,
+            generalError: error.handleError.response?.message,
           ),
         );
         showErrorSnackbar(
           context,
-          error.localizedErrorMessage ?? 'register.unknown_error'.tr(),
+          error.handleError.response?.message ?? 'register.unknown_error'.tr(),
         );
       },
     );
