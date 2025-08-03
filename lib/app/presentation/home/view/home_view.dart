@@ -29,7 +29,7 @@ class HomeView extends StatelessWidget {
           title: 'home.title'.tr(),
           backgroundColor: ColorName.appBlack,
         ),
-        backgroundColor: ColorName.appBlack,
+
         body: Stack(
           children: [
             BlocBuilder<HomeCubit, HomeState>(

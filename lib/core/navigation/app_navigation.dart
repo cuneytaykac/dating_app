@@ -26,7 +26,7 @@ final class AppNavigation {
       final localSigninService = getIt<ILocalSigninService>();
       final token = await localSigninService.getToken();
 
-      final bool hasValidToken = token.isNotEmpty;
+      final bool hasValidToken = token.isEmpty;
 
       final bool isOnSignInPage =
           state.matchedLocation == AppRoutes.signInView.path;

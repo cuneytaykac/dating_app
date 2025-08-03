@@ -1,3 +1,4 @@
+import 'package:dating_app/core/mixins/theme_mixin.dart';
 import 'package:dating_app/gen/assets.gen.dart';
 import 'package:dating_app/gen/colors.gen.dart';
 import 'package:flutter/material.dart';
@@ -57,11 +58,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               : null,
       title: Text(
         title,
-        style: TextStyle(
+        style: context.theme.textTheme.headlineSmall?.copyWith(),
+        /*TextStyle(
           color: titleColor ?? ColorName.appWhite,
           fontSize: 18,
           fontWeight: FontWeight.w600,
-        ),
+        ),*/
       ),
       centerTitle: true,
       actions: [

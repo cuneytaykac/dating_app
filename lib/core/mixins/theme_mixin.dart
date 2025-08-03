@@ -1,13 +1,10 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../theme/core/theme_manager.dart';
 
-mixin ThemeMixin<T extends StatefulWidget> on State<T> {
-  ThemeManager get currentTheme => context.watch<ThemeManager>();
-}
+extension ThemeContextExtension on BuildContext {
+  ThemeManager get themeManager => watch<ThemeManager>();
 
-mixin ThemeMixinStateless<T extends StatelessWidget> {
-  ThemeManager currentTheme(BuildContext context) =>
-      context.watch<ThemeManager>();
+  ThemeData get theme => themeManager.state.currentTheme.theme;
 }

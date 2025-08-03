@@ -1,5 +1,6 @@
 import 'package:dating_app/app/presentation/sign_in/view/widgets/sign_in_form.dart';
 import 'package:dating_app/app/presentation/sign_in/view/widgets/social_sign_in_buttons.dart';
+import 'package:dating_app/core/mixins/theme_mixin.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,7 +50,6 @@ class _SignInViewBody extends StatelessWidget {
     final isKeyboardVisible = keyboardHeight > 0;
 
     return Scaffold(
-      backgroundColor: Colors.black,
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Padding(
@@ -85,16 +85,17 @@ class SignUpSection extends StatelessWidget {
     return Center(
       child: RichText(
         text: TextSpan(
-          style: const TextStyle(color: Colors.white, fontSize: 16),
+          style: context.theme.textTheme.titleSmall,
           children: [
             TextSpan(text: 'sign_in.no_account'.tr()),
+            const WidgetSpan(child: SizedBox(width: 4)),
             WidgetSpan(
+              alignment: PlaceholderAlignment.middle,
               child: GestureDetector(
                 onTap: () => context.read<SignInCubit>().onSignUp(context),
                 child: Text(
                   'sign_in.sign_up'.tr(),
-                  style: const TextStyle(
-                    color: Colors.white,
+                  style: context.theme.textTheme.titleSmall?.copyWith(
                     fontWeight: FontWeight.bold,
                     decoration: TextDecoration.underline,
                   ),

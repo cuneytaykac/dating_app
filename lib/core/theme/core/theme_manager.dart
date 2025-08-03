@@ -60,8 +60,8 @@ class ThemeManager extends Cubit<ThemeState> {
       } else {
         emit(
           state.copyWith(
-            themeType: ThemeType.light,
-            currentTheme: LightTheme(),
+            themeType: ThemeType.dark,
+            currentTheme: DarkTheme(),
             isLoading: false,
           ),
         );

@@ -19,6 +19,62 @@ class $AssetsColorGen {
   List<String> get values => [colors];
 }
 
+class $AssetsFontsGen {
+  const $AssetsFontsGen();
+
+  /// File path: assets/fonts/Euclid Circular A Bold Italic.ttf
+  String get euclidCircularABoldItalic =>
+      'assets/fonts/Euclid Circular A Bold Italic.ttf';
+
+  /// File path: assets/fonts/Euclid Circular A Bold.ttf
+  String get euclidCircularABold => 'assets/fonts/Euclid Circular A Bold.ttf';
+
+  /// File path: assets/fonts/Euclid Circular A Italic.ttf
+  String get euclidCircularAItalic =>
+      'assets/fonts/Euclid Circular A Italic.ttf';
+
+  /// File path: assets/fonts/Euclid Circular A Light Italic.ttf
+  String get euclidCircularALightItalic =>
+      'assets/fonts/Euclid Circular A Light Italic.ttf';
+
+  /// File path: assets/fonts/Euclid Circular A Light.ttf
+  String get euclidCircularALight => 'assets/fonts/Euclid Circular A Light.ttf';
+
+  /// File path: assets/fonts/Euclid Circular A Medium Italic.ttf
+  String get euclidCircularAMediumItalic =>
+      'assets/fonts/Euclid Circular A Medium Italic.ttf';
+
+  /// File path: assets/fonts/Euclid Circular A Medium.ttf
+  String get euclidCircularAMedium =>
+      'assets/fonts/Euclid Circular A Medium.ttf';
+
+  /// File path: assets/fonts/Euclid Circular A Regular.ttf
+  String get euclidCircularARegular =>
+      'assets/fonts/Euclid Circular A Regular.ttf';
+
+  /// File path: assets/fonts/Euclid Circular A SemiBold Italic.ttf
+  String get euclidCircularASemiBoldItalic =>
+      'assets/fonts/Euclid Circular A SemiBold Italic.ttf';
+
+  /// File path: assets/fonts/Euclid Circular A SemiBold.ttf
+  String get euclidCircularASemiBold =>
+      'assets/fonts/Euclid Circular A SemiBold.ttf';
+
+  /// List of all assets
+  List<String> get values => [
+        euclidCircularABoldItalic,
+        euclidCircularABold,
+        euclidCircularAItalic,
+        euclidCircularALightItalic,
+        euclidCircularALight,
+        euclidCircularAMediumItalic,
+        euclidCircularAMedium,
+        euclidCircularARegular,
+        euclidCircularASemiBoldItalic,
+        euclidCircularASemiBold
+      ];
+}
+
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
@@ -117,6 +173,7 @@ class Assets {
   const Assets._();
 
   static const $AssetsColorGen color = $AssetsColorGen();
+  static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLocalizableGen localizable = $AssetsLocalizableGen();

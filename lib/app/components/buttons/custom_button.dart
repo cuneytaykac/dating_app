@@ -1,3 +1,4 @@
+import 'package:dating_app/core/mixins/theme_mixin.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -54,7 +55,7 @@ class CustomButton extends StatelessWidget {
                 )
                 : Text(
                   text,
-                  style: TextStyle(
+                  style: context.theme.textTheme.titleMedium?.copyWith(
                     fontSize: fontSize,
                     fontWeight: fontWeight,
                     color: textColor,

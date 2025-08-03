@@ -67,7 +67,13 @@ class CodegenLoader extends AssetLoader{
     "empty_title": "Film Koleksiyonu Boş",
     "empty_description": "Henüz hiç film eklenmemiş.\nYakında harika filmlerle tanışacaksın!",
     "refresh": "Yenile",
-    "all_movies_loaded": "Tüm filmler yüklendi"
+    "all_movies_loaded": "Tüm filmler yüklendi",
+    "movie_title_default": "Film Başlığı",
+    "view_details": "Detayları Gör"
+  },
+  "navigation": {
+    "home": "Ana Sayfa",
+    "profile": "Profil"
   },
   "photo_picker": {
     "camera": "Kamera",
@@ -80,6 +86,29 @@ class CodegenLoader extends AssetLoader{
     "permission_required": "Kamera veya galeri izni gerekli",
     "camera_not_available": "Kamera erişimi şu anda kullanılamıyor. Lütfen tekrar deneyin.",
     "ok": "Tamam"
+  },
+  "no_connection": {
+    "title": "İnternet Bağlantısı Yok",
+    "description": "Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin."
+  },
+  "profile": {
+    "title": "Profil Detayı",
+    "limited_offer": "Sınırlı Teklif",
+    "add_photo": "Fotoğraf Ekle",
+    "liked_movies": "Beğendiğim Filmler"
+  },
+  "limited_offer": {
+    "title": "Sınırlı Teklif",
+    "description": "Jeton paketin'ni seçerek bonus kazanın ve yeni bölümlerin kilidini açın!",
+    "bonuses_title": "Alacağınız Bonuslar",
+    "bonus_jeton": "1000 Jeton",
+    "bonus_matches": "Daha Fazla Eşleşme",
+    "bonus_featured": "Öne Çıkma",
+    "bonus_likes": "Daha Fazla Begeni",
+    "unlock_message": "Kilidi açmak için bir jeton paketi seçin",
+    "view_all_jetons": "Tüm Jetonları Gör",
+    "jeton": "Jeton",
+    "per_week": "Başına haftalık"
   },
   "profile_picture": {
     "title": "Profil Detay",
@@ -164,7 +193,36 @@ static const Map<String,dynamic> _en = {
     "empty_title": "Movie Collection Empty",
     "empty_description": "No movies have been added yet.\nYou'll meet great movies soon!",
     "refresh": "Refresh",
-    "all_movies_loaded": "All movies loaded"
+    "all_movies_loaded": "All movies loaded",
+    "movie_title_default": "Movie Title",
+    "view_details": "View Details"
+  },
+  "navigation": {
+    "home": "Home",
+    "profile": "Profile"
+  },
+  "no_connection": {
+    "title": "No Internet Connection",
+    "description": "Please check your internet connection and try again."
+  },
+  "profile": {
+    "title": "Profile Details",
+    "limited_offer": "Limited Offer",
+    "add_photo": "Add Photo",
+    "liked_movies": "My Liked Movies"
+  },
+  "limited_offer": {
+    "title": "Limited Offer",
+    "description": "Choose your token package to earn bonuses and unlock new episodes!",
+    "bonuses_title": "Bonuses You'll Get",
+    "bonus_jeton": "1000 Tokens",
+    "bonus_matches": "More Matches",
+    "bonus_featured": "Featured",
+    "bonus_likes": "More Likes",
+    "unlock_message": "Select a token package to unlock",
+    "view_all_jetons": "View All Tokens",
+    "jeton": "Tokens",
+    "per_week": "per week"
   },
   "photo_picker": {
     "camera": "Camera",

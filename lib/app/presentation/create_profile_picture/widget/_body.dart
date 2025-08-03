@@ -9,8 +9,9 @@ SafeArea _body() {
           return Column(
             spacing: 24,
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildHeader(),
+              _buildHeader(context),
               if (state.isLoading)
                 _buildLoadingAnimation()
               else

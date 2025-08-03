@@ -1,3 +1,4 @@
+import 'package:dating_app/core/mixins/theme_mixin.dart';
 import 'package:flutter/material.dart';
 
 class SocialButton extends StatelessWidget {
@@ -28,7 +29,7 @@ class SocialButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor ?? Colors.grey[800],
+          backgroundColor: backgroundColor ?? context.theme.colorScheme.surface,
           elevation: elevation,
           shadowColor: Colors.transparent,
           shape: RoundedRectangleBorder(
@@ -40,7 +41,9 @@ class SocialButton extends StatelessWidget {
                   ? BorderSide(width: 2, color: borderColor!)
                   : BorderSide(
                     width: 2,
-                    color: Colors.white.withValues(alpha: 0.2),
+                    color: context.theme.colorScheme.onSurface.withValues(
+                      alpha: 0.2,
+                    ),
                   ),
         ),
         child: icon,

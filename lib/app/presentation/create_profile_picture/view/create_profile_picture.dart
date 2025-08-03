@@ -5,6 +5,7 @@ import 'package:dating_app/app/components/buttons/custom_button.dart';
 import 'package:dating_app/app/components/photo_picker/photo_picker_widget.dart';
 import 'package:dating_app/app/presentation/create_profile_picture/cubit/create_profile_picture_cubit.dart';
 import 'package:dating_app/app/presentation/create_profile_picture/state/create_profile_picture_state.dart';
+import 'package:dating_app/core/mixins/theme_mixin.dart';
 import 'package:dating_app/gen/colors.gen.dart';
 import 'package:dating_app/gen/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -35,7 +36,6 @@ class _CreateProfilePictureViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorName.appBlack,
         appBar: CustomAppBar(title: LocaleKeys.profile_picture_title.tr()),
         bottomNavigationBar: _buildContinueButton(context),
         body: _body(),

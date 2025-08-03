@@ -38,14 +38,6 @@ class SignInForm extends StatelessWidget {
       textInputAction: TextInputAction.next,
       onChanged: context.read<SignInCubit>().onEmailChanged,
       errorText: state.emailError,
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: Colors.blue),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: Colors.blue),
-      ),
     );
   }
 

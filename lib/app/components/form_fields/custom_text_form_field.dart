@@ -1,3 +1,4 @@
+import 'package:dating_app/core/mixins/theme_mixin.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -44,11 +45,16 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: labelText,
         prefixIcon:
-            prefixIcon != null ? Icon(prefixIcon, color: Colors.white) : null,
+            prefixIcon != null
+                ? Icon(prefixIcon, color: context.theme.colorScheme.onSurface)
+                : null,
         suffixIcon:
             suffixIcon != null
                 ? IconButton(
-                  icon: Icon(suffixIcon, color: Colors.white),
+                  icon: Icon(
+                    suffixIcon,
+                    color: context.theme.colorScheme.onSurface,
+                  ),
                   onPressed: onSuffixIconPressed,
                 )
                 : null,
@@ -57,25 +63,31 @@ class CustomTextFormField extends StatelessWidget {
             enabledBorder ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Colors.grey[600]!),
+              borderSide: BorderSide(color: context.theme.colorScheme.outline),
             ),
         focusedBorder:
             focusedBorder ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Colors.grey[600]!),
+              borderSide: BorderSide(color: context.theme.colorScheme.primary),
             ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: context.theme.colorScheme.error),
         ),
         errorText: errorText,
         filled: true,
-        fillColor: Colors.grey[900],
-        labelStyle: const TextStyle(color: Colors.white),
-        floatingLabelStyle: const TextStyle(color: Colors.white),
+        fillColor: context.theme.colorScheme.surface,
+        labelStyle: context.theme.textTheme.bodyMedium?.copyWith(
+          color: context.theme.colorScheme.onSurface,
+        ),
+        floatingLabelStyle: context.theme.textTheme.bodyMedium?.copyWith(
+          color: context.theme.colorScheme.primary,
+        ),
       ),
-      style: const TextStyle(color: Colors.white),
+      style: context.theme.textTheme.bodyMedium?.copyWith(
+        color: context.theme.colorScheme.onSurface,
+      ),
     );
   }
 }
