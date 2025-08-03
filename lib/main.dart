@@ -20,10 +20,10 @@ class MyHttpOverrides extends HttpOverrides {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   HttpOverrides.global = MyHttpOverrides();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await ProjectInitialize.shared
-      .initialize(); // Firebase Initialize using the FirebaseInitializer
+  await ProjectInitialize.shared.initialize();
   runApp(
     EasyLocalization(
       path: EasyLocalizationManager.path,
@@ -34,9 +34,7 @@ void main() async {
   );
 }
 
-/// The main app.
 class MyApp extends StatelessWidget {
-  /// Constructs a [MyApp]
   const MyApp({super.key});
 
   @override

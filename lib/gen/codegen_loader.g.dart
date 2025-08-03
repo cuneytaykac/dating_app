@@ -84,6 +84,24 @@ class CodegenLoader extends AssetLoader{
     "upload_success": "Profil fotoğrafı başarıyla yüklendi",
     "upload_error": "Profil fotoğrafı yüklenirken bir hata oluştu",
     "upload_error_message": "Fotoğraf yüklenirken bir hata oluştu. Lütfen tekrar deneyin."
+  },
+  "favorites": {
+    "empty_title": "Henüz favori filminiz yok",
+    "empty_description": "Beğendiğiniz filmleri favorilere ekleyerek burada görebilirsiniz",
+    "discover_movies": "Film Keşfet"
+  },
+  "movie_detail": {
+    "movie_title": "Film Adı",
+    "genre": "Tür",
+    "director": "Yönetmen",
+    "writer": "Senaryo",
+    "actors": "Oyuncular",
+    "country": "Ülke",
+    "language": "Dil",
+    "summary": "Özet",
+    "cast": "Oyuncular",
+    "watch": "İzle",
+    "rating_out_of": "/10"
   }
 };
 static const Map<String,dynamic> _en = {
@@ -156,6 +174,24 @@ static const Map<String,dynamic> _en = {
     "upload_success": "Profile photo uploaded successfully",
     "upload_error": "An error occurred while uploading profile photo",
     "upload_error_message": "An error occurred while uploading the photo. Please try again."
+  },
+  "favorites": {
+    "empty_title": "You don't have any favorite movies yet",
+    "empty_description": "Add movies you like to your favorites to see them here",
+    "discover_movies": "Discover Movies"
+  },
+  "movie_detail": {
+    "movie_title": "Movie Title",
+    "genre": "Genre",
+    "director": "Director",
+    "writer": "Writer",
+    "actors": "Actors",
+    "country": "Country",
+    "language": "Language",
+    "summary": "Summary",
+    "cast": "Cast",
+    "watch": "Watch",
+    "rating_out_of": "/10"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"tr": _tr, "en": _en};

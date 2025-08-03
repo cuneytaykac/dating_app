@@ -85,12 +85,19 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/app_logo.png
+  AssetGenImage get appLogo =>
+      const AssetGenImage('assets/images/app_logo.png');
+
   /// File path: assets/images/discovery_background.png
   AssetGenImage get discoveryBackground =>
       const AssetGenImage('assets/images/discovery_background.png');
 
+  /// File path: assets/images/splash.png
+  AssetGenImage get splash => const AssetGenImage('assets/images/splash.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [discoveryBackground];
+  List<AssetGenImage> get values => [appLogo, discoveryBackground, splash];
 }
 
 class $AssetsLocalizableGen {
