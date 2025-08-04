@@ -28,11 +28,6 @@ Modern ve kullanıcı dostu bir Flutter tabanlı film ve dizi streaming uygulama
 - **Akıllı Öneriler**: Kişiselleştirilmiş içerik önerileri
 - **Trend İçerikler**: Popüler film ve diziler
 
-### 💎 Premium Özellikler
-- **Jeton Sistemi**: Premium içerik için jeton paketleri
-- **Sınırlı Teklifler**: Özel bonus ve avantajlar
-- **Premium Paketler**: Farklı fiyat seviyelerinde paketler
-- **Reklamsız İzleme**: Premium üyelik avantajları
 
 ### 🌍 Çok Dilli Destek
 - **Türkçe**: Tam Türkçe desteği
