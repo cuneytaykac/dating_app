@@ -6,8 +6,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:moon_extension/moon_extension.dart';
 
-class LimitedOfferModal extends StatelessWidget {
+class LimitedOfferModal extends StatefulWidget {
   const LimitedOfferModal({super.key});
+
+  @override
+  State<LimitedOfferModal> createState() => _LimitedOfferModalState();
+}
+
+class _LimitedOfferModalState extends State<LimitedOfferModal> {
+  int _selectedPackageIndex = 1; // Varsayılan olarak orta paketi seç
 
   @override
   Widget build(BuildContext context) {
@@ -156,55 +163,70 @@ class LimitedOfferModal extends StatelessWidget {
                       spacing: 10,
                       children: [
                         Expanded(
-                          child: _buildPackageSelectionSection(
-                            context,
-                            originalAmount: "200",
-                            newAmount: "330",
-                            price: "₺99,99",
-                            bonusPercentage: "+10%",
-                            gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                ColorName.appRosewood,
-                                ColorName.appKUCrimson,
-                              ],
+                          child: GestureDetector(
+                            onTap:
+                                () => setState(() => _selectedPackageIndex = 0),
+                            child: _buildPackageSelectionSection(
+                              context,
+                              index: 0,
+                              originalAmount: "200",
+                              newAmount: "330",
+                              price: "₺99,99",
+                              bonusPercentage: "+10%",
+                              gradient: const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  ColorName.appRosewood,
+                                  ColorName.appKUCrimson,
+                                ],
+                              ),
                             ),
                           ),
                         ),
                         Expanded(
-                          child: _buildPackageSelectionSection(
-                            context,
-                            originalAmount: "2000",
-                            newAmount: "3.375",
-                            price: "₺799,99",
-                            bonusPercentage: "+70%",
-                            bonusPercentageColor: ColorName.appMajorelleBlue,
-                            gradient: RadialGradient(
-                              center: Alignment.topLeft,
-                              radius: 1.8,
-                              colors: [
-                                ColorName.appMajorelleBlue,
-                                ColorName.appKUCrimson,
-                              ],
-                              stops: const [0.0, 1],
+                          child: GestureDetector(
+                            onTap:
+                                () => setState(() => _selectedPackageIndex = 1),
+                            child: _buildPackageSelectionSection(
+                              context,
+                              index: 1,
+                              originalAmount: "2000",
+                              newAmount: "3.375",
+                              price: "₺799,99",
+                              bonusPercentage: "+70%",
+                              bonusPercentageColor: ColorName.appMajorelleBlue,
+                              gradient: RadialGradient(
+                                center: Alignment.topLeft,
+                                radius: 1.8,
+                                colors: [
+                                  ColorName.appMajorelleBlue,
+                                  ColorName.appKUCrimson,
+                                ],
+                                stops: const [0.0, 1],
+                              ),
                             ),
                           ),
                         ),
                         Expanded(
-                          child: _buildPackageSelectionSection(
-                            context,
-                            originalAmount: "100",
-                            newAmount: "1.350",
-                            price: "₺399,99",
-                            bonusPercentage: "+35%",
-                            gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                ColorName.appRosewood,
-                                ColorName.appKUCrimson,
-                              ],
+                          child: GestureDetector(
+                            onTap:
+                                () => setState(() => _selectedPackageIndex = 2),
+                            child: _buildPackageSelectionSection(
+                              context,
+                              index: 2,
+                              originalAmount: "100",
+                              newAmount: "1.350",
+                              price: "₺399,99",
+                              bonusPercentage: "+35%",
+                              gradient: const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  ColorName.appRosewood,
+                                  ColorName.appKUCrimson,
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -219,7 +241,10 @@ class LimitedOfferModal extends StatelessWidget {
                         backgroundColor: ColorName.appKUCrimson,
                         borderRadius: 30,
                         text: "limited_offer.view_all_jetons".tr(),
-                        onPressed: () {},
+                        onPressed: () {
+                          // Seçilen paket ile işlem yap
+                          _handleSelectedPackage();
+                        },
                       ),
                     ),
                   ),
@@ -232,8 +257,24 @@ class LimitedOfferModal extends StatelessWidget {
     );
   }
 
+  void _handleSelectedPackage() {
+    // Seçilen paket index'ine göre işlem yap
+    switch (_selectedPackageIndex) {
+      case 0:
+        // 99,99₺ paketi
+        break;
+      case 1:
+        // 799,99₺ paketi
+        break;
+      case 2:
+        // 399,99₺ paketi
+        break;
+    }
+  }
+
   Stack _buildPackageSelectionSection(
     BuildContext context, {
+    required int index,
     required String originalAmount,
     required String newAmount,
     required String price,
@@ -241,6 +282,8 @@ class LimitedOfferModal extends StatelessWidget {
     required Gradient? gradient,
     Color? bonusPercentageColor,
   }) {
+    final isSelected = _selectedPackageIndex == index;
+
     return Stack(
       children: [
         Container(
@@ -249,12 +292,48 @@ class LimitedOfferModal extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: gradient,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: ColorName.appWhite, width: 0.4),
+            border: Border.all(
+              color:
+                  isSelected
+                      ? ColorName.appWhite
+                      : ColorName.appWhite.withValues(alpha: 0.4),
+              width: isSelected ? 2.0 : 0.4,
+            ),
+            boxShadow:
+                isSelected
+                    ? [
+                      BoxShadow(
+                        color: ColorName.appWhite.withValues(alpha: 0.3),
+                        blurRadius: 8,
+                        spreadRadius: 2,
+                      ),
+                    ]
+                    : null,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             spacing: 4,
             children: [
+              // Seçim göstergesi
+              if (isSelected)
+                Container(
+                  margin: const EdgeInsets.only(top: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
+                    color: ColorName.appWhite,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    "✓",
+                    style: context.theme.textTheme.bodySmall?.copyWith(
+                      color: ColorName.appKUCrimson,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               Expanded(
                 flex: 3,
                 child: Column(
