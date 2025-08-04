@@ -1,6 +1,6 @@
-# SUNFLIX  App
+# SUNFLIX App
 
-Modern ve kullanıcı dostu bir Flutter tabanlı dating uygulaması. Bu proje, kullanıcıların birbirleriyle eşleşmesini sağlayan, film koleksiyonu özelliği olan ve çok dilli destek sunan bir mobil uygulamadır.
+Modern ve kullanıcı dostu bir Flutter tabanlı film ve dizi streaming uygulaması. Bu proje, kullanıcıların film ve dizileri keşfetmesini, favorilerini yönetmesini ve kişiselleştirilmiş öneriler almasını sağlayan, çok dilli destek sunan bir mobil uygulamadır.
 
 ## 🚀 Özellikler
 
@@ -10,25 +10,29 @@ Modern ve kullanıcı dostu bir Flutter tabanlı dating uygulaması. Bu proje, k
 - **Şifre Sıfırlama**: Unutulan şifreler için sıfırlama
 - **Sosyal Medya Girişi**: Google, Apple, Facebook entegrasyonu (gelecek)
 
-### 👥 Kullanıcı Profili
+### 👤 Kullanıcı Profili
 - **Profil Oluşturma**: Fotoğraf yükleme ve profil düzenleme
 - **Profil Detayları**: Kullanıcı bilgileri ve tercihleri
 - **Fotoğraf Yönetimi**: Kamera ve galeri entegrasyonu
 
-### 🎬 Film Koleksiyonu
+### 🎬 Film ve Dizi Koleksiyonu
 - **Film Listesi**: Beğenilen filmlerin görüntülenmesi
-- **Film Detayları**: Detaylı film bilgileri
+- **Film Detayları**: Detaylı film bilgileri, oyuncular, yönetmen
 - **Favori Filmler**: Kullanıcının beğendiği filmler
+- **İzleme Listesi**: İzlenmek istenen içerikler
+- **İzlenen İçerikler**: Tamamlanan film ve diziler
 
-### 🔍 Keşfetme
-- **Kullanıcı Keşfi**: Diğer kullanıcıları keşfetme
-- **Eşleşme Sistemi**: Beğeni ve eşleşme özellikleri
-- **Kullanıcı Kartları**: Etkileşimli kullanıcı profilleri
+### 🔍 Keşfetme ve Arama
+- **Film Keşfi**: Yeni filmler ve diziler keşfetme
+- **Kategori Bazlı Arama**: Tür, yıl, dil filtreleme
+- **Akıllı Öneriler**: Kişiselleştirilmiş içerik önerileri
+- **Trend İçerikler**: Popüler film ve diziler
 
 ### 💎 Premium Özellikler
 - **Jeton Sistemi**: Premium içerik için jeton paketleri
 - **Sınırlı Teklifler**: Özel bonus ve avantajlar
 - **Premium Paketler**: Farklı fiyat seviyelerinde paketler
+- **Reklamsız İzleme**: Premium üyelik avantajları
 
 ### 🌍 Çok Dilli Destek
 - **Türkçe**: Tam Türkçe desteği
@@ -87,8 +91,9 @@ Modern ve kullanıcı dostu bir Flutter tabanlı dating uygulaması. Bu proje, k
 - **Şifre Sıfırlama**: Unutulan şifre sıfırlama
 
 ### Ana Ekranlar
-- **Keşfetme**: Kullanıcı keşfetme ve eşleşme
-- **Ana Sayfa**: Film koleksiyonu ve favoriler
+- **Ana Sayfa**: Film ve dizi koleksiyonu
+- **Keşfetme**: Yeni içerik keşfetme
+- **Arama**: Film ve dizi arama
 - **Profil**: Kullanıcı profili ve ayarlar
 
 ### Özel Ekranlar
@@ -148,8 +153,8 @@ lib/
 
 1. **Projeyi klonlayın**
 ```bash
-git clone https://github.com/your-username/dating_app.git
-cd dating_app
+git clone https://github.com/cuneytaykac/sunflix_app.git
+cd sunflix_app
 ```
 
 2. **Bağımlılıkları yükleyin**
@@ -301,4 +306,5 @@ Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosy
 - Topluluk katkılarına
 
 ---
+
 
