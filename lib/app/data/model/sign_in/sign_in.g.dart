@@ -22,13 +22,15 @@ class SignInAdapter extends TypeAdapter<SignIn> {
       name: fields[2] as String?,
       photoUrl: fields[3] as String?,
       token: fields[4] as String?,
+      username: fields[5] as String?,
+      password: fields[6] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, SignIn obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -38,7 +40,11 @@ class SignInAdapter extends TypeAdapter<SignIn> {
       ..writeByte(3)
       ..write(obj.photoUrl)
       ..writeByte(4)
-      ..write(obj.token);
+      ..write(obj.token)
+      ..writeByte(5)
+      ..write(obj.username)
+      ..writeByte(6)
+      ..write(obj.password);
   }
 
   @override
@@ -62,6 +68,8 @@ SignIn _$SignInFromJson(Map<String, dynamic> json) => SignIn(
       name: json['name'] as String?,
       photoUrl: json['photoUrl'] as String?,
       token: json['token'] as String?,
+      username: json['username'] as String?,
+      password: json['password'] as String?,
     );
 
 Map<String, dynamic> _$SignInToJson(SignIn instance) => <String, dynamic>{
@@ -70,4 +78,6 @@ Map<String, dynamic> _$SignInToJson(SignIn instance) => <String, dynamic>{
       'name': instance.name,
       'photoUrl': instance.photoUrl,
       'token': instance.token,
+      'username': instance.username,
+      'password': instance.password,
     };

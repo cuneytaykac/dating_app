@@ -104,6 +104,8 @@ class SignInCubit extends Cubit<SignInState> {
   }
 
   Future<void> _saveLocalSignIn(SignIn? signIn) async {
+    signIn?.username = state.email;
+    signIn?.password = state.password;
     if (signIn != null) {
       await _localSignInService.saveSignIn(signIn);
     }
