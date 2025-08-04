@@ -1,4 +1,4 @@
-# Dating App
+# SUNFLIX  App
 
 Modern ve kullanıcı dostu bir Flutter tabanlı dating uygulaması. Bu proje, kullanıcıların birbirleriyle eşleşmesini sağlayan, film koleksiyonu özelliği olan ve çok dilli destek sunan bir mobil uygulamadır.
 
@@ -290,9 +290,9 @@ Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosy
 
 ## 📞 İletişim
 
-- **Geliştirici**: [Your Name]
-- **E-posta**: [your-email@example.com]
-- **GitHub**: [https://github.com/your-username]
+- **Geliştirici**: Muhammet Cüneyt AYKAÇ
+- **E-posta**: cuneytaykac2@gmail.com
+- **GitHub**: https://github.com/cuneytaykac/
 
 ## 🙏 Teşekkürler
 
