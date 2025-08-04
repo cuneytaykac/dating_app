@@ -10,7 +10,7 @@ CachedNetworkImage cachedNetworkImage(
   BoxFit? fit,
 }) {
   return CachedNetworkImage(
-    imageUrl: imagePath,
+    imageUrl: imagePath.replaceFirst('http://', 'https://'),
     progressIndicatorBuilder:
         (context, url, downloadProgress) => Shimmer.fromColors(
           baseColor: Colors.grey[300]!,

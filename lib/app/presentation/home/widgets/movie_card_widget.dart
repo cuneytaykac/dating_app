@@ -27,7 +27,7 @@ class MovieCardWidget extends StatelessWidget {
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
             child: AspectRatio(
-              aspectRatio: 16 / 9,
+              aspectRatio: 1,
               child: cachedNetworkImage(movie.poster ?? '', fit: BoxFit.cover),
             ),
           ),
