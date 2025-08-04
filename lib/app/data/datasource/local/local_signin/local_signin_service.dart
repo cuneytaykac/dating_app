@@ -57,4 +57,23 @@ final class LocalSigninService extends ILocalSigninService {
       );
     }
   }
+
+  @override
+  Future<SignIn?> getSignInData() async {
+    try {
+      final signIn = HiveHelper.shared.getData<SignIn>(
+        boxName: HiveHelper.signInBoxKey,
+        key: HiveHelper.signInKey,
+      );
+      return signIn;
+    } catch (e) {
+      CrashlyticsManager.instance.sendACrash(
+        error: '$e',
+        stackTrace: StackTrace.current,
+        reason: "Reason getSignInData",
+        isFatal: true,
+      );
+      return null;
+    }
+  }
 }

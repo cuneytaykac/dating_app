@@ -4,4 +4,5 @@ abstract class ILocalSigninService {
   Future<void> saveSignIn(SignIn signIn);
   Future<String> getToken();
   Future<void> clearSignIn();
+  Future<SignIn?> getSignInData();
 }
